@@ -11,6 +11,8 @@ using namespace std;
 
 #include "../includes/Automat.h"
 
+#include "../includes/Token.h"
+
 	Automat::Automat() {
 		this->states = new TType[12];
 		this->states[0] = normalState;

@@ -17,7 +17,7 @@ BINDIRTEST = debug
 ## darauf achten, dass letzte Zeile ohne "\" eingetragen wird
 
 OBJS = $(OBJDIR)/Symboltable.o \
-	#$(OBJDIR)/xx1.o \
+	$(OBJDIR)/Information.o
 	#$(OBJDIR)/xxn.o
 
 

@@ -10,7 +10,7 @@
 #include <cstring>
 #include <iostream>
 
-#include "TTypes.h"
+#include "Token.h"
 
 using namespace std;
 

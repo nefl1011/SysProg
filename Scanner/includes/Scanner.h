@@ -11,7 +11,7 @@
 #include <iostream>
 #include "../../Automat/includes/Automat.h"
 #include "../../Buffer/includes/Buffer.h"
-#include "TTypes.h"
+#include "../../Automat/includes/Token.h"
 using namespace std;
 
 class Scanner {

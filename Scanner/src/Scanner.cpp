@@ -10,6 +10,7 @@ using namespace std;
 
 #include "../includes/Scanner.h"
 #include "../../Automat/includes/Automat.h"
+#include "../../Automat/includes/Token.h"
 
 int nStates = 0;
 

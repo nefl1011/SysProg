@@ -8,7 +8,7 @@
 #ifndef INFORMATION_H_
 #define INFORMATION_H_
 
-#include "../../Automat/includes/TTypes.h"
+#include "../../Automat/includes/Token.h"
 
 using namespace std;
 

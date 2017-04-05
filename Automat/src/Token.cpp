@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "TTypes.h"
+#include "../includes/Token.h"
 
 using namespace std;
 

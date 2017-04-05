@@ -1,43 +1,84 @@
+# Definition der Variablen
+
+# enthaelt die Header Files
+HEADERDIR = includes
+
+# enthaelt die Source Files
+SRCDIR = src
+
+# enthaelt die Obj Files zum Testen
+OBJDIR = objs
+
+# enthaelt das ausfuehrbare File zum Testen
+BINDIRTEST = debug
+
+
+## hier alle Object Files eintragen, ausser das File mit der Mainmethode
+## darauf achten, dass letzte Zeile ohne "\" eingetragen wird
+
+OBJS = $(OBJDIR)/Automat.o \
+	$(OBJDIR)/Token.o
+	#$(OBJDIR)/xxn.o
+
+
 #
 #		Targets zum Bauen des Tests
 #
 
-# Linken der Object-files, abhaengig von AutomatTarget und TestAutomatTarget
-# flag:
-# -g --> debug Informationen erzeugen
-# -o --> name des output-files
+# Variante mit geringen Makefile-Kenntnissen
 
-makeTestAutomat: AutomatTarget TestAutomatTarget  
-	g++ -g objs/Automat.o debug/TestAutomat.o -o debug/AutomatTest
+## Linken der Object-Files
+#makeTestAutomat: $(OBJDIR)/Automat.o $(OBJDIR)/TestAutomat.o
+#	g++ -g $(OBJDIR)/Automat.o $(OBJDIR)/TestAutomat.o -o $(BINDIR)/AutomatTest
+#   cp $(OBJDIR)/Automat.o ../projectOBJs
+#
+#	
+## compilieren der Source-files
+#
+#$(OBJDIR)/Automat.o :  $(SRCDIR)/Automat.cpp $(HEADERDIR)/Automat.h
+#	@echo "g++ $*.cpp"
+#	g++ -g  -c -Wall  -o $(OBJDIR)/Automat.o  $(SRCDIR)/Automat.cpp
+#
+#
+#$(OBJDIR)/TestAutomat.o :  $(SRCDIR)/TestAutomat.cpp $(SRCDIR)/Automat.h
+#	@echo "g++ $*.cpp"
+#	g++ -g  -c -Wall  -o $(OBJDIR)/TestAutomat.o  $(SRCDIR)/TestAutomat.cpp
+#
+
+
+# Variante mit guten Makefile-Kenntnissen
+
+makeTestAutomat: AutomatTarget TestAutomatTarget
+	g++ -g $(OBJDIR)/*.o $(BINDIRTEST)/TestAutomat.o  -o $(BINDIRTEST)/AutomatTest
+
+AutomatTarget: $(OBJS)
+
+# $@ name des object files = name auf der linken Seite vom Doppelpunkt des Targets
+# $< erste abhaengigkeit, $< das erste Element in der Liste der Abhaengigkeiten
+# $@ --> linke Seite vom Doppelpunkt
+# $^ --> rechte Seite vom Doppelpunkt
+
+$(OBJDIR)/%.o :  $(SRCDIR)/%.cpp $(HEADERDIR)/%.h
+	g++ -g  -c -Wall  $<  -o $@
+
+
+
+TestAutomatTarget: $(SRCDIR)/TestAutomat.cpp $(HEADERDIR)/Automat.h
+	g++ -g  -c -Wall $(SRCDIR)/TestAutomat.cpp -o $(BINDIRTEST)/TestAutomat.o  
 	
 
-# compilieren des Files Automat.cpp zu Automat.o, 
-# das Objekt-File ist abhängig von src/Automat.cpp und src/Automat.h
-# flag:
-# -c --> nur compilieren
-# -g --> debug Informationen erzeugen
-# -Wall --> alle meldungen erzeugen (Warning all)
 
-AutomatTarget :  src/Automat.cpp includes/Automat.h 
-	g++ -g  -c -Wall src/Automat.cpp -o objs/Automat.o  
-
-
-# TestAutomat.o ist abhängig von src/TestAutomat.cpp und src/Automat.h
-TestAutomatTarget :  src/TestAutomat.cpp includes/Automat.h
-	g++ -g  -c -Wall src/TestAutomat.cpp  -o debug/TestAutomat.o  
-
-
-
-# loeschen aller files im verzeichnis obj und debug, dann neu erzeugen
+# loeschen aller files im verzeichnis $(OBJDIR) und $(BINDIRTEST) und neu compilieren
 
 cleanAutomat:
-	rm -f objs/*.o
-	rm -f debug/*
+	rm -rf $(OBJDIR)/*.o
+	rm -rf $(BINDIRTEST)/*
 	$(MAKE) makeTestAutomat
 	
 	
-# dieses Target wird vom makefile des Gesamtprojekts verwendet
-# objs fuer Gesamtprojekt loeschen und dann neu erzeugen
+	
+## objs fuer GesamtProjekt neu erzeugen
 AutomatOBJTarget:
 	$(MAKE) AutomatTarget
 
+	
