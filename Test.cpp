@@ -11,7 +11,7 @@
 #include "Automat/includes/Automat.h"
 
 #include "Scanner.h"
-#include "TTypes.h"
+#include "Automat/includes/Token.h"
 using namespace std;
 
 Buffer* buffer = new Buffer("/home/nefl1011/Schreibtisch/Buffer/TestText.txt");
