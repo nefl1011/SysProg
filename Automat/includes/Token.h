@@ -13,31 +13,34 @@
 using namespace std;
 
 enum TType {
-	error = 0,		//Falsche Eingabe
-	integer = 1,	//Zahlen
-	identifier = 2,	//Bezeichner
-	sign = 3,		//Operatoren
-	pluS = 4,
-	minuS = 5,
-	mul = 6,
-	divide = 7,
-	greateR = 8,
-	lesS = 9,
-	equaL = 10,
-	anD = 11,
-	semicolon = 12,
-	bracketOn = 13,
-	bracketClose = 14,
-	curlyBracketOn = 15,
-	curlyBracketClose = 16,
-	squareBracketOn = 17,
-	squareBracketClose = 18,
-	colon = 19,
-	assign = 20,
-	comment = 21,	//Kommentare
-	normalState = 22,//normaler Zustand
-	tokenIf = 23,
-	tokenWhile = 24
+	ERROR 						= 0,	// Falsche Eingabe
+	INTEGER						= 1,	// Zahlen
+	IDENTIFIER 					= 2,	// Bezeichner
+	SIGN_PLUS 					= 3,	// +
+	SIGN_MINUS 					= 4,	// -
+	SIGN_MULTIPLIER 			= 5,	// *
+	SIGN_COLON 					= 6,	// :
+	SIGN_GREATER 				= 7,	// >
+	SIGN_SMALLER 				= 8,	// <
+	SIGN_EQUAL 					= 9,	// =
+	SIGN_AND 					= 10,	// &&
+	SIGN_SEMICOLON 				= 11,	// ;
+	SIGN_BRACKET_ON 			= 12, 	// (
+	SIGN_BRACKET_CLOSE 			= 13, 	// )
+	SIGN_CURLY_BRACKET_ON 		= 14, 	// {
+	SIGN_CURLY_BRACKET_CLOSE 	= 15, 	// }
+	SIGN_SQUARE_BRACKET_ON 	  	= 16, 	// [
+	SIGN_SQUARE_BRACKET_CLOSE 	= 17, 	// ]
+	SIGN_SPECIAL 				= 18, 	// <:>
+	SIGN_COLON_EQUAL 			= 19, 	// :=
+	SIGN_EXCLEMATION 			= 20,	// !
+	COMMENT 					= 21,	// Kommentare
+	TOKEN_IF 					= 22, 	// IF || if
+	TOKEN_WHILE 				= 23, 	// WHILE || while
+	TOKEN_SPACE 				= 24, 	// _
+	IGNORE 						= 25, 	// Kommentar oder Space
+	CONTINUE					= 26, 	// Mögliche Eingabe
+	ERROR_SPECIAL 				= 27 	// Wenn <:
 };
 
 class Token {
