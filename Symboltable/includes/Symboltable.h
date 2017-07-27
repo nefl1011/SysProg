@@ -1,41 +1,18 @@
 /*
- * SymTable.hpp
+ * Symboltable.h
  *
- *  Created on: 15.04.2015
- *      Author: eriksteigert
+ *  Created on: Sep 26, 2012
+ *      Author: knad0001
  */
 
-#ifndef SYMTABLE_HPP_
-#define SYMTABLE_HPP_
+#ifndef SYMBOLTABLE_H_
+#define SYMBOLTABLE_H_
 
-#include <string>
-#include "Information.h"
-
-using namespace std;
-
-class SymTable {
-
-private:
-	int tableSize;
-	const char* initialValue;
-
-	struct symtabEntry {
-		symtabEntry* next;
-		Information* info;
-
-	};
-
-	symtabEntry* hashTable[];
-
-
+class Symboltable {
 public:
-	SymTable(int size);
-	int hash(const char* Key, int length);
-	const char* insert(const char* lexem, TType typ);
-	Information* lookup(const char* key);
+	Symboltable();
+	virtual ~Symboltable();
 
 };
 
-
-#endif /* SYMTABLE_HPP_ */
-
+#endif /* SYMBOLTABLE_H_ */

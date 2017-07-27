@@ -1,39 +1,37 @@
 /*
  * Scanner.h
  *
- *  Created on: 24.04.2015
- *      Author: nefl1011
+ *  Created on: Sep 26, 2012
+ *      Author: knad0001
  */
 
 #ifndef SCANNER_H_
 #define SCANNER_H_
-#include <cstring>
-#include <iostream>
-#include "../../Automat/includes/Automat.h"
+
 #include "../../Buffer/includes/Buffer.h"
+#include "../../Automat/includes/Automat.h"
 #include "../../Automat/includes/Token.h"
-using namespace std;
 
 class Scanner {
 private:
-	char* path;
-	Automat* automat;
 	Buffer* buffer;
-	TType typeScanner = automat->currentState();
-	char current;
-	char* lexemS;
-	int lexemLength;
-	int lineS;
-	int columnS;
+	Automat* automat;
+	char currChar;
+	int lexemLength = 256;
+	char lexem[256];
+	bool tokenFound;
+	int lexemStartCol;
+	int col;
+	int line;
+	TType prevTType;
+	TType currTType;
 
 public:
-
-	Scanner(char* path);
-	~Scanner();
+	Scanner(Buffer* buffer, Automat* automat);
+	virtual ~Scanner();
 
 	Token* nextToken();
-	int hasNext();
-
+	bool hasNextToken();
 };
 
 #endif /* SCANNER_H_ */

@@ -15,7 +15,7 @@ using namespace std;
 
 	Automat::Automat() {
 		this->state = States::START_STATE;
-		this->sign = '';
+		this->sign = '\0';
 	}
 
 	Automat::~Automat() {
@@ -30,7 +30,7 @@ using namespace std;
 			case States::EQUAL_STATE			: return proofEqualState(input);
 			case States::COLON_STATE			: return proofColonState(input);
 			case States::COMMENT_STATE			: return proofCommentState(input);
-			case States::COMMENT_END_BEGIN_STATE: return proofCommentEndState(input);
+			case States::COMMENT_END_BEGIN_STATE: return proofCommentEndBeginState(input);
 			case States::COMMENT_END_STATE		: return proofCommentEndState(input);
 			case States::EQUAL_COLON_STATE		: return proofEqualColonState(input);
 			case States::SPECIAL_STATE			: return proofSpecialState(input);
@@ -80,9 +80,21 @@ using namespace std;
 				this->state = States::SIGN_STATE;
 				return TType::CONTINUE;
 			case ' ':
+			/*********/
+			case '\t':
+			case '\b':
+			case '\r':
+			case '\f':
+			/*********/
 				this->state = States::SPACE_STATE;
 				return TType::IGNORE;
 		}
+
+		if(input == '\n') {
+			this->state = States::START_STATE;
+			return TType::LINE_BREAK;
+		}
+
 		return TType::ERROR;
 	}
 

@@ -18,6 +18,38 @@ Token::Token(TType type, char* lexem, int line, int column) {
 	this->line = line;
 	this->column = column;
 	this->value = strtol(this->lexem, NULL, 0);
+
+	switch(type) {
+		case ERROR							:	this->typeName = "Error"; break;
+		case INTEGER						:	this->typeName = "Integer"; break;
+		case IDENTIFIER						:	this->typeName = "Identifier"; break;
+		case SIGN_PLUS						:	this->typeName = "Plus"; break;
+		case SIGN_MINUS						:	this->typeName = "Minus"; break;
+		case SIGN_MULTIPLIER				:	this->typeName = "Multiplier"; break;
+		case SIGN_COLON						:	this->typeName = "Colon"; break;
+		case SIGN_GREATER					:	this->typeName = "Greater"; break;
+		case SIGN_SMALLER					:	this->typeName = "Smaller"; break;
+		case SIGN_EQUAL						:	this->typeName = "Equal"; break;
+		case SIGN_AND						:	this->typeName = "And"; break;
+		case SIGN_SEMICOLON					:	this->typeName = "Semicolon"; break;
+		case SIGN_BRACKET_ON				:	this->typeName = "Bracket-On"; break;
+		case SIGN_BRACKET_CLOSE				:	this->typeName = "Bracket-Close"; break;
+		case SIGN_CURLY_BRACKET_ON			:	this->typeName = "Curly-Bracket-On"; break;
+		case SIGN_CURLY_BRACKET_CLOSE		:	this->typeName = "Curly-Bracket-Close"; break;
+		case SIGN_SQUARE_BRACKET_ON			:	this->typeName = "Square-Bracket-On"; break;
+		case SIGN_SQUARE_BRACKET_CLOSE		:	this->typeName = "Square-Bracket-Close"; break;
+		case SIGN_SPECIAL					:	this->typeName = "Special"; break;
+		case SIGN_COLON_EQUAL				:	this->typeName = "Colon-Equal"; break;
+		case SIGN_EXCLEMATION				:	this->typeName = "Exclamation"; break;
+		case COMMENT						:	this->typeName = "Comment"; break;
+		case TOKEN_IF						:	this->typeName = "If"; break;
+		case TOKEN_WHILE					:	this->typeName = "While"; break;
+		case TOKEN_SPACE					:	this->typeName = "Space"; break;
+		case IGNORE							:	this->typeName = "Ignore"; break;
+		case CONTINUE						:	this->typeName = "Continue"; break;
+		case ERROR_SPECIAL					:	this->typeName = "Error-Special"; break;
+		case LINE_BREAK						:	this->typeName = "Line-Break"; break;
+	}
 }
 
 Token::~Token() {
@@ -26,6 +58,10 @@ Token::~Token() {
 
 TType Token::getType() {
 	return this->type;
+}
+
+char* Token::getTypeName() {
+	return this->typeName;
 }
 
 char* Token::getLexem() {

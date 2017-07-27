@@ -40,12 +40,14 @@ enum TType {
 	TOKEN_SPACE 				= 24, 	// _
 	IGNORE 						= 25, 	// Kommentar oder Space
 	CONTINUE					= 26, 	// Mögliche Eingabe
-	ERROR_SPECIAL 				= 27 	// Wenn <:
+	ERROR_SPECIAL 				= 27, 	// Wenn <:
+	LINE_BREAK					= 28	// Special Character: Line Break
 };
 
 class Token {
 private:
 	TType type;
+	char* typeName;
 	int line;
 	int column;
 	char* lexem;
@@ -55,6 +57,7 @@ public:
 	Token(TType type, char* lexem, int line, int column);
 	~Token();
 	TType getType();
+	char* getTypeName();
 	char* getLexem();
 	int getLine();
 	int getColumn();
