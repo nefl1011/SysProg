@@ -10,8 +10,8 @@ private:
 	Buffer* buffer;
 	Automat* automat;
 	char currChar;
-	int lexemLength = 256;
-	char lexem[256];
+	int lexemLength;
+	char* lexem;
 	bool tokenFound;
 	int lexemStartCol;
 	int col;

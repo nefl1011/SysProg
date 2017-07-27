@@ -29,8 +29,8 @@ using namespace std;
 			case SPECIAL_STATE			: return proofSpecialState(input);
 			case COLON_EQUAL_STATE	 	: return proofColonEqualState(input);
 			case SPACE_STATE 			: return proofSpaceState(input);
-			case AND_STATE			 	: return proofColonEqualState(input);
-			case AND_AND_STATE 			: return proofSpaceState(input);
+			case AND_STATE			 	: return proofAndState(input);
+			case AND_AND_STATE 			: return proofAndAndState(input);
 			default: return ERROR;
 		}
 	}
@@ -200,6 +200,7 @@ using namespace std;
 				this->state = SPECIAL_STATE;
 				return CONTINUE;
 			default:
+				this->state = START_STATE;
 				return ERROR_SPECIAL;
 		}
 	}
@@ -231,7 +232,7 @@ using namespace std;
 				return CONTINUE;
 			default:
 				this->state = START_STATE;
-				return ERROR;
+				return ERROR_AND;
 		}
 	}
 

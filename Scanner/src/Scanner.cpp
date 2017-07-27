@@ -10,14 +10,18 @@ Scanner::Scanner(Buffer* buffer, Automat* automat) {
 	this->lexemStartCol = 0;
 	this->col = 0;
 	this->line = 0;
+	this->lexemLength = 256;
+	this->lexem = new char[this->lexemLength];
 }
 
 Scanner::~Scanner() {
 	delete buffer;
 	delete automat;
+	delete[] lexem;
 }
 
 Token* Scanner::nextToken() {
+	Token* token;
 	while(!tokenFound) {
 		if(buffer->hasNext()) {
 			currChar = buffer->getChar();
@@ -39,31 +43,46 @@ Token* Scanner::nextToken() {
 				lexemStartCol = 0;
 				continue;
 
-			case ERROR:
-				cout << "Error: Das Zeichen \'" << currChar << "\' wird nicht akzeptiert!" << endl;
-				abort();
+			case ERROR_SPECIAL:
+				col--;
+				buffer->ungetChar();
+				currTType = SIGN_EQUAL;
+				break;
+
+			case ERROR_AND:
+				col--;
+				buffer->ungetChar();
+				currTType = ERROR;
+				break;
 		}
 
 		//Token gefunden
 		tokenFound = true;
-		buffer->ungetChar();
+
+		if (currTType != ERROR) {
+			buffer->ungetChar();
+		}
+
 		lexem[col-lexemStartCol] = '\0';
 
-		//Token zusammenbauen
-		/*Token* token = new Token(currTType, lex, line, lexemStartCol);
+		//bilde seperaten String für Token
+		char* string = new char[col-lexemStartCol];
+		for (int index = 0; index < (col-lexemStartCol); index++) {
+			string[index] = lexem[index];
+		}
 
-		cout << "Token " << token->getTypeName() << " Line: " << token->getLine()
-				<< " Spalte: " << token->getColumn() << " Lexem: " << token->getLexem() << endl;*/
+		//bilde Token
+		token = new Token(currTType, string, line, lexemStartCol);
 
-		cout << "Token " << currTType << " Line: " << line
-						<< " Spalte: " << lexemStartCol << " Lexem: " << lexem << endl;
-
+		//resete lexem
 		for(int i = 0; i < (col-lexemStartCol); i++) {
 			lexem[i] = '\0';
 		}
+
 		lexemStartCol = col;
 	}
 	tokenFound = false;
+	return token;
 }
 
 bool Scanner::hasNextToken() {

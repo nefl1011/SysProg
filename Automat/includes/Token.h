@@ -34,7 +34,8 @@ enum TType {
 	IGNORE 						= 25, 	// Kommentar oder Space
 	CONTINUE					= 26, 	// Mögliche Eingabe
 	ERROR_SPECIAL 				= 27, 	// Wenn <:
-	LINE_BREAK					= 28	// Special Character: Line Break
+	LINE_BREAK					= 28,	// Special Character: Line Break
+	ERROR_AND					= 29
 };
 
 class Token {

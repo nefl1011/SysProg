@@ -54,6 +54,7 @@ Token::Token(TType type, char* lexem, int line, int column) {
 
 Token::~Token() {
 	delete[] this->lexem;
+	delete[] this->typeName;
 }
 
 TType Token::getType() {
