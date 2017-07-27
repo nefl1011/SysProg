@@ -1,10 +1,3 @@
-/*
- * TTypes.h
- *
- *  Created on: 23.04.2015
- *      Author: nefl1011
- */
-
 #ifndef TTYPES_H_
 #define TTYPES_H_
 

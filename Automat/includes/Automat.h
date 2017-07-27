@@ -1,10 +1,3 @@
-/*
- * Automat.h
- *
- *  Created on: 23.04.2015
- *      Author: nefl1011
- */
-
 #ifndef AUTOMAT_H_
 #define AUTOMAT_H_
 #include <cstring>

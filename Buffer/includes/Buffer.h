@@ -1,10 +1,3 @@
-/*
- * Buffer.h
- *
- *  Created on: 04.04.2015
- *      Author: Nick Nowak
- */
-
 #ifndef BUFFER_H_
 #define BUFFER_H_
 

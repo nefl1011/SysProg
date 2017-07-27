@@ -1,10 +1,3 @@
-/*
- * Automat.cpp
- *
- *  Created on: 23.04.2015
- *      Author: nefl1011
- */
-
 #include <iostream>
 
 using namespace std;
@@ -14,7 +7,7 @@ using namespace std;
 #include "../includes/Token.h"
 
 	Automat::Automat() {
-		this->state = States::START_STATE;
+		this->state = START_STATE;
 		this->sign = '\0';
 	}
 
@@ -23,46 +16,46 @@ using namespace std;
 
 	TType Automat::proofInput(char input) {
 		switch (this->state) {
-			case States::START_STATE			: return proofStartState(input);
-			case States::IDENTIFIER_STATE		: return proofIdentifierState(input);
-			case States::INT_STATE				: return proofIntState(input);
-			case States::SIGN_STATE				: return proofSignState();
-			case States::EQUAL_STATE			: return proofEqualState(input);
-			case States::COLON_STATE			: return proofColonState(input);
-			case States::COMMENT_STATE			: return proofCommentState(input);
-			case States::COMMENT_END_BEGIN_STATE: return proofCommentEndBeginState(input);
-			case States::COMMENT_END_STATE		: return proofCommentEndState(input);
-			case States::EQUAL_COLON_STATE		: return proofEqualColonState(input);
-			case States::SPECIAL_STATE			: return proofSpecialState(input);
-			case States::COLON_EQUAL_STATE	 	: return proofColonEqualState(input);
-			case States::SPACE_STATE 			: return proofSpaceState(input);
-			case States::AND_STATE			 	: return proofColonEqualState(input);
-			case States::AND_AND_STATE 			: return proofSpaceState(input);
-			default: return TType::ERROR;
+			case START_STATE			: return proofStartState(input);
+			case IDENTIFIER_STATE		: return proofIdentifierState(input);
+			case INT_STATE				: return proofIntState(input);
+			case SIGN_STATE				: return proofSignState();
+			case EQUAL_STATE			: return proofEqualState(input);
+			case COLON_STATE			: return proofColonState(input);
+			case COMMENT_STATE			: return proofCommentState(input);
+			case COMMENT_END_BEGIN_STATE: return proofCommentEndBeginState(input);
+			case COMMENT_END_STATE		: return proofCommentEndState(input);
+			case EQUAL_COLON_STATE		: return proofEqualColonState(input);
+			case SPECIAL_STATE			: return proofSpecialState(input);
+			case COLON_EQUAL_STATE	 	: return proofColonEqualState(input);
+			case SPACE_STATE 			: return proofSpaceState(input);
+			case AND_STATE			 	: return proofColonEqualState(input);
+			case AND_AND_STATE 			: return proofSpaceState(input);
+			default: return ERROR;
 		}
 	}
 
 	TType Automat::proofStartState(char input) {
 		if ((input >= 'a' && input <= 'z')
 			|| (input >= 'A' && input <= 'Z')) {
-			this->state = States::IDENTIFIER_STATE;
-			return TType::CONTINUE;
+			this->state = IDENTIFIER_STATE;
+			return CONTINUE;
 		}
 		if (input >= '0' && input <= '9') {
-			this->state = States::INT_STATE;
-			return TType::CONTINUE;
+			this->state = INT_STATE;
+			return CONTINUE;
 		}
 
 		switch (input) {
 			case '=':
-				this->state = States::EQUAL_STATE;
-				return TType::CONTINUE;
+				this->state = EQUAL_STATE;
+				return CONTINUE;
 			case ':':
-				this->state = States::COLON_STATE;
-				return TType::CONTINUE;
+				this->state = COLON_STATE;
+				return CONTINUE;
 			case '&':
-				this->state = States::AND_STATE;
-				return TType::CONTINUE;
+				this->state = AND_STATE;
+				return CONTINUE;
 			case '+':
 			case '-':
 			case '*':
@@ -77,8 +70,8 @@ using namespace std;
 			case '[':
 			case ']':
 				this->sign = input;
-				this->state = States::SIGN_STATE;
-				return TType::CONTINUE;
+				this->state = SIGN_STATE;
+				return CONTINUE;
 			case ' ':
 			/*********/
 			case '\t':
@@ -86,160 +79,163 @@ using namespace std;
 			case '\r':
 			case '\f':
 			/*********/
-				this->state = States::SPACE_STATE;
-				return TType::IGNORE;
+				this->state = SPACE_STATE;
+				return IGNORE;
 		}
 
 		if(input == '\n') {
-			this->state = States::START_STATE;
-			return TType::LINE_BREAK;
+			this->state = START_STATE;
+			return LINE_BREAK;
 		}
 
-		return TType::ERROR;
+		return ERROR;
 	}
 
 	TType Automat::proofIdentifierState(char input) {
 		if ((input >= 'a' && input <= 'z')
 			|| (input >= 'A' && input <= 'Z')
 			|| (input >= '0' && input <= '9')) {
-			return TType::CONTINUE;
+			return CONTINUE;
 		}
-		this->state = States::START_STATE;
-		return TType::IDENTIFIER;
+		this->state = START_STATE;
+		return IDENTIFIER;
 	}
 
 	TType Automat::proofIntState(char input) {
 		if (input >= '0' && input <= '9') {
-			return TType::CONTINUE;
+			return CONTINUE;
 		}
-		this->state = States::START_STATE;
-		return TType::INTEGER;
+		this->state = START_STATE;
+		return INTEGER;
 	}
 
 	TType Automat::proofSignState() {
-		this->state = States::START_STATE;
+		this->state = START_STATE;
 		switch (this->sign) {
 			case '+':
-				return TType::SIGN_PLUS;
+				return SIGN_PLUS;
 			case '-':
-				return TType::SIGN_MINUS;
+				return SIGN_MINUS;
 			case '*':
-				return TType::SIGN_MULTIPLIER;
+				return SIGN_MULTIPLIER;
 			case '<':
-				return TType::SIGN_SMALLER;
+				return SIGN_SMALLER;
 			case '>':
-				return TType::SIGN_GREATER;
+				return SIGN_GREATER;
 			case '!':
-				return TType::SIGN_EXCLEMATION;
+				return SIGN_EXCLEMATION;
 			case ';':
-				return TType::SIGN_SEMICOLON;
+				return SIGN_SEMICOLON;
 			case '(':
-				return TType::SIGN_BRACKET_ON;
+				return SIGN_BRACKET_ON;
 			case ')':
-				return TType::SIGN_BRACKET_CLOSE;
+				return SIGN_BRACKET_CLOSE;
 			case '{':
-				return TType::SIGN_CURLY_BRACKET_ON;
+				return SIGN_CURLY_BRACKET_ON;
 			case '}':
-				return TType::SIGN_CURLY_BRACKET_CLOSE;
+				return SIGN_CURLY_BRACKET_CLOSE;
 			case '[':
-				return TType::SIGN_SQUARE_BRACKET_ON;
+				return SIGN_SQUARE_BRACKET_ON;
 			case ']':
-				return TType::SIGN_SQUARE_BRACKET_CLOSE;
+				return SIGN_SQUARE_BRACKET_CLOSE;
+			default:
+				return ERROR;
 		}
 	}
 
 	TType Automat::proofEqualState(char input) {
 		switch (input) {
 			case ':':
-				this->state = States::EQUAL_COLON_STATE;
-				return TType::CONTINUE;
+				this->state = EQUAL_COLON_STATE;
+				return CONTINUE;
 			default:
-				return TType::SIGN_EQUAL;
+				this->state = START_STATE;
+				return SIGN_EQUAL;
 		}
 	}
 
 	TType Automat::proofColonState(char input) {
 		switch (input) {
 			case '*':
-				this->state = States::COMMENT_STATE;
-				return TType::IGNORE;
+				this->state = COMMENT_STATE;
+				return IGNORE;
 			case '=':
-				this->state = States::COLON_EQUAL_STATE;
-				return TType::CONTINUE;
+				this->state = COLON_EQUAL_STATE;
+				return CONTINUE;
 			default:
-				this->state = States::START_STATE;
-				return TType::SIGN_COLON;
+				this->state = START_STATE;
+				return SIGN_COLON;
 		}
 	}
 
 	TType Automat::proofCommentState(char input) {
 		switch (input) {
 			case '*':
-				this->state = States::COMMENT_END_BEGIN_STATE;
-				return TType::CONTINUE;
+				this->state = COMMENT_END_BEGIN_STATE;
+				return CONTINUE;
 			default:
-				return TType::IGNORE;
+				return IGNORE;
 		}
 	}
 
 	TType Automat::proofCommentEndBeginState(char input) {
 		switch (input) {
 			case ':':
-				this->state = States::COMMENT_END_STATE;
-				return TType::CONTINUE;
+				this->state = COMMENT_END_STATE;
+				return CONTINUE;
 			default:
-				this->state = States::COMMENT_STATE;
-				return TType::IGNORE;
+				this->state = COMMENT_STATE;
+				return IGNORE;
 		}
 	}
 
 	TType Automat::proofCommentEndState(char input) {
-		this->state = States::START_STATE;
-		return TType::COMMENT;
+		this->state = START_STATE;
+		return COMMENT;
 	}
 
 	TType Automat::proofEqualColonState(char input) {
 		switch (input) {
 			case '=':
-				this->state = States::SPECIAL_STATE;
-				return TType::CONTINUE;
+				this->state = SPECIAL_STATE;
+				return CONTINUE;
 			default:
-				return TType::ERROR_SPECIAL;
+				return ERROR_SPECIAL;
 		}
 	}
 
 	TType Automat::proofSpecialState(char input) {
-		this->state = States::START_STATE;
-		return TType::SIGN_SPECIAL;
+		this->state = START_STATE;
+		return SIGN_SPECIAL;
 	}
 
 	TType Automat::proofColonEqualState(char input) {
-		this->state = States::START_STATE;
-		return TType::SIGN_COLON_EQUAL;
+		this->state = START_STATE;
+		return SIGN_COLON_EQUAL;
 	}
 
 	TType Automat::proofSpaceState(char input) {
 		switch (input) {
 			case ' ':
-				return TType::IGNORE;
+				return IGNORE;
 			default:
-				this->state = States::START_STATE;
-				return TType::TOKEN_SPACE;
+				this->state = START_STATE;
+				return TOKEN_SPACE;
 		}
 	}
 
 	TType Automat::proofAndState(char input) {
 		switch (input) {
 			case '&':
-				this->state = States::AND_AND_STATE;
-				return TType::CONTINUE;
+				this->state = AND_AND_STATE;
+				return CONTINUE;
 			default:
-				this->state = States::START_STATE;
-				return TType::ERROR;
+				this->state = START_STATE;
+				return ERROR;
 		}
 	}
 
 	TType Automat::proofAndAndState(char input) {
-		this->state = States::START_STATE;
-		return TType::SIGN_AND;
+		this->state = START_STATE;
+		return SIGN_AND;
 	}

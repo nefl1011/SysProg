@@ -1,10 +1,3 @@
-/*
- * buffer.cpp
- *
- *  Created on: 04.04.2015
- *      Author: Nick Nowak
- */
-
 #include <iostream>
 
 #include "../includes/Buffer.h"
