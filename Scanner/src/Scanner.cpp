@@ -2,9 +2,9 @@
 #include "../../Automat/includes/Automat.h"
 #include "../../Automat/includes/Token.h"
 
-Scanner::Scanner(Buffer* buffer, Automat* automat) {
-	this->buffer = buffer;
-	this->automat = automat;
+Scanner::Scanner(char* filePath) {
+	this->buffer = new Buffer(filePath);
+	this->automat = new Automat();
 
 	this->tokenFound = false;
 	this->lexemStartCol = 0;
@@ -72,6 +72,15 @@ Token* Scanner::nextToken() {
 		char* string = new char[col-lexemStartCol+1];
 		for (int index = 0; index < (col-lexemStartCol)+1; index++) {
 			string[index] = lexem[index];
+		}
+
+		if (currTType == IDENTIFIER) {
+			if (strcmp(string, "IF") == 0 || strcmp(string, "if") == 0) {
+				currTType = TOKEN_IF;
+			}
+			else if (strcmp(string, "WHILE") == 0 || strcmp(string, "while") == 0) {
+				currTType = TOKEN_WHILE;
+			}
 		}
 
 		//bilde Token

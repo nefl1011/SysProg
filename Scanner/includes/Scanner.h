@@ -20,7 +20,7 @@ private:
 	TType currTType;
 
 public:
-	Scanner(Buffer* buffer, Automat* automat);
+	Scanner(char* filePath);
 	virtual ~Scanner();
 
 	Token* nextToken();

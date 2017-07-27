@@ -1,0 +1,933 @@
+Token Space
+Line: 0	 Column: 1	 Sign:  
+
+Token And
+Line: 0	 Column: 2	 Sign: &&
+
+Token Space
+Line: 0	 Column: 4	 Sign:  
+
+Token Integer
+Line: 0	 Column: 6	 Value: 23
+
+Token Space
+Line: 0	 Column: 8	 Sign:  
+
+Token Special
+Line: 1	 Column: 0	 Sign: =:=
+
+Token Space
+Line: 1	 Column: 3	 Sign:  
+
+Token Equal
+Line: 1	 Column: 4	 Sign: =
+
+Token Space
+Line: 1	 Column: 5	 Sign:  
+
+Token Colon-Equal
+Line: 1	 Column: 6	 Sign: :=
+
+Token Space
+Line: 1	 Column: 8	 Sign:  
+
+Token Colon-Equal
+Line: 1	 Column: 9	 Sign: :=
+
+Token Equal
+Line: 1	 Column: 11	 Sign: =
+
+Token Special
+Line: 1	 Column: 12	 Sign: =:=
+
+Token Equal
+Line: 2	 Column: 0	 Sign: =
+
+Token Colon
+Line: 2	 Column: 1	 Sign: :
+
+Token Identifier
+Line: 2	 Column: 2	 Lexem: asd
+
+Token Colon-Equal
+Line: 2	 Column: 5	 Sign: :=
+
+Token Equal
+Line: 2	 Column: 7	 Sign: =
+
+Token Colon
+Line: 2	 Column: 8	 Sign: :
+
+Token Identifier
+Line: 2	 Column: 9	 Lexem: Asd1233
+
+Token If
+Line: 3	 Column: 0	 Sign: if
+
+Token Space
+Line: 3	 Column: 2	 Sign:  
+
+Token If
+Line: 3	 Column: 3	 Sign: IF
+
+Token Space
+Line: 3	 Column: 5	 Sign:  
+
+Token Identifier
+Line: 3	 Column: 6	 Lexem: iF
+
+Token Space
+Line: 3	 Column: 8	 Sign:  
+
+Token While
+Line: 3	 Column: 9	 Sign: while
+
+Token Space
+Line: 3	 Column: 14	 Sign:  
+
+Token While
+Line: 3	 Column: 15	 Sign: WHILE
+
+Token Space
+Line: 3	 Column: 20	 Sign:  
+
+Token Identifier
+Line: 3	 Column: 21	 Lexem: whILe
+
+Token Comment
+Line: 4	 Column: 0	 Sign: :* eine einfache Aufgabe !!*:
+
+Token Integer
+Line: 5	 Column: 0	 Value: 12
+
+Token Space
+Line: 5	 Column: 2	 Sign:  
+
+Token Integer
+Line: 5	 Column: 3	 Value: 33
+
+Token Space
+Line: 5	 Column: 5	 Sign:  
+
+Token Integer
+Line: 5	 Column: 6	 Value: 42
+
+Token Smaller
+Line: 6	 Column: 0	 Sign: <
+
+Token Colon
+Line: 6	 Column: 1	 Sign: :
+
+Token Identifier
+Line: 6	 Column: 2	 Lexem: y
+
+Token Smaller
+Line: 7	 Column: 0	 Sign: <
+
+Token Colon
+Line: 7	 Column: 1	 Sign: :
+
+Token Greater
+Line: 7	 Column: 2	 Sign: >
+
+Token Identifier
+Line: 8	 Column: 0	 Lexem: X
+
+Token Colon
+Line: 9	 Column: 0	 Sign: :
+
+Token Space
+Line: 9	 Column: 1	 Sign:  
+
+Token Equal
+Line: 9	 Column: 2	 Sign: =
+
+Token Identifier
+Line: 10	 Column: 0	 Lexem: X
+
+Token Colon-Equal
+Line: 10	 Column: 1	 Sign: :=
+
+Token Integer
+Line: 10	 Column: 3	 Value: 3
+
+Token Plus
+Line: 10	 Column: 4	 Sign: +
+
+Token Integer
+Line: 10	 Column: 5	 Value: 4
+
+Token Semicolon
+Line: 10	 Column: 6	 Sign: ;
+
+Token Comment
+Line: 11	 Column: 0	 Sign: :* :*eine einfache Aufgabe !!*:
+
+Token Space
+Line: 11	 Column: 31	 Sign:  
+
+Token And
+Line: 11	 Column: 32	 Sign: &&
+
+Token Identifier
+Line: 12	 Column: 3	 Lexem: Ay
+
+Token Space
+Line: 12	 Column: 5	 Sign:  
+
+Token Smaller
+Line: 12	 Column: 6	 Sign: <
+
+Token Colon-Equal
+Line: 12	 Column: 7	 Sign: :=
+
+Token Greater
+Line: 12	 Column: 9	 Sign: >
+
+Token Space
+Line: 12	 Column: 10	 Sign:  
+
+Token Identifier
+Line: 12	 Column: 11	 Lexem: X
+
+Token Space
+Line: 12	 Column: 12	 Sign:  
+
+Token Colon
+Line: 12	 Column: 13	 Sign: :
+
+Token Space
+Line: 12	 Column: 14	 Sign:  
+
+Token Bracket-On
+Line: 12	 Column: 15	 Sign: (
+
+Token Identifier
+Line: 12	 Column: 16	 Lexem: X
+
+Token Space
+Line: 12	 Column: 17	 Sign:  
+
+Token Minus
+Line: 12	 Column: 18	 Sign: -
+
+Token Space
+Line: 12	 Column: 19	 Sign:  
+
+Token Integer
+Line: 12	 Column: 20	 Value: 4
+
+Token Bracket-Close
+Line: 12	 Column: 21	 Sign: )
+
+Token Semicolon
+Line: 12	 Column: 22	 Sign: ;
+
+Token Identifier
+Line: 13	 Column: 0	 Lexem: Z
+
+Token Space
+Line: 13	 Column: 1	 Sign:  
+
+Token Colon-Equal
+Line: 13	 Column: 2	 Sign: :=
+
+Token Space
+Line: 13	 Column: 4	 Sign:  
+
+Token Bracket-On
+Line: 13	 Column: 5	 Sign: (
+
+Token Bracket-On
+Line: 13	 Column: 6	 Sign: (
+
+Token Integer
+Line: 13	 Column: 7	 Value: 3
+
+Token Space
+Line: 13	 Column: 8	 Sign:  
+
+Token Plus
+Line: 13	 Column: 9	 Sign: +
+
+Token Space
+Line: 13	 Column: 10	 Sign:  
+
+Token Integer
+Line: 13	 Column: 11	 Value: 4
+
+Token Space
+Line: 13	 Column: 12	 Sign:  
+
+Token Minus
+Line: 13	 Column: 13	 Sign: -
+
+Token Space
+Line: 13	 Column: 14	 Sign:  
+
+Token Integer
+Line: 13	 Column: 15	 Value: 6
+
+Token Bracket-Close
+Line: 13	 Column: 16	 Sign: )
+
+Token Semicolon
+Line: 13	 Column: 17	 Sign: ;
+
+Token Identifier
+Line: 14	 Column: 0	 Lexem: Resultat
+
+Token Space
+Line: 14	 Column: 8	 Sign:  
+
+Token Colon-Equal
+Line: 14	 Column: 9	 Sign: :=
+
+Token Space
+Line: 14	 Column: 11	 Sign:  
+
+Token Colon
+Line: 14	 Column: 12	 Sign: :
+
+Token Space
+Line: 14	 Column: 13	 Sign:  
+
+Token Identifier
+Line: 14	 Column: 14	 Lexem: X
+
+Token Space
+Line: 14	 Column: 15	 Sign:  
+
+Token Identifier
+Line: 14	 Column: 16	 Lexem: y
+
+Token Space
+Line: 14	 Column: 17	 Sign:  
+
+Token Identifier
+Line: 15	 Column: 0	 Lexem: X
+
+Token Colon-Equal
+Line: 15	 Column: 1	 Sign: :=
+
+Token Integer
+Line: 15	 Column: 3	 Value: 3
+
+Token Plus
+Line: 15	 Column: 4	 Sign: +
+
+Token Integer
+Line: 15	 Column: 5	 Value: 4
+
+Token Semicolon
+Line: 15	 Column: 6	 Sign: ;
+
+Token Comment
+Line: 16	 Column: 0	 Sign: :* eine einfache Aufgabe !! *:
+
+Token Space
+Line: 16	 Column: 30	 Sign:  
+
+Token Identifier
+Line: 17	 Column: 1	 Lexem: y
+
+Token Space
+Line: 17	 Column: 2	 Sign:  
+
+Token Smaller
+Line: 17	 Column: 3	 Sign: <
+
+Token Colon-Equal
+Line: 17	 Column: 4	 Sign: :=
+
+Token Greater
+Line: 17	 Column: 6	 Sign: >
+
+Token Space
+Line: 17	 Column: 7	 Sign:  
+
+Token Identifier
+Line: 17	 Column: 8	 Lexem: X
+
+Token Space
+Line: 17	 Column: 9	 Sign:  
+
+Token Colon
+Line: 17	 Column: 10	 Sign: :
+
+Token Space
+Line: 17	 Column: 11	 Sign:  
+
+Token Bracket-On
+Line: 17	 Column: 12	 Sign: (
+
+Token Identifier
+Line: 17	 Column: 13	 Lexem: X
+
+Token Space
+Line: 17	 Column: 14	 Sign:  
+
+Token Minus
+Line: 17	 Column: 15	 Sign: -
+
+Token Space
+Line: 17	 Column: 16	 Sign:  
+
+Token Integer
+Line: 17	 Column: 17	 Value: 4
+
+Token Bracket-Close
+Line: 17	 Column: 18	 Sign: )
+
+Token Semicolon
+Line: 17	 Column: 19	 Sign: ;
+
+Token Identifier
+Line: 18	 Column: 0	 Lexem: Z
+
+Token Space
+Line: 18	 Column: 1	 Sign:  
+
+Token Colon-Equal
+Line: 18	 Column: 2	 Sign: :=
+
+Token Space
+Line: 18	 Column: 4	 Sign:  
+
+Token Bracket-On
+Line: 18	 Column: 5	 Sign: (
+
+Token Bracket-On
+Line: 18	 Column: 6	 Sign: (
+
+Token Integer
+Line: 18	 Column: 7	 Value: 3
+
+Token Space
+Line: 18	 Column: 8	 Sign:  
+
+Token Plus
+Line: 18	 Column: 9	 Sign: +
+
+Token Space
+Line: 18	 Column: 10	 Sign:  
+
+Token Integer
+Line: 18	 Column: 11	 Value: 4
+
+Token Space
+Line: 18	 Column: 12	 Sign:  
+
+Token Minus
+Line: 18	 Column: 13	 Sign: -
+
+Token Space
+Line: 18	 Column: 14	 Sign:  
+
+Token Integer
+Line: 18	 Column: 15	 Value: 6
+
+Token Bracket-Close
+Line: 18	 Column: 16	 Sign: )
+
+Token Semicolon
+Line: 18	 Column: 17	 Sign: ;
+
+Token Identifier
+Line: 19	 Column: 0	 Lexem: Resultat
+
+Token Space
+Line: 19	 Column: 8	 Sign:  
+
+Token Colon-Equal
+Line: 19	 Column: 9	 Sign: :=
+
+Token Space
+Line: 19	 Column: 11	 Sign:  
+
+Token Colon
+Line: 19	 Column: 12	 Sign: :
+
+Token Space
+Line: 19	 Column: 13	 Sign:  
+
+Token Identifier
+Line: 19	 Column: 14	 Lexem: X
+
+Token Space
+Line: 19	 Column: 15	 Sign:  
+
+Token Identifier
+Line: 19	 Column: 16	 Lexem: y
+
+Token Space
+Line: 19	 Column: 17	 Sign:  
+
+Token Identifier
+Line: 20	 Column: 0	 Lexem: X
+
+Token Colon-Equal
+Line: 20	 Column: 1	 Sign: :=
+
+Token Integer
+Line: 20	 Column: 3	 Value: 3
+
+Token Plus
+Line: 20	 Column: 4	 Sign: +
+
+Token Integer
+Line: 20	 Column: 5	 Value: 4
+
+Token Semicolon
+Line: 20	 Column: 6	 Sign: ;
+
+Token Comment
+Line: 21	 Column: 0	 Sign: :* eine einfache Aufgabe !! *:
+
+Token Identifier
+Line: 22	 Column: 1	 Lexem: y
+
+Token Space
+Line: 22	 Column: 2	 Sign:  
+
+Token Smaller
+Line: 22	 Column: 3	 Sign: <
+
+Token Colon-Equal
+Line: 22	 Column: 4	 Sign: :=
+
+Token Greater
+Line: 22	 Column: 6	 Sign: >
+
+Token Space
+Line: 22	 Column: 7	 Sign:  
+
+Token Identifier
+Line: 22	 Column: 8	 Lexem: X
+
+Token Space
+Line: 22	 Column: 9	 Sign:  
+
+Token Colon
+Line: 22	 Column: 10	 Sign: :
+
+Token Space
+Line: 22	 Column: 11	 Sign:  
+
+Token Bracket-On
+Line: 22	 Column: 12	 Sign: (
+
+Token Identifier
+Line: 22	 Column: 13	 Lexem: X
+
+Token Space
+Line: 22	 Column: 14	 Sign:  
+
+Token Minus
+Line: 22	 Column: 15	 Sign: -
+
+Token Space
+Line: 22	 Column: 16	 Sign:  
+
+Token Integer
+Line: 22	 Column: 17	 Value: 4
+
+Token Bracket-Close
+Line: 22	 Column: 18	 Sign: )
+
+Token Semicolon
+Line: 22	 Column: 19	 Sign: ;
+
+Token Identifier
+Line: 23	 Column: 0	 Lexem: Z
+
+Token Space
+Line: 23	 Column: 1	 Sign:  
+
+Token Colon-Equal
+Line: 23	 Column: 2	 Sign: :=
+
+Token Space
+Line: 23	 Column: 4	 Sign:  
+
+Token Bracket-On
+Line: 23	 Column: 5	 Sign: (
+
+Token Bracket-On
+Line: 23	 Column: 6	 Sign: (
+
+Token Integer
+Line: 23	 Column: 7	 Value: 3
+
+Token Space
+Line: 23	 Column: 8	 Sign:  
+
+Token Plus
+Line: 23	 Column: 9	 Sign: +
+
+Token Space
+Line: 23	 Column: 10	 Sign:  
+
+Token Integer
+Line: 23	 Column: 11	 Value: 4
+
+Token Space
+Line: 23	 Column: 12	 Sign:  
+
+Token Minus
+Line: 23	 Column: 13	 Sign: -
+
+Token Space
+Line: 23	 Column: 14	 Sign:  
+
+Token Integer
+Line: 23	 Column: 15	 Value: 6
+
+Token Bracket-Close
+Line: 23	 Column: 16	 Sign: )
+
+Token Semicolon
+Line: 23	 Column: 17	 Sign: ;
+
+Token Identifier
+Line: 24	 Column: 0	 Lexem: Resultat
+
+Token Space
+Line: 24	 Column: 8	 Sign:  
+
+Token Colon-Equal
+Line: 24	 Column: 9	 Sign: :=
+
+Token Space
+Line: 24	 Column: 11	 Sign:  
+
+Token Colon
+Line: 24	 Column: 12	 Sign: :
+
+Token Space
+Line: 24	 Column: 13	 Sign:  
+
+Token Identifier
+Line: 24	 Column: 14	 Lexem: X
+
+Token Space
+Line: 24	 Column: 15	 Sign:  
+
+Token Identifier
+Line: 24	 Column: 16	 Lexem: y
+
+Token Space
+Line: 24	 Column: 17	 Sign:  
+
+Token Identifier
+Line: 25	 Column: 0	 Lexem: X
+
+Token Colon-Equal
+Line: 25	 Column: 1	 Sign: :=
+
+Token Integer
+Line: 25	 Column: 3	 Value: 3
+
+Token Plus
+Line: 25	 Column: 4	 Sign: +
+
+Token Integer
+Line: 25	 Column: 5	 Value: 4
+
+Token Semicolon
+Line: 25	 Column: 6	 Sign: ;
+
+Token Comment
+Line: 26	 Column: 0	 Sign: :* eine einfache Aufgabe !! *:
+
+Token Identifier
+Line: 27	 Column: 1	 Lexem: y
+
+Token Space
+Line: 27	 Column: 2	 Sign:  
+
+Token Smaller
+Line: 27	 Column: 3	 Sign: <
+
+Token Colon-Equal
+Line: 27	 Column: 4	 Sign: :=
+
+Token Greater
+Line: 27	 Column: 6	 Sign: >
+
+Token Space
+Line: 27	 Column: 7	 Sign:  
+
+Token Identifier
+Line: 27	 Column: 8	 Lexem: X
+
+Token Space
+Line: 27	 Column: 9	 Sign:  
+
+Token Colon
+Line: 27	 Column: 10	 Sign: :
+
+Token Space
+Line: 27	 Column: 11	 Sign:  
+
+Token Bracket-On
+Line: 27	 Column: 12	 Sign: (
+
+Token Identifier
+Line: 27	 Column: 13	 Lexem: X
+
+Token Space
+Line: 27	 Column: 14	 Sign:  
+
+Token Minus
+Line: 27	 Column: 15	 Sign: -
+
+Token Space
+Line: 27	 Column: 16	 Sign:  
+
+Token Integer
+Line: 27	 Column: 17	 Value: 4
+
+Token Bracket-Close
+Line: 27	 Column: 18	 Sign: )
+
+Token Semicolon
+Line: 27	 Column: 19	 Sign: ;
+
+Token Identifier
+Line: 28	 Column: 0	 Lexem: Z
+
+Token Space
+Line: 28	 Column: 1	 Sign:  
+
+Token Colon-Equal
+Line: 28	 Column: 2	 Sign: :=
+
+Token Space
+Line: 28	 Column: 4	 Sign:  
+
+Token Bracket-On
+Line: 28	 Column: 5	 Sign: (
+
+Token Bracket-On
+Line: 28	 Column: 6	 Sign: (
+
+Token Integer
+Line: 28	 Column: 7	 Value: 3
+
+Token Space
+Line: 28	 Column: 8	 Sign:  
+
+Token Plus
+Line: 28	 Column: 9	 Sign: +
+
+Token Space
+Line: 28	 Column: 10	 Sign:  
+
+Token Integer
+Line: 28	 Column: 11	 Value: 4
+
+Token Space
+Line: 28	 Column: 12	 Sign:  
+
+Token Minus
+Line: 28	 Column: 13	 Sign: -
+
+Token Space
+Line: 28	 Column: 14	 Sign:  
+
+Token Integer
+Line: 28	 Column: 15	 Value: 6
+
+Token Bracket-Close
+Line: 28	 Column: 16	 Sign: )
+
+Token Semicolon
+Line: 28	 Column: 17	 Sign: ;
+
+Token Identifier
+Line: 29	 Column: 0	 Lexem: Resultat
+
+Token Space
+Line: 29	 Column: 8	 Sign:  
+
+Token Colon-Equal
+Line: 29	 Column: 9	 Sign: :=
+
+Token Space
+Line: 29	 Column: 11	 Sign:  
+
+Token Colon
+Line: 29	 Column: 12	 Sign: :
+
+Token Space
+Line: 29	 Column: 13	 Sign:  
+
+Token Identifier
+Line: 29	 Column: 14	 Lexem: X
+
+Token Space
+Line: 29	 Column: 15	 Sign:  
+
+Token Identifier
+Line: 29	 Column: 16	 Lexem: y
+
+Token Space
+Line: 29	 Column: 17	 Sign:  
+
+Token Identifier
+Line: 30	 Column: 0	 Lexem: X
+
+Token Colon-Equal
+Line: 30	 Column: 1	 Sign: :=
+
+Token Integer
+Line: 30	 Column: 3	 Value: 3
+
+Token Plus
+Line: 30	 Column: 4	 Sign: +
+
+Token Integer
+Line: 30	 Column: 5	 Value: 4
+
+Token Semicolon
+Line: 30	 Column: 6	 Sign: ;
+
+Token Comment
+Line: 31	 Column: 0	 Sign: :* eine einfache Aufgabe !! *:
+
+Token Identifier
+Line: 32	 Column: 1	 Lexem: y
+
+Token Space
+Line: 32	 Column: 2	 Sign:  
+
+Token Smaller
+Line: 32	 Column: 3	 Sign: <
+
+Token Colon-Equal
+Line: 32	 Column: 4	 Sign: :=
+
+Token Greater
+Line: 32	 Column: 6	 Sign: >
+
+Token Space
+Line: 32	 Column: 7	 Sign:  
+
+Token Identifier
+Line: 32	 Column: 8	 Lexem: X
+
+Token Space
+Line: 32	 Column: 9	 Sign:  
+
+Token Colon
+Line: 32	 Column: 10	 Sign: :
+
+Token Space
+Line: 32	 Column: 11	 Sign:  
+
+Token Bracket-On
+Line: 32	 Column: 12	 Sign: (
+
+Token Identifier
+Line: 32	 Column: 13	 Lexem: X
+
+Token Space
+Line: 32	 Column: 14	 Sign:  
+
+Token Minus
+Line: 32	 Column: 15	 Sign: -
+
+Token Space
+Line: 32	 Column: 16	 Sign:  
+
+Token Integer
+Line: 32	 Column: 17	 Value: 4
+
+Token Bracket-Close
+Line: 32	 Column: 18	 Sign: )
+
+Token Semicolon
+Line: 32	 Column: 19	 Sign: ;
+
+Token Identifier
+Line: 33	 Column: 0	 Lexem: Z
+
+Token Space
+Line: 33	 Column: 1	 Sign:  
+
+Token Colon-Equal
+Line: 33	 Column: 2	 Sign: :=
+
+Token Space
+Line: 33	 Column: 4	 Sign:  
+
+Token Bracket-On
+Line: 33	 Column: 5	 Sign: (
+
+Token Bracket-On
+Line: 33	 Column: 6	 Sign: (
+
+Token Integer
+Line: 33	 Column: 7	 Value: 3
+
+Token Space
+Line: 33	 Column: 8	 Sign:  
+
+Token Plus
+Line: 33	 Column: 9	 Sign: +
+
+Token Space
+Line: 33	 Column: 10	 Sign:  
+
+Token Integer
+Line: 33	 Column: 11	 Value: 4
+
+Token Space
+Line: 33	 Column: 12	 Sign:  
+
+Token Minus
+Line: 33	 Column: 13	 Sign: -
+
+Token Space
+Line: 33	 Column: 14	 Sign:  
+
+Token Integer
+Line: 33	 Column: 15	 Value: 6
+
+Token Bracket-Close
+Line: 33	 Column: 16	 Sign: )
+
+Token Semicolon
+Line: 33	 Column: 17	 Sign: ;
+
+Token Identifier
+Line: 34	 Column: 0	 Lexem: Resultat
+
+Token Space
+Line: 34	 Column: 8	 Sign:  
+
+Token Colon-Equal
+Line: 34	 Column: 9	 Sign: :=
+
+Token Space
+Line: 34	 Column: 11	 Sign:  
+
+Token Colon
+Line: 34	 Column: 12	 Sign: :
+
+Token Space
+Line: 34	 Column: 13	 Sign:  
+
+Token Identifier
+Line: 34	 Column: 14	 Lexem: X
+
+Token Space
+Line: 34	 Column: 15	 Sign:  
+
+Token Identifier
+Line: 34	 Column: 16	 Lexem: y
+
+Token Space
+Line: 34	 Column: 17	 Sign:  
+

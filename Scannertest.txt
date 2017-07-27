@@ -1,0 +1,35 @@
+& && &23 
+=:= = := :===:=
+=:asd:==:Asd1233
+if IF iF while WHILE whILe
+:* eine einfache Aufgabe !!*:
+12 33 42
+<:y
+<:>
+X
+: =
+X:=3+4;
+:* :*eine einfache Aufgabe !!*: &&
+?&%Ay <:=> X : (X - 4);
+Z := ((3 + 4 - 6);
+Resultat := : X y %
+X:=3+4;
+:* eine einfache Aufgabe !! *: 
+?y <:=> X : (X - 4);
+Z := ((3 + 4 - 6);
+Resultat := : X y %
+X:=3+4;
+:* eine einfache Aufgabe !! *:
+?y <:=> X : (X - 4);
+Z := ((3 + 4 - 6);
+Resultat := : X y %
+X:=3+4;
+:* eine einfache Aufgabe !! *:
+?y <:=> X : (X - 4);
+Z := ((3 + 4 - 6);
+Resultat := : X y %
+X:=3+4;
+:* eine einfache Aufgabe !! *:
+?y <:=> X : (X - 4);
+Z := ((3 + 4 - 6);
+Resultat := : X y %
