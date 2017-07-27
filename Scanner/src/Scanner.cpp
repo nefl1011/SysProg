@@ -62,12 +62,15 @@ Token* Scanner::nextToken() {
 		if (currTType != ERROR) {
 			buffer->ungetChar();
 		}
+		else {
+			col++;
+		}
 
 		lexem[col-lexemStartCol] = '\0';
 
 		//bilde seperaten String für Token
-		char* string = new char[col-lexemStartCol];
-		for (int index = 0; index < (col-lexemStartCol); index++) {
+		char* string = new char[col-lexemStartCol+1];
+		for (int index = 0; index < (col-lexemStartCol)+1; index++) {
 			string[index] = lexem[index];
 		}
 

@@ -112,6 +112,9 @@ void Buffer::ungetChar() {
 	else {
 		next--;
 	}
+	if (fileEnd) {
+		fileEnd = 0;
+	}
 	current = next;
 
 }
