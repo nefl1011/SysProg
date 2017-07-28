@@ -27,12 +27,18 @@ Buffer::Buffer(char* path) {
 	//Datei öffnen
 	file = open(this->filePath, O_DIRECT);
 	if(file == -1) {
-		cout << "Fehler beim Öffnen der Datei!" << endl;
+		cerr << "Fehler beim Öffnen der Datei!" << endl;
 	} else {
 		//Buffer1 füllen
 		read(file, pointerBuffer1, bufferSize);
 
-		fileEnd = 0;
+		if (*next == '\0') {
+			cerr << "Document is empty!" << endl;
+			fileEnd = 1;
+		}
+		else {
+			fileEnd = 0;
+		}
 	}
 
 }

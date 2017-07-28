@@ -17,7 +17,17 @@ Token::Token(TType type, char* lexem, int line, int column) {
 	this->lexem = lexem;
 	this->line = line;
 	this->column = column;
-	this->value = strtol(this->lexem, NULL, 0);
+
+	if (this->type != INTEGER) {
+		this->value = -1;
+	}
+	else {
+		this->value = strtol(this->lexem, NULL, 0);
+		if (this->value == -1) {
+			this->lexem = "Integer out of range";
+			this->type = ERROR;
+		}
+	}
 
 	switch(type) {
 		case ERROR							:	this->typeName = "Error"; break;

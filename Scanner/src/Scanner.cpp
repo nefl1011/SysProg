@@ -12,12 +12,14 @@ Scanner::Scanner(char* filePath) {
 	this->line = 0;
 	this->lexemLength = 256;
 	this->lexem = new char[this->lexemLength];
+	this->currChar = '\0';
+	this->currTType = ERROR;
 }
 
 Scanner::~Scanner() {
 	delete buffer;
 	delete automat;
-	delete[] lexem;
+	delete lexem;
 }
 
 Token* Scanner::nextToken() {
@@ -69,11 +71,30 @@ Token* Scanner::nextToken() {
 		lexem[col-lexemStartCol] = '\0';
 
 		//bilde seperaten String für Token
-		char* string = new char[col-lexemStartCol+1];
-		for (int index = 0; index < (col-lexemStartCol)+1; index++) {
-			string[index] = lexem[index];
+		int stringLength = col - lexemStartCol + 1;
+		char* string;
+
+		//überprüfe die Länge des zu bildenden strings
+		if (stringLength > this->lexemLength) {
+			if (currTType == IDENTIFIER) {
+				string = "Identifier too long";
+			}
+			else if (currTType == INTEGER) {
+				string = "Integer out of range";
+			}
+			else {
+				string = "Lexem too long";
+			}
+			currTType = ERROR;
+		}
+		else {
+			string = new char[col-lexemStartCol + 1];
+			for (int index = 0; index < (col-lexemStartCol) + 1; index++) {
+				string[index] = lexem[index];
+			}
 		}
 
+		//überprüfe nach Schlüsselwörtern
 		if (currTType == IDENTIFIER) {
 			if (strcmp(string, "IF") == 0 || strcmp(string, "if") == 0) {
 				currTType = TOKEN_IF;
@@ -82,16 +103,19 @@ Token* Scanner::nextToken() {
 				currTType = TOKEN_WHILE;
 			}
 		}
+		else if (currTType == TOKEN_SPACE || currTType == COMMENT) {
+			//überspringe Leerzeichen und Kommentare
+			resetLexem();
+			tokenFound = false;
+			continue;
+		}
 
 		//bilde Token
 		token = new Token(currTType, string, line, lexemStartCol);
 
 		//resete lexem
-		for(int i = 0; i < (col-lexemStartCol); i++) {
-			lexem[i] = '\0';
-		}
+		resetLexem();
 
-		lexemStartCol = col;
 	}
 	tokenFound = false;
 	return token;
@@ -99,4 +123,12 @@ Token* Scanner::nextToken() {
 
 bool Scanner::hasNextToken() {
 	return buffer->hasNext();
+}
+
+void Scanner::resetLexem() {
+	for(int i = 0; i < (col-lexemStartCol); i++) {
+		lexem[i] = '\0';
+	}
+
+	lexemStartCol = col;
 }

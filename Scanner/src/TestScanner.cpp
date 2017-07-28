@@ -24,15 +24,22 @@ int main(int argc, char **argv) {
         clearOutputFile(outFilename);
 
         ofstream result(outFilename, std::ios_base::app);
-        cout << "Processing..." << endl;
+        cout << "Processing...\n" << endl;
         Token* token;
 
         while(scanner->hasNextToken()) {
         	token = scanner->nextToken();
 
         	if (token->getType() == ERROR) {
-        		cerr << "unknown Token Line: " << token->getLine() <<  "\t Column: " << token->getColumn()
-        				<< "\t Symbol: " << token->getLexem() << "\n" << endl;
+        		cerr << "unknown Token Line: " << token->getLine() <<  "\t Column: " << token->getColumn() << "\t " ;
+        		if (!strcmp(token->getLexem(), "Identifier too long")
+        				|| !strcmp(token->getLexem(), "Integer out of range")
+						|| !strcmp(token->getLexem(), "Lexem too long")) {
+        			cerr << token->getLexem() << "\n" << endl;
+        		}
+        		else {
+        			cerr << "Symbol: " << token->getLexem() << "\n" << endl;
+        		}
         	}
         	else {
         		if (result.is_open()) {
@@ -56,7 +63,7 @@ int main(int argc, char **argv) {
         	}
         }
 
-        cout << "Finished!" << endl << "Output written to <" << outFilename << ">" << endl;
+        cout << "Finished!" << endl << "Output written to <" << outFilename << ">\n" << endl;
         result.close();
     }
     catch (std::exception &ex) {
