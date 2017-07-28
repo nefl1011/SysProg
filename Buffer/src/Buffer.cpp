@@ -107,12 +107,12 @@ char Buffer::getChar() {
 }
 void Buffer::ungetChar() {
 
-	if(current == pointerBuffer1) {
-		next = pointerBuffer2 + bufferSize - 1;
+	if(current == pointerBuffer1 + bufferSize - 1) {
+		next = pointerBuffer1 + bufferSize - 1;
 		ungetJump = 1;
 	}
-	else if(current == pointerBuffer2) {
-		next = pointerBuffer1 + bufferSize - 1;
+	else if(current == pointerBuffer2 + bufferSize - 1) {
+		next = pointerBuffer2 + bufferSize - 1;
 		ungetJump = 1;
 	}
 	else {
