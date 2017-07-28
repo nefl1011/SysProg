@@ -81,11 +81,12 @@ using namespace std;
 			/*********/
 				this->state = SPACE_STATE;
 				return IGNORE;
-		}
 
-		if(input == '\n') {
-			this->state = START_STATE;
-			return LINE_BREAK;
+			case '\n':
+				return LINE_BREAK;
+
+			case '\0':
+				return END_OF_FILE;
 		}
 
 		return ERROR;

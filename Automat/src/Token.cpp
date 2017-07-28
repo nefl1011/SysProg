@@ -1,9 +1,3 @@
-/*
- * Token.cpp
- *
- *  Created on: 24.04.2015
- *      Author: nefl1011
- */
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -59,12 +53,13 @@ Token::Token(TType type, char* lexem, int line, int column) {
 		case CONTINUE						:	this->typeName = "Continue"; break;
 		case ERROR_SPECIAL					:	this->typeName = "Error-Special"; break;
 		case LINE_BREAK						:	this->typeName = "Line-Break"; break;
+		case END_OF_FILE					:	this->typeName = "End-of-File"; break;
 	}
 }
 
 Token::~Token() {
-	delete[] this->lexem;
-	delete[] this->typeName;
+	delete this->lexem;
+	delete this->typeName;
 }
 
 TType Token::getType() {

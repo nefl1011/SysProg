@@ -35,7 +35,8 @@ enum TType {
 	CONTINUE					= 26, 	// Mögliche Eingabe
 	ERROR_SPECIAL 				= 27, 	// Wenn <:
 	LINE_BREAK					= 28,	// Special Character: Line Break
-	ERROR_AND					= 29
+	ERROR_AND					= 29,
+	END_OF_FILE					= 30
 };
 
 class Token {

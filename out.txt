@@ -1,618 +1,612 @@
 Token And
-Line: 0	 Column: 2	 Sign: &&
+Line: 1	 Column: 3	 Sign: &&
 
 Token Integer
-Line: 0	 Column: 6	 Value: 23
-
-Token Identifier
-Line: 0	 Column: 293	 Lexem: a
+Line: 1	 Column: 7	 Value: 23
 
 Token Special
-Line: 1	 Column: 0	 Sign: =:=
+Line: 2	 Column: 1	 Sign: =:=
 
 Token Equal
-Line: 1	 Column: 4	 Sign: =
+Line: 2	 Column: 5	 Sign: =
 
 Token Colon-Equal
-Line: 1	 Column: 6	 Sign: :=
+Line: 2	 Column: 7	 Sign: :=
 
 Token Colon-Equal
-Line: 1	 Column: 9	 Sign: :=
+Line: 2	 Column: 10	 Sign: :=
 
 Token Equal
-Line: 1	 Column: 11	 Sign: =
+Line: 2	 Column: 12	 Sign: =
 
 Token Special
-Line: 1	 Column: 12	 Sign: =:=
+Line: 2	 Column: 13	 Sign: =:=
 
 Token Equal
-Line: 2	 Column: 0	 Sign: =
+Line: 3	 Column: 1	 Sign: =
 
 Token Colon
-Line: 2	 Column: 1	 Sign: :
+Line: 3	 Column: 2	 Sign: :
 
 Token Identifier
-Line: 2	 Column: 2	 Lexem: asd
+Line: 3	 Column: 3	 Lexem: asd
 
 Token Colon-Equal
-Line: 2	 Column: 5	 Sign: :=
+Line: 3	 Column: 6	 Sign: :=
 
 Token Equal
-Line: 2	 Column: 7	 Sign: =
+Line: 3	 Column: 8	 Sign: =
 
 Token Colon
-Line: 2	 Column: 8	 Sign: :
+Line: 3	 Column: 9	 Sign: :
 
 Token Identifier
-Line: 2	 Column: 9	 Lexem: Asd1233
-
-Token Integer
-Line: 3	 Column: 21	 Value: 99
+Line: 3	 Column: 10	 Lexem: Asd1233
 
 Token If
-Line: 4	 Column: 0	 Sign: if
+Line: 4	 Column: 1	 Sign: if
 
 Token If
-Line: 4	 Column: 3	 Sign: IF
+Line: 4	 Column: 4	 Sign: IF
 
 Token Identifier
-Line: 4	 Column: 6	 Lexem: iF
+Line: 4	 Column: 7	 Lexem: iF
 
 Token While
-Line: 4	 Column: 9	 Sign: while
+Line: 4	 Column: 10	 Sign: while
 
 Token While
-Line: 4	 Column: 15	 Sign: WHILE
+Line: 4	 Column: 16	 Sign: WHILE
 
 Token Identifier
-Line: 4	 Column: 21	 Lexem: whILe
+Line: 4	 Column: 22	 Lexem: whILe
 
 Token Integer
-Line: 6	 Column: 0	 Value: 12
+Line: 6	 Column: 1	 Value: 12
 
 Token Integer
-Line: 6	 Column: 3	 Value: 33
+Line: 6	 Column: 4	 Value: 33
 
 Token Integer
-Line: 6	 Column: 6	 Value: 42
+Line: 6	 Column: 7	 Value: 42
 
 Token Smaller
-Line: 7	 Column: 0	 Sign: <
+Line: 7	 Column: 1	 Sign: <
 
 Token Colon
-Line: 7	 Column: 1	 Sign: :
+Line: 7	 Column: 2	 Sign: :
 
 Token Identifier
-Line: 7	 Column: 2	 Lexem: y
+Line: 7	 Column: 3	 Lexem: y
 
 Token Smaller
-Line: 8	 Column: 0	 Sign: <
+Line: 8	 Column: 1	 Sign: <
 
 Token Colon
-Line: 8	 Column: 1	 Sign: :
+Line: 8	 Column: 2	 Sign: :
 
 Token Greater
-Line: 8	 Column: 2	 Sign: >
+Line: 8	 Column: 3	 Sign: >
 
 Token Identifier
-Line: 9	 Column: 0	 Lexem: X
+Line: 9	 Column: 1	 Lexem: X
 
 Token Colon
-Line: 10	 Column: 0	 Sign: :
+Line: 10	 Column: 1	 Sign: :
 
 Token Equal
-Line: 10	 Column: 2	 Sign: =
+Line: 10	 Column: 3	 Sign: =
 
 Token Identifier
-Line: 11	 Column: 0	 Lexem: X
+Line: 11	 Column: 1	 Lexem: X
 
 Token Colon-Equal
-Line: 11	 Column: 1	 Sign: :=
+Line: 11	 Column: 2	 Sign: :=
 
 Token Integer
-Line: 11	 Column: 3	 Value: 3
+Line: 11	 Column: 4	 Value: 3
 
 Token Plus
-Line: 11	 Column: 4	 Sign: +
+Line: 11	 Column: 5	 Sign: +
 
 Token Integer
-Line: 11	 Column: 5	 Value: 4
+Line: 11	 Column: 6	 Value: 4
 
 Token Semicolon
-Line: 11	 Column: 6	 Sign: ;
+Line: 11	 Column: 7	 Sign: ;
 
 Token And
-Line: 12	 Column: 32	 Sign: &&
+Line: 12	 Column: 33	 Sign: &&
 
 Token Identifier
-Line: 13	 Column: 3	 Lexem: Ay
+Line: 13	 Column: 4	 Lexem: Ay
 
 Token Smaller
-Line: 13	 Column: 6	 Sign: <
+Line: 13	 Column: 7	 Sign: <
 
 Token Colon-Equal
-Line: 13	 Column: 7	 Sign: :=
+Line: 13	 Column: 8	 Sign: :=
 
 Token Greater
-Line: 13	 Column: 9	 Sign: >
+Line: 13	 Column: 10	 Sign: >
 
 Token Identifier
-Line: 13	 Column: 11	 Lexem: X
+Line: 13	 Column: 12	 Lexem: X
 
 Token Colon
-Line: 13	 Column: 13	 Sign: :
+Line: 13	 Column: 14	 Sign: :
 
 Token Bracket-On
-Line: 13	 Column: 15	 Sign: (
+Line: 13	 Column: 16	 Sign: (
 
 Token Identifier
-Line: 13	 Column: 16	 Lexem: X
+Line: 13	 Column: 17	 Lexem: X
 
 Token Minus
-Line: 13	 Column: 18	 Sign: -
+Line: 13	 Column: 19	 Sign: -
 
 Token Integer
-Line: 13	 Column: 20	 Value: 4
+Line: 13	 Column: 21	 Value: 4
 
 Token Bracket-Close
-Line: 13	 Column: 21	 Sign: )
+Line: 13	 Column: 22	 Sign: )
 
 Token Semicolon
-Line: 13	 Column: 22	 Sign: ;
+Line: 13	 Column: 23	 Sign: ;
 
 Token Identifier
-Line: 14	 Column: 0	 Lexem: Z
+Line: 14	 Column: 1	 Lexem: Z
 
 Token Colon-Equal
-Line: 14	 Column: 2	 Sign: :=
-
-Token Bracket-On
-Line: 14	 Column: 5	 Sign: (
+Line: 14	 Column: 3	 Sign: :=
 
 Token Bracket-On
 Line: 14	 Column: 6	 Sign: (
 
+Token Bracket-On
+Line: 14	 Column: 7	 Sign: (
+
 Token Integer
-Line: 14	 Column: 7	 Value: 3
+Line: 14	 Column: 8	 Value: 3
 
 Token Plus
-Line: 14	 Column: 9	 Sign: +
+Line: 14	 Column: 10	 Sign: +
 
 Token Integer
-Line: 14	 Column: 11	 Value: 4
+Line: 14	 Column: 12	 Value: 4
 
 Token Minus
-Line: 14	 Column: 13	 Sign: -
+Line: 14	 Column: 14	 Sign: -
 
 Token Integer
-Line: 14	 Column: 15	 Value: 6
+Line: 14	 Column: 16	 Value: 6
 
 Token Bracket-Close
-Line: 14	 Column: 16	 Sign: )
+Line: 14	 Column: 17	 Sign: )
 
 Token Semicolon
-Line: 14	 Column: 17	 Sign: ;
+Line: 14	 Column: 18	 Sign: ;
 
 Token Identifier
-Line: 15	 Column: 0	 Lexem: Resultat
+Line: 15	 Column: 1	 Lexem: Resultat
 
 Token Colon-Equal
-Line: 15	 Column: 9	 Sign: :=
+Line: 15	 Column: 10	 Sign: :=
 
 Token Colon
-Line: 15	 Column: 12	 Sign: :
+Line: 15	 Column: 13	 Sign: :
 
 Token Identifier
-Line: 15	 Column: 14	 Lexem: X
+Line: 15	 Column: 15	 Lexem: X
 
 Token Identifier
-Line: 15	 Column: 16	 Lexem: y
+Line: 15	 Column: 17	 Lexem: y
 
 Token Identifier
-Line: 16	 Column: 0	 Lexem: X
+Line: 16	 Column: 1	 Lexem: X
 
 Token Colon-Equal
-Line: 16	 Column: 1	 Sign: :=
+Line: 16	 Column: 2	 Sign: :=
 
 Token Integer
-Line: 16	 Column: 3	 Value: 3
+Line: 16	 Column: 4	 Value: 3
 
 Token Plus
-Line: 16	 Column: 4	 Sign: +
+Line: 16	 Column: 5	 Sign: +
 
 Token Integer
-Line: 16	 Column: 5	 Value: 4
+Line: 16	 Column: 6	 Value: 4
 
 Token Semicolon
-Line: 16	 Column: 6	 Sign: ;
+Line: 16	 Column: 7	 Sign: ;
 
 Token Identifier
-Line: 18	 Column: 1	 Lexem: y
+Line: 18	 Column: 2	 Lexem: y
 
 Token Smaller
-Line: 18	 Column: 3	 Sign: <
+Line: 18	 Column: 4	 Sign: <
 
 Token Colon-Equal
-Line: 18	 Column: 4	 Sign: :=
+Line: 18	 Column: 5	 Sign: :=
 
 Token Greater
-Line: 18	 Column: 6	 Sign: >
+Line: 18	 Column: 7	 Sign: >
 
 Token Identifier
-Line: 18	 Column: 8	 Lexem: X
+Line: 18	 Column: 9	 Lexem: X
 
 Token Colon
-Line: 18	 Column: 10	 Sign: :
+Line: 18	 Column: 11	 Sign: :
 
 Token Bracket-On
-Line: 18	 Column: 12	 Sign: (
+Line: 18	 Column: 13	 Sign: (
 
 Token Identifier
-Line: 18	 Column: 13	 Lexem: X
+Line: 18	 Column: 14	 Lexem: X
 
 Token Minus
-Line: 18	 Column: 15	 Sign: -
+Line: 18	 Column: 16	 Sign: -
 
 Token Integer
-Line: 18	 Column: 17	 Value: 4
+Line: 18	 Column: 18	 Value: 4
 
 Token Bracket-Close
-Line: 18	 Column: 18	 Sign: )
+Line: 18	 Column: 19	 Sign: )
 
 Token Semicolon
-Line: 18	 Column: 19	 Sign: ;
+Line: 18	 Column: 20	 Sign: ;
 
 Token Identifier
-Line: 19	 Column: 0	 Lexem: Z
+Line: 19	 Column: 1	 Lexem: Z
 
 Token Colon-Equal
-Line: 19	 Column: 2	 Sign: :=
-
-Token Bracket-On
-Line: 19	 Column: 5	 Sign: (
+Line: 19	 Column: 3	 Sign: :=
 
 Token Bracket-On
 Line: 19	 Column: 6	 Sign: (
 
+Token Bracket-On
+Line: 19	 Column: 7	 Sign: (
+
 Token Integer
-Line: 19	 Column: 7	 Value: 3
+Line: 19	 Column: 8	 Value: 3
 
 Token Plus
-Line: 19	 Column: 9	 Sign: +
+Line: 19	 Column: 10	 Sign: +
 
 Token Integer
-Line: 19	 Column: 11	 Value: 4
+Line: 19	 Column: 12	 Value: 4
 
 Token Minus
-Line: 19	 Column: 13	 Sign: -
+Line: 19	 Column: 14	 Sign: -
 
 Token Integer
-Line: 19	 Column: 15	 Value: 6
+Line: 19	 Column: 16	 Value: 6
 
 Token Bracket-Close
-Line: 19	 Column: 16	 Sign: )
+Line: 19	 Column: 17	 Sign: )
 
 Token Semicolon
-Line: 19	 Column: 17	 Sign: ;
+Line: 19	 Column: 18	 Sign: ;
 
 Token Identifier
-Line: 20	 Column: 0	 Lexem: Resultat
+Line: 20	 Column: 1	 Lexem: Resultat
 
 Token Colon-Equal
-Line: 20	 Column: 9	 Sign: :=
+Line: 20	 Column: 10	 Sign: :=
 
 Token Colon
-Line: 20	 Column: 12	 Sign: :
+Line: 20	 Column: 13	 Sign: :
 
 Token Identifier
-Line: 20	 Column: 14	 Lexem: X
+Line: 20	 Column: 15	 Lexem: X
 
 Token Identifier
-Line: 20	 Column: 16	 Lexem: y
+Line: 20	 Column: 17	 Lexem: y
 
 Token Identifier
-Line: 21	 Column: 0	 Lexem: X
+Line: 21	 Column: 1	 Lexem: X
 
 Token Colon-Equal
-Line: 21	 Column: 1	 Sign: :=
+Line: 21	 Column: 2	 Sign: :=
 
 Token Integer
-Line: 21	 Column: 3	 Value: 3
+Line: 21	 Column: 4	 Value: 3
 
 Token Plus
-Line: 21	 Column: 4	 Sign: +
+Line: 21	 Column: 5	 Sign: +
 
 Token Integer
-Line: 21	 Column: 5	 Value: 4
+Line: 21	 Column: 6	 Value: 4
 
 Token Semicolon
-Line: 21	 Column: 6	 Sign: ;
+Line: 21	 Column: 7	 Sign: ;
 
 Token Identifier
-Line: 23	 Column: 1	 Lexem: y
+Line: 23	 Column: 2	 Lexem: y
 
 Token Smaller
-Line: 23	 Column: 3	 Sign: <
+Line: 23	 Column: 4	 Sign: <
 
 Token Colon-Equal
-Line: 23	 Column: 4	 Sign: :=
+Line: 23	 Column: 5	 Sign: :=
 
 Token Greater
-Line: 23	 Column: 6	 Sign: >
+Line: 23	 Column: 7	 Sign: >
 
 Token Identifier
-Line: 23	 Column: 8	 Lexem: X
+Line: 23	 Column: 9	 Lexem: X
 
 Token Colon
-Line: 23	 Column: 10	 Sign: :
+Line: 23	 Column: 11	 Sign: :
 
 Token Bracket-On
-Line: 23	 Column: 12	 Sign: (
+Line: 23	 Column: 13	 Sign: (
 
 Token Identifier
-Line: 23	 Column: 13	 Lexem: X
+Line: 23	 Column: 14	 Lexem: X
 
 Token Minus
-Line: 23	 Column: 15	 Sign: -
+Line: 23	 Column: 16	 Sign: -
 
 Token Integer
-Line: 23	 Column: 17	 Value: 4
+Line: 23	 Column: 18	 Value: 4
 
 Token Bracket-Close
-Line: 23	 Column: 18	 Sign: )
+Line: 23	 Column: 19	 Sign: )
 
 Token Semicolon
-Line: 23	 Column: 19	 Sign: ;
+Line: 23	 Column: 20	 Sign: ;
 
 Token Identifier
-Line: 24	 Column: 0	 Lexem: Z
+Line: 24	 Column: 1	 Lexem: Z
 
 Token Colon-Equal
-Line: 24	 Column: 2	 Sign: :=
-
-Token Bracket-On
-Line: 24	 Column: 5	 Sign: (
+Line: 24	 Column: 3	 Sign: :=
 
 Token Bracket-On
 Line: 24	 Column: 6	 Sign: (
 
+Token Bracket-On
+Line: 24	 Column: 7	 Sign: (
+
 Token Integer
-Line: 24	 Column: 7	 Value: 3
+Line: 24	 Column: 8	 Value: 3
 
 Token Plus
-Line: 24	 Column: 9	 Sign: +
+Line: 24	 Column: 10	 Sign: +
 
 Token Integer
-Line: 24	 Column: 11	 Value: 4
+Line: 24	 Column: 12	 Value: 4
 
 Token Minus
-Line: 24	 Column: 13	 Sign: -
+Line: 24	 Column: 14	 Sign: -
 
 Token Integer
-Line: 24	 Column: 15	 Value: 6
+Line: 24	 Column: 16	 Value: 6
 
 Token Bracket-Close
-Line: 24	 Column: 16	 Sign: )
+Line: 24	 Column: 17	 Sign: )
 
 Token Semicolon
-Line: 24	 Column: 17	 Sign: ;
+Line: 24	 Column: 18	 Sign: ;
 
 Token Identifier
-Line: 25	 Column: 0	 Lexem: Resultat
+Line: 25	 Column: 1	 Lexem: Resultat
 
 Token Colon-Equal
-Line: 25	 Column: 9	 Sign: :=
+Line: 25	 Column: 10	 Sign: :=
 
 Token Colon
-Line: 25	 Column: 12	 Sign: :
+Line: 25	 Column: 13	 Sign: :
 
 Token Identifier
-Line: 25	 Column: 14	 Lexem: X
+Line: 25	 Column: 15	 Lexem: X
 
 Token Identifier
-Line: 25	 Column: 16	 Lexem: y
+Line: 25	 Column: 17	 Lexem: y
 
 Token Identifier
-Line: 26	 Column: 0	 Lexem: X
+Line: 26	 Column: 1	 Lexem: X
 
 Token Colon-Equal
-Line: 26	 Column: 1	 Sign: :=
+Line: 26	 Column: 2	 Sign: :=
 
 Token Integer
-Line: 26	 Column: 3	 Value: 3
+Line: 26	 Column: 4	 Value: 3
 
 Token Plus
-Line: 26	 Column: 4	 Sign: +
+Line: 26	 Column: 5	 Sign: +
 
 Token Integer
-Line: 26	 Column: 5	 Value: 4
+Line: 26	 Column: 6	 Value: 4
 
 Token Semicolon
-Line: 26	 Column: 6	 Sign: ;
+Line: 26	 Column: 7	 Sign: ;
 
 Token Identifier
-Line: 28	 Column: 1	 Lexem: y
+Line: 28	 Column: 2	 Lexem: y
 
 Token Smaller
-Line: 28	 Column: 3	 Sign: <
+Line: 28	 Column: 4	 Sign: <
 
 Token Colon-Equal
-Line: 28	 Column: 4	 Sign: :=
+Line: 28	 Column: 5	 Sign: :=
 
 Token Greater
-Line: 28	 Column: 6	 Sign: >
+Line: 28	 Column: 7	 Sign: >
 
 Token Identifier
-Line: 28	 Column: 8	 Lexem: X
+Line: 28	 Column: 9	 Lexem: X
 
 Token Colon
-Line: 28	 Column: 10	 Sign: :
+Line: 28	 Column: 11	 Sign: :
 
 Token Bracket-On
-Line: 28	 Column: 12	 Sign: (
+Line: 28	 Column: 13	 Sign: (
 
 Token Identifier
-Line: 28	 Column: 13	 Lexem: X
+Line: 28	 Column: 14	 Lexem: X
 
 Token Minus
-Line: 28	 Column: 15	 Sign: -
+Line: 28	 Column: 16	 Sign: -
 
 Token Integer
-Line: 28	 Column: 17	 Value: 4
+Line: 28	 Column: 18	 Value: 4
 
 Token Bracket-Close
-Line: 28	 Column: 18	 Sign: )
+Line: 28	 Column: 19	 Sign: )
 
 Token Semicolon
-Line: 28	 Column: 19	 Sign: ;
+Line: 28	 Column: 20	 Sign: ;
 
 Token Identifier
-Line: 29	 Column: 0	 Lexem: Z
+Line: 29	 Column: 1	 Lexem: Z
 
 Token Colon-Equal
-Line: 29	 Column: 2	 Sign: :=
-
-Token Bracket-On
-Line: 29	 Column: 5	 Sign: (
+Line: 29	 Column: 3	 Sign: :=
 
 Token Bracket-On
 Line: 29	 Column: 6	 Sign: (
 
+Token Bracket-On
+Line: 29	 Column: 7	 Sign: (
+
 Token Integer
-Line: 29	 Column: 7	 Value: 3
+Line: 29	 Column: 8	 Value: 3
 
 Token Plus
-Line: 29	 Column: 9	 Sign: +
+Line: 29	 Column: 10	 Sign: +
 
 Token Integer
-Line: 29	 Column: 11	 Value: 4
+Line: 29	 Column: 12	 Value: 4
 
 Token Minus
-Line: 29	 Column: 13	 Sign: -
+Line: 29	 Column: 14	 Sign: -
 
 Token Integer
-Line: 29	 Column: 15	 Value: 6
+Line: 29	 Column: 16	 Value: 6
 
 Token Bracket-Close
-Line: 29	 Column: 16	 Sign: )
+Line: 29	 Column: 17	 Sign: )
 
 Token Semicolon
-Line: 29	 Column: 17	 Sign: ;
+Line: 29	 Column: 18	 Sign: ;
 
 Token Identifier
-Line: 30	 Column: 0	 Lexem: Resultat
+Line: 30	 Column: 1	 Lexem: Resultat
 
 Token Colon-Equal
-Line: 30	 Column: 9	 Sign: :=
+Line: 30	 Column: 10	 Sign: :=
 
 Token Colon
-Line: 30	 Column: 12	 Sign: :
+Line: 30	 Column: 13	 Sign: :
 
 Token Identifier
-Line: 30	 Column: 14	 Lexem: X
+Line: 30	 Column: 15	 Lexem: X
 
 Token Identifier
-Line: 30	 Column: 16	 Lexem: y
+Line: 30	 Column: 17	 Lexem: y
 
 Token Identifier
-Line: 31	 Column: 0	 Lexem: X
+Line: 31	 Column: 1	 Lexem: X
 
 Token Colon-Equal
-Line: 31	 Column: 1	 Sign: :=
+Line: 31	 Column: 2	 Sign: :=
 
 Token Integer
-Line: 31	 Column: 3	 Value: 3
+Line: 31	 Column: 4	 Value: 3
 
 Token Plus
-Line: 31	 Column: 4	 Sign: +
+Line: 31	 Column: 5	 Sign: +
 
 Token Integer
-Line: 31	 Column: 5	 Value: 4
+Line: 31	 Column: 6	 Value: 4
 
 Token Semicolon
-Line: 31	 Column: 6	 Sign: ;
+Line: 31	 Column: 7	 Sign: ;
 
 Token Identifier
-Line: 33	 Column: 1	 Lexem: y
+Line: 33	 Column: 2	 Lexem: y
 
 Token Smaller
-Line: 33	 Column: 3	 Sign: <
+Line: 33	 Column: 4	 Sign: <
 
 Token Colon-Equal
-Line: 33	 Column: 4	 Sign: :=
+Line: 33	 Column: 5	 Sign: :=
 
 Token Greater
-Line: 33	 Column: 6	 Sign: >
+Line: 33	 Column: 7	 Sign: >
 
 Token Identifier
-Line: 33	 Column: 8	 Lexem: X
+Line: 33	 Column: 9	 Lexem: X
 
 Token Colon
-Line: 33	 Column: 10	 Sign: :
+Line: 33	 Column: 11	 Sign: :
 
 Token Bracket-On
-Line: 33	 Column: 12	 Sign: (
+Line: 33	 Column: 13	 Sign: (
 
 Token Identifier
-Line: 33	 Column: 13	 Lexem: X
+Line: 33	 Column: 14	 Lexem: X
 
 Token Minus
-Line: 33	 Column: 15	 Sign: -
+Line: 33	 Column: 16	 Sign: -
 
 Token Integer
-Line: 33	 Column: 17	 Value: 4
+Line: 33	 Column: 18	 Value: 4
 
 Token Bracket-Close
-Line: 33	 Column: 18	 Sign: )
+Line: 33	 Column: 19	 Sign: )
 
 Token Semicolon
-Line: 33	 Column: 19	 Sign: ;
+Line: 33	 Column: 20	 Sign: ;
 
 Token Identifier
-Line: 34	 Column: 0	 Lexem: Z
+Line: 34	 Column: 1	 Lexem: Z
 
 Token Colon-Equal
-Line: 34	 Column: 2	 Sign: :=
-
-Token Bracket-On
-Line: 34	 Column: 5	 Sign: (
+Line: 34	 Column: 3	 Sign: :=
 
 Token Bracket-On
 Line: 34	 Column: 6	 Sign: (
 
+Token Bracket-On
+Line: 34	 Column: 7	 Sign: (
+
 Token Integer
-Line: 34	 Column: 7	 Value: 3
+Line: 34	 Column: 8	 Value: 3
 
 Token Plus
-Line: 34	 Column: 9	 Sign: +
+Line: 34	 Column: 10	 Sign: +
 
 Token Integer
-Line: 34	 Column: 11	 Value: 4
+Line: 34	 Column: 12	 Value: 4
 
 Token Minus
-Line: 34	 Column: 13	 Sign: -
+Line: 34	 Column: 14	 Sign: -
 
 Token Integer
-Line: 34	 Column: 15	 Value: 6
+Line: 34	 Column: 16	 Value: 6
 
 Token Bracket-Close
-Line: 34	 Column: 16	 Sign: )
+Line: 34	 Column: 17	 Sign: )
 
 Token Semicolon
-Line: 34	 Column: 17	 Sign: ;
+Line: 34	 Column: 18	 Sign: ;
 
 Token Identifier
-Line: 35	 Column: 0	 Lexem: Resultat
+Line: 35	 Column: 1	 Lexem: Resultat
 
 Token Colon-Equal
-Line: 35	 Column: 9	 Sign: :=
+Line: 35	 Column: 10	 Sign: :=
 
 Token Colon
-Line: 35	 Column: 12	 Sign: :
+Line: 35	 Column: 13	 Sign: :
 
 Token Identifier
-Line: 35	 Column: 14	 Lexem: X
+Line: 35	 Column: 15	 Lexem: X
 
 Token Identifier
-Line: 35	 Column: 16	 Lexem: y
+Line: 35	 Column: 17	 Lexem: y
 

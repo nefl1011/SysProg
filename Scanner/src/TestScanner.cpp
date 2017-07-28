@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
         	token = scanner->nextToken();
 
         	if (token->getType() == ERROR) {
-        		cerr << "unknown Token Line: " << token->getLine() <<  "\t Column: " << token->getColumn() << "\t " ;
+        		cerr << "unknown Token Line: " << token->getLine() + 1 <<  "\t Column: " << token->getColumn() + 1 << "\t " ;
         		if (!strcmp(token->getLexem(), "Identifier too long")
         				|| !strcmp(token->getLexem(), "Integer out of range")
 						|| !strcmp(token->getLexem(), "Lexem too long")) {
@@ -44,16 +44,16 @@ int main(int argc, char **argv) {
         	else {
         		if (result.is_open()) {
         			if (token->getType() == IDENTIFIER) {
-        				result << "Token " << token->getTypeName() << "\nLine: " << token->getLine()
-								<< "\t Column: " << token->getColumn() << "\t Lexem: " << token->getLexem() << "\n" << endl;
+        				result << "Token " << token->getTypeName() << "\nLine: " << token->getLine() + 1
+								<< "\t Column: " << token->getColumn() + 1 << "\t Lexem: " << token->getLexem() << "\n" << endl;
         			}
         			else if (token->getType() == INTEGER) {
-        				result << "Token " << token->getTypeName() << "\nLine: " << token->getLine()
-								<< "\t Column: " << token->getColumn() << "\t Value: " << token->getValue() << "\n" << endl;
+        				result << "Token " << token->getTypeName() << "\nLine: " << token->getLine() + 1
+								<< "\t Column: " << token->getColumn() + 1 << "\t Value: " << token->getValue() << "\n" << endl;
         			}
-        			else {
-        				result << "Token " << token->getTypeName() << "\nLine: " << token->getLine()
-								<< "\t Column: " << token->getColumn() << "\t Sign: " << token->getLexem() << "\n" << endl;
+        			else if (token->getType() != END_OF_FILE) {
+        				result << "Token " << token->getTypeName() << "\nLine: " << token->getLine() + 1
+								<< "\t Column: " << token->getColumn() + 1 << "\t Sign: " << token->getLexem() << "\n" << endl;
         			}
         		}
         		else {

@@ -24,7 +24,6 @@ public:
 
 	Token* nextToken();
 	bool hasNextToken();
-	void resetLexem();
 };
 
 #endif /* SCANNER_H_ */

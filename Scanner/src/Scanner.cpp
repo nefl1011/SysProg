@@ -25,18 +25,29 @@ Scanner::~Scanner() {
 Token* Scanner::nextToken() {
 	Token* token;
 	while(!tokenFound) {
-		if(buffer->hasNext()) {
+		if (buffer->hasNext()) {
 			currChar = buffer->getChar();
 		}
-
-		lexem[col-lexemStartCol] = currChar;
+		else {
+			currChar = '\0';
+		}
 
 		currTType = automat->proofInput(currChar);
 
 		switch(currTType) {
 			case CONTINUE:
+				lexem[col-lexemStartCol] = currChar;
 			case IGNORE:
+				if (currChar == '\n') {
+					line++;
+				}
 				col++;
+				continue;
+
+			case TOKEN_SPACE:
+			case COMMENT:
+				buffer->ungetChar();
+				lexemStartCol = col;
 				continue;
 
 			case LINE_BREAK:
@@ -44,6 +55,10 @@ Token* Scanner::nextToken() {
 				col = 0;
 				lexemStartCol = 0;
 				continue;
+
+			case ERROR:
+				lexem[col-lexemStartCol] = currChar;
+				break;
 
 			case ERROR_SPECIAL:
 				col--;
@@ -61,7 +76,7 @@ Token* Scanner::nextToken() {
 		//Token gefunden
 		tokenFound = true;
 
-		if (currTType != ERROR) {
+		if (currTType != ERROR && currChar != '\0') {
 			buffer->ungetChar();
 		}
 		else {
@@ -103,18 +118,16 @@ Token* Scanner::nextToken() {
 				currTType = TOKEN_WHILE;
 			}
 		}
-		else if (currTType == TOKEN_SPACE || currTType == COMMENT) {
-			//überspringe Leerzeichen und Kommentare
-			resetLexem();
-			tokenFound = false;
-			continue;
-		}
 
 		//bilde Token
 		token = new Token(currTType, string, line, lexemStartCol);
 
 		//resete lexem
-		resetLexem();
+		for(int i = 0; i < (col-lexemStartCol); i++) {
+			lexem[i] = '\0';
+		}
+
+		lexemStartCol = col;
 
 	}
 	tokenFound = false;
@@ -123,12 +136,4 @@ Token* Scanner::nextToken() {
 
 bool Scanner::hasNextToken() {
 	return buffer->hasNext();
-}
-
-void Scanner::resetLexem() {
-	for(int i = 0; i < (col-lexemStartCol); i++) {
-		lexem[i] = '\0';
-	}
-
-	lexemStartCol = col;
 }
