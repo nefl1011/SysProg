@@ -40,10 +40,11 @@ Token* Scanner::nextToken() {
 					lexem[col-lexemStartCol] = currChar;
 				}
 			case IGNORE:
+				col++;
 				if (currChar == '\n') {
 					line++;
+					col = 0;
 				}
-				col++;
 				continue;
 
 			case TOKEN_SPACE:
