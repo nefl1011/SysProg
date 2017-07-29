@@ -36,7 +36,9 @@ Token* Scanner::nextToken() {
 
 		switch(currTType) {
 			case CONTINUE:
-				lexem[col-lexemStartCol] = currChar;
+				if (col-lexemStartCol < this->lexemLength) {
+					lexem[col-lexemStartCol] = currChar;
+				}
 			case IGNORE:
 				if (currChar == '\n') {
 					line++;
@@ -83,8 +85,6 @@ Token* Scanner::nextToken() {
 			col++;
 		}
 
-		lexem[col-lexemStartCol] = '\0';
-
 		//bilde seperaten String für Token
 		int stringLength = col - lexemStartCol + 1;
 		char* string;
@@ -105,7 +105,12 @@ Token* Scanner::nextToken() {
 		else {
 			string = new char[col-lexemStartCol + 1];
 			for (int index = 0; index < (col-lexemStartCol) + 1; index++) {
-				string[index] = lexem[index];
+				if (index == col-lexemStartCol) {
+					string[index] = '\0';
+				}
+				else {
+					string[index] = lexem[index];
+				}
 			}
 		}
 
