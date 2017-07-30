@@ -134,7 +134,8 @@ Token* Scanner::nextToken() {
 		}
 
 		//resete lexem
-		for(int i = 0; i < (col-lexemStartCol); i++) {
+		int resetIndex = col-lexemStartCol > this->lexemLength ? this->lexemLength : col-lexemStartCol;
+		for(int i = 0; i < resetIndex; i++) {
 			lexem[i] = '\0';
 		}
 
