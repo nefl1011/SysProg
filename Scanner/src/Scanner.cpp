@@ -46,12 +46,17 @@ Token* Scanner::nextToken() {
 				if (currChar == '\n') {
 					line++;
 					col = 0;
+				} else if(currChar == '\0') {
+					currTType = END_OF_FILE;
+					break;
 				}
 				continue;
 
 			case TOKEN_SPACE:
 			case COMMENT:
-				buffer->ungetChar();
+				if(currChar != '\0'){
+					buffer->ungetChar();
+				}
 				lexemStartCol = col;
 				continue;
 
@@ -73,7 +78,9 @@ Token* Scanner::nextToken() {
 
 			case ERROR_AND:
 				col--;
-				buffer->ungetChar();
+				if(currChar != '\0') {
+					buffer->ungetChar();
+				}
 				currTType = ERROR;
 				break;
 		}
