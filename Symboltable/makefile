@@ -18,7 +18,6 @@ BINDIRTEST = debug
 EXTOBJS = $(OBJDIR)/Token.o \
 
 OBJS = $(OBJDIR)/TokenLinkedList.o \
-	$(OBJDIR)/String.o \
 	$(OBJDIR)/Symboltable.o \
 	$(OBJDIR)/TokenNode.o \
 	$(OBJDIR)/HashMap.o
