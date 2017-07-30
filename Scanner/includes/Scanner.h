@@ -2,6 +2,7 @@
 #define SCANNER_H_
 
 #include "../../Buffer/includes/Buffer.h"
+#include "../../Symboltable/includes/Symboltable.h"
 #include "../../Automat/includes/Automat.h"
 #include "../../Automat/includes/Token.h"
 
@@ -9,6 +10,8 @@ class Scanner {
 private:
 	Buffer* buffer;
 	Automat* automat;
+	Symboltable* symboltable;
+
 	char currChar;
 	int lexemLength;
 	char* lexem;

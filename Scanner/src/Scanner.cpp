@@ -5,6 +5,7 @@
 Scanner::Scanner(char* filePath) {
 	this->buffer = new Buffer(filePath);
 	this->automat = new Automat();
+	this->symboltable = new Symboltable();
 
 	this->tokenFound = false;
 	this->lexemStartCol = 0;
@@ -19,6 +20,7 @@ Scanner::Scanner(char* filePath) {
 Scanner::~Scanner() {
 	delete buffer;
 	delete automat;
+	delete symboltable;
 	delete lexem;
 }
 
@@ -127,6 +129,9 @@ Token* Scanner::nextToken() {
 
 		//bilde Token
 		token = new Token(currTType, string, line, lexemStartCol);
+		if(currTType == IDENTIFIER) {
+			symboltable->insertToken(token);
+		}
 
 		//resete lexem
 		for(int i = 0; i < (col-lexemStartCol); i++) {

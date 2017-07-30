@@ -16,7 +16,7 @@ SCANNERDIR = Scanner
 all:	automatOBJs bufferOBJs symboltableOBJs scanner  
 	@echo "target all"
 
-	
+
 # rm 	remove
 # -f	force, ohne nachfragen
 clean:

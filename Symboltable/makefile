@@ -15,10 +15,13 @@ BINDIRTEST = debug
 
 ## hier alle Object Files eintragen, ausser das File mit der Mainmethode
 ## darauf achten, dass letzte Zeile ohne "\" eingetragen wird
+EXTOBJS = $(OBJDIR)/Token.o \
 
-OBJS = $(OBJDIR)/Symboltable.o \
-	#$(OBJDIR)/xx1.o \
-	#$(OBJDIR)/xxn.o
+OBJS = $(OBJDIR)/TokenLinkedList.o \
+	$(OBJDIR)/String.o \
+	$(OBJDIR)/Symboltable.o \
+	$(OBJDIR)/TokenNode.o \
+	$(OBJDIR)/HashMap.o
 
 
 #
