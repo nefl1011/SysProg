@@ -11,9 +11,11 @@ SYMBOLTABLEDIR = Symboltable
 
 SCANNERDIR = Scanner
 
+PARSERDIR = Parser
 
 
-all:	automatOBJs bufferOBJs symboltableOBJs scanner  
+
+all:	automatOBJs bufferOBJs symboltableOBJs scanner parserOBJs
 	@echo "target all"
 
 
@@ -24,7 +26,9 @@ clean:
 	rm -f $(BUFFERDIR)/$(OBJDIR)/*.o
 	rm -f $(SYMBOLTABLEDIR)/$(OBJDIR)/*.o
 	rm -f $(SCANNERDIR)/$(OBJDIR)/*.o
+	rm -f $(PARSERDIR)/$(OBJDIR)/*.o
 	rm -f $(SCANNERDIR)/debug/*
+	rm -f $(PARSERDIR)/debug/*
 	
 
 automatOBJs:
@@ -41,5 +45,9 @@ symboltableOBJs:
 
 scanner: 
 	$(MAKE) -C $(SCANNERDIR) makeTestScanner
+	
+	
+parserOBJs:
+	$(MAKE) -C $(PARSERDIR) makeTestParser
 
 	
