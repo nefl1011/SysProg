@@ -37,7 +37,14 @@ enum TType {
 	LINE_BREAK					= 28,	// Special Character: Line Break
 	ERROR_AND					= 29,
 	END_OF_FILE					= 30,
-	null 						= 31
+	null 						= 31,
+
+	//Parser
+	TOKEN_INT					= 32,
+	TOKEN_WRITE					= 33,
+	TOKEN_READ					= 34,
+	TOKEN_ELSE					= 35,
+	SIGN_SPECIAL2				= 36,	//=:=
 };
 
 class Token {

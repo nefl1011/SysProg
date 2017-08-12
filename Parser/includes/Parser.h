@@ -8,6 +8,27 @@ class Parser {
 private:
 	Scanner* scanner;
 
+	Token* currToken;
+	void nextToken();
+
+	Node* prog();
+	Node* decls();
+	Node* statements();
+	Node* decl();
+	Node* array();
+	Node* statement();
+	Node* index();
+	Node* exp();
+	Node* exp2();
+	Node* op_exp();
+	Node* op();
+	Node* epsilon();
+
+	bool first(RuleType ruleType);
+	bool checkTType(TType tType);
+
+	void error();
+
 public:
 	Parser(Scanner* scanner);
 	~Parser();

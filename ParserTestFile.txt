@@ -1,0 +1,3 @@
+testVar := 10;
+
+if(testVar > 20) testVar := 10; else testVar := 20;;

@@ -2143,6 +2143,9 @@ Line: 113	 Column: 93	 Value: 123
 Token Equal
 Line: 113	 Column: 96	 Sign: =
 
+Token Colon
+Line: 113	 Column: 97	 Sign: :
+
 Token Equal
 Line: 113	 Column: 99	 Sign: =
 
@@ -5836,14 +5839,17 @@ Line: 267	 Column: 247	 Value: 123
 Token Equal
 Line: 267	 Column: 250	 Sign: =
 
+Token Colon
+Line: 267	 Column: 251	 Sign: :
+
 Token Equal
-Line: 267	 Column: 252	 Sign: =
+Line: 267	 Column: 253	 Sign: =
 
 Token While
-Line: 267	 Column: 254	 Sign: while
+Line: 267	 Column: 255	 Sign: while
 
 Token While
-Line: 267	 Column: 260	 Sign: WHILE
+Line: 267	 Column: 261	 Sign: WHILE
 
 Token Identifier
 Line: 268	 Column: 238	 Lexem: Zeile
@@ -9193,17 +9199,14 @@ Line: 407	 Column: 387	 Value: 123
 Token Equal
 Line: 407	 Column: 390	 Sign: =
 
-Token Colon
-Line: 407	 Column: 391	 Sign: :
-
 Token Equal
-Line: 407	 Column: 393	 Sign: =
+Line: 407	 Column: 392	 Sign: =
 
 Token While
-Line: 407	 Column: 395	 Sign: while
+Line: 407	 Column: 394	 Sign: while
 
 Token While
-Line: 407	 Column: 401	 Sign: WHILE
+Line: 407	 Column: 400	 Sign: WHILE
 
 Token Identifier
 Line: 408	 Column: 378	 Lexem: Zeile
@@ -14257,17 +14260,14 @@ Line: 618	 Column: 598	 Value: 123
 Token Equal
 Line: 618	 Column: 601	 Sign: =
 
-Token Colon
-Line: 618	 Column: 602	 Sign: :
-
 Token Equal
-Line: 618	 Column: 604	 Sign: =
+Line: 618	 Column: 603	 Sign: =
 
 Token While
-Line: 618	 Column: 606	 Sign: while
+Line: 618	 Column: 605	 Sign: while
 
 Token While
-Line: 618	 Column: 612	 Sign: WHILE
+Line: 618	 Column: 611	 Sign: WHILE
 
 Token Identifier
 Line: 619	 Column: 589	 Lexem: Zeile
@@ -17617,14 +17617,17 @@ Line: 758	 Column: 738	 Value: 123
 Token Equal
 Line: 758	 Column: 741	 Sign: =
 
+Token Colon
+Line: 758	 Column: 742	 Sign: :
+
 Token Equal
-Line: 758	 Column: 743	 Sign: =
+Line: 758	 Column: 744	 Sign: =
 
 Token While
-Line: 758	 Column: 745	 Sign: while
+Line: 758	 Column: 746	 Sign: while
 
 Token While
-Line: 758	 Column: 751	 Sign: WHILE
+Line: 758	 Column: 752	 Sign: WHILE
 
 Token Identifier
 Line: 759	 Column: 729	 Lexem: Zeile
@@ -21309,6 +21312,9 @@ Line: 912	 Column: 892	 Value: 123
 
 Token Equal
 Line: 912	 Column: 895	 Sign: =
+
+Token Colon
+Line: 912	 Column: 896	 Sign: :
 
 Token Equal
 Line: 912	 Column: 898	 Sign: =
@@ -27691,6 +27697,9 @@ Line: 1178	 Column: 1159	 Value: 123
 Token Equal
 Line: 1178	 Column: 1162	 Sign: =
 
+Token Colon
+Line: 1178	 Column: 1163	 Sign: :
+
 Token Equal
 Line: 1178	 Column: 1165	 Sign: =
 
@@ -30328,17 +30337,14 @@ Line: 1288	 Column: 1269	 Value: 123
 Token Equal
 Line: 1288	 Column: 1272	 Sign: =
 
-Token Colon
-Line: 1288	 Column: 1273	 Sign: :
-
 Token Equal
-Line: 1288	 Column: 1275	 Sign: =
+Line: 1288	 Column: 1274	 Sign: =
 
 Token While
-Line: 1288	 Column: 1277	 Sign: while
+Line: 1288	 Column: 1276	 Sign: while
 
 Token While
-Line: 1288	 Column: 1283	 Sign: WHILE
+Line: 1288	 Column: 1282	 Sign: WHILE
 
 Token Identifier
 Line: 1289	 Column: 1259	 Lexem: Zeile
@@ -34120,9 +34126,6 @@ Line: 1446	 Column: 1427	 Value: 123
 Token Equal
 Line: 1446	 Column: 1430	 Sign: =
 
-Token Colon
-Line: 1446	 Column: 1431	 Sign: :
-
 Token Equal
 Line: 1446	 Column: 1433	 Sign: =
 
@@ -34264,14 +34267,17 @@ Line: 1452	 Column: 1433	 Value: 123
 Token Equal
 Line: 1452	 Column: 1436	 Sign: =
 
+Token Colon
+Line: 1452	 Column: 1437	 Sign: :
+
 Token Equal
-Line: 1452	 Column: 1438	 Sign: =
+Line: 1452	 Column: 1439	 Sign: =
 
 Token While
-Line: 1452	 Column: 1440	 Sign: while
+Line: 1452	 Column: 1441	 Sign: while
 
 Token While
-Line: 1452	 Column: 1446	 Sign: WHILE
+Line: 1452	 Column: 1447	 Sign: WHILE
 
 Token Identifier
 Line: 1453	 Column: 1423	 Lexem: Zeile
@@ -38269,14 +38275,17 @@ Line: 1619	 Column: 1600	 Value: 123
 Token Equal
 Line: 1619	 Column: 1603	 Sign: =
 
+Token Colon
+Line: 1619	 Column: 1604	 Sign: :
+
 Token Equal
-Line: 1619	 Column: 1605	 Sign: =
+Line: 1619	 Column: 1606	 Sign: =
 
 Token While
-Line: 1619	 Column: 1607	 Sign: while
+Line: 1619	 Column: 1608	 Sign: while
 
 Token While
-Line: 1619	 Column: 1613	 Sign: WHILE
+Line: 1619	 Column: 1614	 Sign: WHILE
 
 Token Identifier
 Line: 1620	 Column: 1590	 Lexem: Zeile
@@ -38409,9 +38418,6 @@ Line: 1625	 Column: 1606	 Value: 123
 
 Token Equal
 Line: 1625	 Column: 1609	 Sign: =
-
-Token Colon
-Line: 1625	 Column: 1610	 Sign: :
 
 Token Equal
 Line: 1625	 Column: 1612	 Sign: =
@@ -42202,17 +42208,14 @@ Line: 1783	 Column: 1764	 Value: 123
 Token Equal
 Line: 1783	 Column: 1767	 Sign: =
 
-Token Colon
-Line: 1783	 Column: 1768	 Sign: :
-
 Token Equal
-Line: 1783	 Column: 1770	 Sign: =
+Line: 1783	 Column: 1769	 Sign: =
 
 Token While
-Line: 1783	 Column: 1772	 Sign: while
+Line: 1783	 Column: 1771	 Sign: while
 
 Token While
-Line: 1783	 Column: 1778	 Sign: WHILE
+Line: 1783	 Column: 1777	 Sign: WHILE
 
 Token Identifier
 Line: 1784	 Column: 1754	 Lexem: Zeile
@@ -44841,6 +44844,9 @@ Line: 1893	 Column: 1874	 Value: 123
 
 Token Equal
 Line: 1893	 Column: 1877	 Sign: =
+
+Token Colon
+Line: 1893	 Column: 1878	 Sign: :
 
 Token Equal
 Line: 1893	 Column: 1880	 Sign: =

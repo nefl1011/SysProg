@@ -1,17 +1,26 @@
 #ifndef NODE_H_
 #define NODE_H_
 
+#include "../../Automat/includes/Token.h"
 #include "NodeType.h"
 #include "RuleType.h"
 
 class Node {
 private:
-	NodeType nodeType;
+	TType tType;
 	RuleType ruleType;
+	NodeType nodeType;
+
+	Node* children[9];
+	int childrenCounter = 0;
 
 public:
-	Node();
+	Node(TType tType, RuleType ruleType);
 	~Node();
+
+	void addChild(Node* child);
+	NodeType getNodeType();
+	void setRuleType(RuleType ruleType);
 };
 
 #endif /* NODE_H_ */

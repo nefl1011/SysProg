@@ -19,45 +19,39 @@ Node* Parser::parse() {
 Node* Parser::prog() {
 	nextToken();
 	Node* node = new Node(currToken->getType(), PROG);
-	if(first(DECLS)) {
-		node->addChild(decls());
-	}
-	if(first(STATEMENTS)) {
-		node->addChild(statements());
-		return node;
-	}
-	if(currToken == NULL) {
-		return node;
-	}
-	error();
+	node->addChild(decls());
+	node->addChild(statements());
+	return node;
 }
 Node* Parser::decls() {
 	Node* node = new Node(currToken->getType(), DECLS);
-	if(first(DECL)) {
-		node->addChild(decl());
+	node->addChild(decl());
+	if(node->getNodeType() != ERROR_RULE) {
+		nextToken();
 		if(checkTType(SIGN_SEMICOLON)) {
-			nextToken();
-			if(first(DECLS)) {
-				node->addChild(decls());
-			}
+			node->addChild(decls());
 			return node;
 		}
+	} else {
+		node->setRuleType(EPSIOLN);
+		return node;
 	}
-	error();
 }
 Node* Parser::decl() {
 	Node* node = new Node(currToken->getType(), DECL);
 	if(checkTType(TOKEN_INT)) {
 		nextToken();
-		if(first(ARRAY)) {
-			node->addChild(array());
+		node->addChild(array());
+		if(node->getNodeType() != EPSIOLN) {
+			nextToken();
 		}
 		if(checkTType(IDENTIFIER)) {
-			nextToken();
 			return node;
 		}
+	} else {
+		node->setRuleType(ERROR_RULE);
+		return node;
 	}
-	error();
 }
 Node* Parser::array() {
 	Node* node = new Node(currToken->getType(), ARRAY);
@@ -66,10 +60,12 @@ Node* Parser::array() {
 		if(checkTType(INTEGER)) {
 			nextToken();
 			if(checkTType(SIGN_SQUARE_BRACKET_CLOSE)) {
-				nextToken();
 				return node;
 			}
 		}
+	} else {
+		node->setRuleType(EPSIOLN);
+		return node;
 	}
 	error();
 }
@@ -77,13 +73,14 @@ Node* Parser::statements() {
 	Node* node = new Node(currToken->getType(), STATEMENTS);
 	if(first(STATEMENT)) {
 		node->addChild(statement());
+		nextToken();
 		if(checkTType(SIGN_SEMICOLON)) {
-			nextToken();
-			if(first(STATEMENTS)) {
-				node->addChild(statements());
-			}
+			node->addChild(statements());
 			return node;
 		}
+	} else if(first(EPSIOLN)) {
+		node->setRuleType(EPSIOLN);
+		return node;
 	}
 	error();
 }
@@ -93,10 +90,8 @@ Node* Parser::statement() {
 		nextToken();
 		if(first(INDEX)) {
 			node->addChild(index());
-		}
-		if(checkTType(SIGN_COLON_EQUAL)) {
 			nextToken();
-			if(first(EXP)) {
+			if(checkTType(SIGN_COLON_EQUAL)) {
 				node->addChild(exp());
 				return node;
 			}
@@ -104,13 +99,10 @@ Node* Parser::statement() {
 	} else if(checkTType(TOKEN_WRITE)) {
 		nextToken();
 		if(checkTType(SIGN_BRACKET_ON)) {
+			node->addChild(exp());
 			nextToken();
-			if(first(EXP)) {
-				node->addChild(exp());
-				if(checkTType(SIGN_BRACKET_CLOSE)) {
-					nextToken();
-					return node;
-				}
+			if(checkTType(SIGN_BRACKET_CLOSE)) {
+				return node;
 			}
 		}
 	} else if(checkTType(TOKEN_READ)) {
@@ -118,21 +110,16 @@ Node* Parser::statement() {
 		if(checkTType(SIGN_BRACKET_ON)) {
 			nextToken();
 			if(checkTType(IDENTIFIER)) {
+				node->addChild(index());
 				nextToken();
-				if(first(INDEX)) {
-					node->addChild(index());
-				}
 				if(checkTType(SIGN_BRACKET_CLOSE)) {
-					nextToken();
 					return node;
 				}
 			}
 		}
 	} else if(checkTType(SIGN_CURLY_BRACKET_ON)) {
+		node->addChild(statements());
 		nextToken();
-		if(first(STATEMENTS)) {
-			node->addChild(statements());
-		}
 		if(checkTType(SIGN_CURLY_BRACKET_CLOSE)) {
 			return node;
 		}
@@ -140,38 +127,25 @@ Node* Parser::statement() {
 	} else if(checkTType(TOKEN_IF)) {
 		nextToken();
 		if(checkTType(SIGN_BRACKET_ON)) {
+			node->addChild(exp());
 			nextToken();
-			if(first(EXP)) {
-				node->addChild(exp());
-				if(checkTType(SIGN_BRACKET_CLOSE)) {
-					nextToken();
-					if(first(STATEMENT)) {
-						node->addChild(statement());
-						if(checkTType(TOKEN_ELSE)) {
-							nextToken();
-							if(first(STATEMENT)) {
-								node->addChild(statement());
-								return node;
-							}
-						}
-					}
+			if(checkTType(SIGN_BRACKET_CLOSE)) {
+				node->addChild(statement());
+				nextToken();
+				if(checkTType(TOKEN_ELSE)) {
+					node->addChild(statement());
+					return node;
 				}
 			}
-
 		}
 	} else if(checkTType(TOKEN_WHILE)) {
 		nextToken();
 		if(checkTType(SIGN_BRACKET_ON)) {
+			node->addChild(exp());
 			nextToken();
-			if(first(EXP)) {
-				node->addChild(exp());
-				if(checkTType(SIGN_BRACKET_CLOSE)) {
-					nextToken();
-					if(first(STATEMENT)) {
-						node->addChild(statement());
-						return node;
-					}
-				}
+			if(checkTType(SIGN_BRACKET_CLOSE)) {
+				node->addChild(statement());
+				return node;
 			}
 		}
 	}
@@ -181,9 +155,7 @@ Node* Parser::exp() {
 	Node* node = new Node(currToken->getType(), EXP);
 	if(first(EXP2)) {
 		node->addChild(exp2());
-		if(first(OP_EXP)) {
-			node->addChild(op_exp());
-		}
+		node->addChild(op_exp());
 		return node;
 	}
 	error();
@@ -191,70 +163,29 @@ Node* Parser::exp() {
 Node* Parser::exp2() {
 	Node* node = new Node(currToken->getType(), EXP2);
 	if(checkTType(SIGN_BRACKET_ON)) {
+		node->addChild(exp());
 		nextToken();
-		if(first(EXP)) {
-			node->addChild(exp());
-			if(checkTType(SIGN_BRACKET_CLOSE)) {
-				nextToken();
-				return node;
-			}
+		if(checkTType(SIGN_BRACKET_CLOSE)) {
+			return node;
 		}
 	} else if(checkTType(IDENTIFIER)) {
-		nextToken();
-		if(first(INDEX)) {
-			node->addChild(index());
-		}
-		return node;
+
 	} else if(checkTType(INTEGER)) {
-		nextToken();
-		return node;
+
 	} else if(checkTType(SIGN_MINUS)) {
-		nextToken();
-		if(first(EXP2)) {
-			node->addChild(exp2());
-			return node;
-		}
+
 	} else if(checkTType(SIGN_EXCLEMATION)) {
-		nextToken();
-		if(first(EXP2)) {
-			node->addChild(exp2());
-			return node;
-		}
+
 	}
-	error();
 }
 Node* Parser::index() {
 	Node* node = new Node(currToken->getType(), INDEX);
-	if(checkTType(SIGN_SQUARE_BRACKET_ON)) {
-		nextToken();
-		if(first(EXP)) {
-			node->addChild(exp());
-			if(checkTType(SIGN_SQUARE_BRACKET_CLOSE)) {
-				nextToken();
-				return node;
-			}
-		}
-	}
 }
 Node* Parser::op_exp() {
-	Node* node = new Node(currToken->getType(), OP_EXP);
-	if(first(OP)) {
-		node->addChild(op());
-		if(first(EXP)) {
-			node->addChild(exp());
-			return node;
-		}
-	}
+
 }
 Node* Parser::op() {
-	Node* node = new Node(currToken->getType(), OP);
-	if(checkTType(SIGN_PLUS) || checkTType(SIGN_MINUS) || checkTType(SIGN_MULTIPLIER) ||
-			checkTType(SIGN_COLON) || checkTType(SIGN_SMALLER) || checkTType(SIGN_GREATER) ||
-			checkTType(SIGN_EQUAL) || checkTType(SIGN_SPECIAL2) || checkTType(SIGN_AND) ||
-			checkTType(SIGN_SPECIAL)) {
-		nextToken();
-		return node;
-	}
+
 }
 Node* Parser::epsilon() {
 
@@ -273,7 +204,7 @@ bool Parser::first(RuleType ruleType) {
 
 			break;
 		case DECLS:
-			return first(DECL);
+
 			break;
 		case DECL:
 			return currToken->getType() == TOKEN_INT;
@@ -282,7 +213,7 @@ bool Parser::first(RuleType ruleType) {
 			return currToken->getType() == SIGN_SQUARE_BRACKET_ON;
 			break;
 		case STATEMENTS:
-			return first(STATEMENT);
+
 			break;
 		case STATEMENT:
 			return currToken->getType() == IDENTIFIER ||
@@ -293,7 +224,7 @@ bool Parser::first(RuleType ruleType) {
 					currToken->getType() == TOKEN_WHILE;
 			break;
 		case EXP:
-			return first(EXP2);
+
 			break;
 		case EXP2:
 			return currToken->getType() == SIGN_BRACKET_ON ||
@@ -306,7 +237,7 @@ bool Parser::first(RuleType ruleType) {
 			return currToken->getType() == SIGN_SQUARE_BRACKET_ON;
 			break;
 		case OP_EXP:
-			return first(OP);
+
 			break;
 		case OP:
 			return currToken->getType() == SIGN_PLUS ||
@@ -330,5 +261,8 @@ bool Parser::checkTType(TType tType) {
 }
 
 void Parser::error() {
+
+}
+Node* Parser::createNode() {
 
 }
