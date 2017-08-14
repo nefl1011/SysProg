@@ -24,10 +24,10 @@ public:
 	NodeType getNodeType();
 	Node** getChildren();
 
-
 	void setRuleType(RuleType ruleType);
 
-
+	char* tTypeToString();
+	char* ruleTypeToString();
 };
 
 #endif /* NODE_H_ */

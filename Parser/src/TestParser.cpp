@@ -15,12 +15,20 @@ void clearOutputFile(const char *outFilename) {
 
 int treeLevel = 0;
 void printParseTree(Node* node) {
-	int size = sizeof(node->getChildren());
 	Node** children = node->getChildren();
-	for(int i = 0; i <= sizeof(children); i++) {
-
+	int size = sizeof(children);
+	for(int i = 0; i <= size; i++) {
+		if(children[i] == NULL) {
+			continue;
+		}
+		for(int j = 0; j < treeLevel; j++) {
+			cout << "->";
+		}
+		cout << children[i]->ruleTypeToString() << " (" << children[i]->tTypeToString() << ")" << endl;
+		treeLevel++;
+		printParseTree(children[i]);
 	}
-
+	treeLevel--;
 }
 
 int main(int argc, char **argv) {
@@ -34,7 +42,9 @@ int main(int argc, char **argv) {
 
 		cout << "Parsing...\n" << endl;
 		parseTree->parse();
+		cout << "------------------------------------------------- ParseTree ---" << endl;
 		printParseTree(parseTree->getRootNode());
+		cout << "---------------------------------------------------------------\n" << endl;
 
 		cout << "Checking type information...\n" << endl;
 		parseTree->typeCheck();
