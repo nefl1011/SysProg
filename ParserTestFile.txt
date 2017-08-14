@@ -1,3 +1,7 @@
-testVar := 10;
+int testVar;
+int[5] testArray;
 
-if(testVar > 20) testVar := 10; else testVar := 20;;
+testVar := 10;
+testArray[4] := 8;
+
+if(testVar =:= testArray[4]) write(testVar) else read(testVar);

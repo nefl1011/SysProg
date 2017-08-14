@@ -245,16 +245,17 @@ Node* Parser::op_exp() {
 			return node;
 		}
 	}
+	error();
 }
 Node* Parser::op() {
 	Node* node = new Node(currToken->getType(), OP);
 	if(checkTType(SIGN_PLUS) || checkTType(SIGN_MINUS) || checkTType(SIGN_MULTIPLIER) ||
 			checkTType(SIGN_COLON) || checkTType(SIGN_SMALLER) || checkTType(SIGN_GREATER) ||
-			checkTType(SIGN_EQUAL) || checkTType(SIGN_SPECIAL2) || checkTType(SIGN_AND) ||
-			checkTType(SIGN_SPECIAL)) {
+			checkTType(SIGN_EQUAL) || checkTType(SIGN_AND) || checkTType(SIGN_SPECIAL)) {
 		nextToken();
 		return node;
 	}
+	error();
 }
 Node* Parser::epsilon() {
 
@@ -316,7 +317,6 @@ bool Parser::first(RuleType ruleType) {
 					currToken->getType() == SIGN_SMALLER ||
 					currToken->getType() == SIGN_GREATER ||
 					currToken->getType() == SIGN_EQUAL ||
-					currToken->getType() == SIGN_SPECIAL2 ||
 					currToken->getType() == SIGN_AND ||
 					currToken->getType() == SIGN_SPECIAL;
 			break;
@@ -330,5 +330,5 @@ bool Parser::checkTType(TType tType) {
 }
 
 void Parser::error() {
-
+	cout << "ERROR!!!" << endl;
 }

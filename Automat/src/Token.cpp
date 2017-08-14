@@ -42,7 +42,7 @@ Token::Token(TType type, char* lexem, int line, int column) {
 		case SIGN_CURLY_BRACKET_CLOSE		:	this->typeName = "Curly-Bracket-Close"; break;
 		case SIGN_SQUARE_BRACKET_ON			:	this->typeName = "Square-Bracket-On"; break;
 		case SIGN_SQUARE_BRACKET_CLOSE		:	this->typeName = "Square-Bracket-Close"; break;
-		case SIGN_SPECIAL					:	this->typeName = "Special"; break;
+		case SIGN_SPECIAL					:	this->typeName = "Special =:="; break;
 		case SIGN_COLON_EQUAL				:	this->typeName = "Colon-Equal"; break;
 		case SIGN_EXCLEMATION				:	this->typeName = "Exclamation"; break;
 		case COMMENT						:	this->typeName = "Comment"; break;
@@ -54,6 +54,12 @@ Token::Token(TType type, char* lexem, int line, int column) {
 		case ERROR_SPECIAL					:	this->typeName = "Error-Special"; break;
 		case LINE_BREAK						:	this->typeName = "Line-Break"; break;
 		case END_OF_FILE					:	this->typeName = "End-of-File"; break;
+
+		//Parser
+		case TOKEN_INT						:	this->typeName = "int"; break;
+		case TOKEN_WRITE					:	this->typeName = "write"; break;
+		case TOKEN_READ						:	this->typeName = "read"; break;
+		case TOKEN_ELSE						:	this->typeName = "else"; break;
 	}
 }
 

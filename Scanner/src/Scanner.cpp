@@ -132,6 +132,20 @@ Token* Scanner::nextToken() {
 			else if (strcmp(string, "WHILE") == 0 || strcmp(string, "while") == 0) {
 				currTType = TOKEN_WHILE;
 			}
+
+			//Parser
+			else if (strcmp(string, "int") == 0) {
+				currTType = TOKEN_INT;
+			}
+			else if (strcmp(string, "write") == 0) {
+				currTType = TOKEN_WRITE;
+			}
+			else if (strcmp(string, "read") == 0) {
+				currTType = TOKEN_READ;
+			}
+			else if (strcmp(string, "else") == 0) {
+				currTType = TOKEN_ELSE;
+			}
 		}
 
 		//bilde Token

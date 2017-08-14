@@ -19,8 +19,15 @@ public:
 	~Node();
 
 	void addChild(Node* child);
+
+	RuleType getRuleType();
 	NodeType getNodeType();
+	Node** getChildren();
+
+
 	void setRuleType(RuleType ruleType);
+
+
 };
 
 #endif /* NODE_H_ */

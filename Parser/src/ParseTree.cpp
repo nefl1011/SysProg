@@ -30,3 +30,7 @@ void ParseTree::typeCheck() {
 void ParseTree::makeCode() {
 	codeGenerator->makeCode(this->rootNode);
 }
+
+Node* ParseTree::getRootNode() {
+	return this->rootNode;
+}

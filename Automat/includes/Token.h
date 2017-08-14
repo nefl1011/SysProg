@@ -24,7 +24,7 @@ enum TType {
 	SIGN_CURLY_BRACKET_CLOSE 	= 15, 	// }
 	SIGN_SQUARE_BRACKET_ON 	  	= 16, 	// [
 	SIGN_SQUARE_BRACKET_CLOSE 	= 17, 	// ]
-	SIGN_SPECIAL 				= 18, 	// <:>
+	SIGN_SPECIAL 				= 18, 	// =:=
 	SIGN_COLON_EQUAL 			= 19, 	// :=
 	SIGN_EXCLEMATION 			= 20,	// !
 	COMMENT 					= 21,	// Kommentare
@@ -43,8 +43,7 @@ enum TType {
 	TOKEN_INT					= 32,
 	TOKEN_WRITE					= 33,
 	TOKEN_READ					= 34,
-	TOKEN_ELSE					= 35,
-	SIGN_SPECIAL2				= 36,	//=:=
+	TOKEN_ELSE					= 35
 };
 
 class Token {

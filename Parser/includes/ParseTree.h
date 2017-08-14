@@ -25,6 +25,8 @@ public:
 	void typeCheck();
 
 	void makeCode();
+
+	Node* getRootNode();
 };
 
 #endif /* PARSETREE_H_ */

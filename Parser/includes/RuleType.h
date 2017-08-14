@@ -18,4 +18,5 @@ enum RuleType {
 	ERROR_RULE
 };
 
+
 #endif /* RULETYPE_H_ */
