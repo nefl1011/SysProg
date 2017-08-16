@@ -6,6 +6,7 @@
 #include "../includes/TypeChecker.h"
 #include "../includes/CodeGenerator.h"
 #include "../includes/Node.h"
+#include <fstream>
 
 
 class ParseTree {
@@ -15,6 +16,8 @@ private:
 	TypeChecker* typeChecker;
 	CodeGenerator* codeGenerator;
 	Node* rootNode;
+
+	void clearErrorOutFile(const char *errorOutFile);
 
 public:
 	ParseTree(char* inFile, char* outFile);

@@ -13,11 +13,14 @@ Parser::~Parser() {
 }
 
 Node* Parser::parse() {
-	return this->prog();
+	nextToken();
+	if(first(PROG)) {
+		return this->prog();
+	}
+	error();
 }
 
 Node* Parser::prog() {
-	nextToken();
 	Node* node = new Node(currToken->getType(), PROG);
 	if(first(DECLS)) {
 		node->addChild(decls());
@@ -235,6 +238,7 @@ Node* Parser::index() {
 			}
 		}
 	}
+	error();
 }
 Node* Parser::op_exp() {
 	Node* node = new Node(currToken->getType(), OP_EXP);
@@ -271,7 +275,7 @@ bool Parser::first(RuleType ruleType) {
 
 			break;
 		case PROG:
-
+			return first(DECLS) || first(STATEMENTS);
 			break;
 		case DECLS:
 			return first(DECL);
@@ -326,9 +330,57 @@ bool Parser::first(RuleType ruleType) {
 	}
 }
 bool Parser::checkTType(TType tType) {
+	expectedTType = tType;
 	return currToken->getType() == tType;
 }
 
 void Parser::error() {
-	cout << "ERROR!!!" << endl;
+
+	cout << "unexpected Token " << "\t Line: " << currToken->getLine() << " \t Column: "
+			<< currToken->getColumn() << " \t " << tTypeToString(currToken->getType())
+			<< " \t -> expected Token: " << tTypeToString(expectedTType) << "\n" << endl;
+	cout << "stop" << endl;
+	exit(0);
+}
+
+char* Parser::tTypeToString(TType tType) {
+	switch(tType) {
+		case ERROR							:	return "Error"; break;
+		case INTEGER						:	return "Integer"; break;
+		case IDENTIFIER						:	return "Identifier"; break;
+		case SIGN_PLUS						:	return "\"+\" (Plus)"; break;
+		case SIGN_MINUS						:	return "\"-\" (Minus)"; break;
+		case SIGN_MULTIPLIER				:	return "\"*\" (Multiplier)"; break;
+		case SIGN_COLON						:	return "\":\" (Colon)"; break;
+		case SIGN_GREATER					:	return "\">\" (Greater)"; break;
+		case SIGN_SMALLER					:	return "\"<\" (Smaller)"; break;
+		case SIGN_EQUAL						:	return "\"=\" (Equal)"; break;
+		case SIGN_AND						:	return "\"&&\" (And)"; break;
+		case SIGN_SEMICOLON					:	return "\";\" (Semicolon)"; break;
+		case SIGN_BRACKET_ON				:	return "\"(\" (Bracket-On)"; break;
+		case SIGN_BRACKET_CLOSE				:	return "\")\" (Bracket-Close)"; break;
+		case SIGN_CURLY_BRACKET_ON			:	return "\"{\" (Curly-Bracket-On)"; break;
+		case SIGN_CURLY_BRACKET_CLOSE		:	return "\"}\" (Curly-Bracket-Close)"; break;
+		case SIGN_SQUARE_BRACKET_ON			:	return "\"[\" (Square-Bracket-On)"; break;
+		case SIGN_SQUARE_BRACKET_CLOSE		:	return "\"]\" (Square-Bracket-Close)"; break;
+		case SIGN_SPECIAL					:	return "\"=:=\" (Special)"; break;
+		case SIGN_COLON_EQUAL				:	return "\":=\" (Colon-Equal)"; break;
+		case SIGN_EXCLEMATION				:	return "\"!\" (Exclamation)"; break;
+		case COMMENT						:	return "Comment"; break;
+		case TOKEN_IF						:	return "If"; break;
+		case TOKEN_WHILE					:	return "While"; break;
+		case TOKEN_SPACE					:	return "Space"; break;
+		case IGNORE							:	return "Ignore"; break;
+		case CONTINUE						:	return "Continue"; break;
+		case ERROR_SPECIAL					:	return "Error-Special"; break;
+		case LINE_BREAK						:	return "Line-Break"; break;
+		case END_OF_FILE					:	return "End-of-File"; break;
+
+		//Parser
+		case TOKEN_INT						:	return "int"; break;
+		case TOKEN_WRITE					:	return "write"; break;
+		case TOKEN_READ						:	return "read"; break;
+		case TOKEN_ELSE						:	return "else"; break;
+	}
+	return "";
 }

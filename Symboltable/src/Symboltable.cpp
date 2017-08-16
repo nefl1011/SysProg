@@ -23,6 +23,11 @@ void Symboltable::initSymbols() {
 
 	hashmapPtr->insertToken(new Token(TOKEN_WHILE, "while", 0, 0));
 	hashmapPtr->insertToken(new Token(TOKEN_WHILE, "WHILE", 0, 0));
+
+	hashmapPtr->insertToken(new Token(TOKEN_INT, "int", 0, 0));
+	hashmapPtr->insertToken(new Token(TOKEN_WRITE, "write", 0, 0));
+	hashmapPtr->insertToken(new Token(TOKEN_READ, "read", 0, 0));
+	hashmapPtr->insertToken(new Token(TOKEN_ELSE, "else", 0, 0));
 }
 
 TType Symboltable::getTokenType(char* lexem) {

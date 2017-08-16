@@ -10,6 +10,7 @@ private:
 
 	Token* currToken;
 	void nextToken();
+	TType expectedTType;
 
 	Node* prog();
 	Node* decls();
@@ -28,6 +29,7 @@ private:
 	bool checkTType(TType tType);
 
 	void error();
+	char* tTypeToString(TType tType);
 
 public:
 	Parser(Scanner* scanner);
