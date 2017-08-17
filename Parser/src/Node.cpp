@@ -23,12 +23,21 @@ RuleType Node::getRuleType() {
 NodeType Node::getNodeType() {
 	return nodeType;
 }
+TType Node::getTType() {
+	return tType;
+}
 Node** Node::getChildren() {
 	return this->children;
+}
+Node* Node::getChildren(int position) {
+	return this->children[position];
 }
 
 void Node::setRuleType(RuleType ruleType) {
 	this->ruleType = ruleType;
+}
+void Node::setNodeType(NodeType nodeType) {
+	this->nodeType = nodeType;
 }
 
 char* Node::tTypeToString() {

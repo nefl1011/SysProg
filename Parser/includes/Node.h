@@ -22,9 +22,12 @@ public:
 
 	RuleType getRuleType();
 	NodeType getNodeType();
+	TType getTType();
+	Node* getChildren(int position);
 	Node** getChildren();
 
 	void setRuleType(RuleType ruleType);
+	void setNodeType(NodeType nodeType);
 
 	char* tTypeToString();
 	char* ruleTypeToString();
