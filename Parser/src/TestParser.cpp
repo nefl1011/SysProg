@@ -24,7 +24,11 @@ void printParseTree(Node* node) {
 		for(int j = 0; j < treeLevel; j++) {
 			cout << "->";
 		}
-		cout << children[i]->ruleTypeToString() << " (" << children[i]->tTypeToString() << ")" << endl;
+		cout << children[i]->ruleTypeToString() << " (" << children[i]->tTypeToString() << ")";
+		if(children[i]->getLeaf()) {
+			cout << " --leaf--";
+		}
+		cout << endl;
 		treeLevel++;
 		printParseTree(children[i]);
 	}

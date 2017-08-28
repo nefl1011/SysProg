@@ -32,7 +32,7 @@ void TypeChecker::analyze(Node* node) {
         case DECLS:
             typeCheckDecls(node);
             break;
-        case EPSIOLN:
+        case EPSILON:
         	typeCheckEmpty(node);
         	break;
 //        case DECLS_EMPTY:

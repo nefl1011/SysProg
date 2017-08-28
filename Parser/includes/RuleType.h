@@ -14,7 +14,7 @@ enum RuleType {
 	INDEX,
 	OP_EXP,
 	OP,
-	EPSIOLN,
+	EPSILON,
 	ERROR_RULE
 };
 

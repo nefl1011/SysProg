@@ -16,8 +16,6 @@ enum NodeType {
 	OP_EQUAL_TYPE,
 	OP_SPECIAL_TYPE,
 	OP_AND_TYPE
-
-
 };
 
 #endif /* NODETYPE_H_ */

@@ -11,6 +11,8 @@ private:
 	RuleType ruleType;
 	NodeType nodeType;
 
+	bool leaf;
+
 	Node* children[9];
 	int childrenCounter = 0;
 
@@ -22,12 +24,15 @@ public:
 
 	RuleType getRuleType();
 	NodeType getNodeType();
+	bool getLeaf();
 	TType getTType();
 	Node* getChildren(int position);
 	Node** getChildren();
 
 	void setRuleType(RuleType ruleType);
 	void setNodeType(NodeType nodeType);
+
+	void setLeaf(bool leaf);
 
 	char* tTypeToString();
 	char* ruleTypeToString();

@@ -23,6 +23,9 @@ RuleType Node::getRuleType() {
 NodeType Node::getNodeType() {
 	return nodeType;
 }
+bool Node::getLeaf() {
+	return leaf;
+}
 TType Node::getTType() {
 	return tType;
 }
@@ -38,6 +41,9 @@ void Node::setRuleType(RuleType ruleType) {
 }
 void Node::setNodeType(NodeType nodeType) {
 	this->nodeType = nodeType;
+}
+void Node::setLeaf(bool leaf) {
+	this->leaf = leaf;
 }
 
 char* Node::tTypeToString() {
@@ -72,6 +78,7 @@ char* Node::tTypeToString() {
 		case ERROR_SPECIAL					:	return "Error-Special"; break;
 		case LINE_BREAK						:	return "Line-Break"; break;
 		case END_OF_FILE					:	return "End-of-File"; break;
+		case null							:	return "ɛ"; break;
 
 		//Parser
 		case TOKEN_INT						:	return "int"; break;
@@ -119,7 +126,7 @@ char* Node::ruleTypeToString() {
 		case OP:
 			return "OP";
 			break;
-		case EPSIOLN:
+		case EPSILON:
 			return "EPSILON";
 			break;
 		case ERROR_RULE:
