@@ -39,24 +39,15 @@ void TypeChecker::analyze(Node* node) {
         case EPSILON:
         	typeCheckEmpty(node);
         	break;
-//        case DECLS_EMPTY:
-//            typeCheckDecls_EMPTY(node);
-//            break;
         case DECL:
             typeCheckDecl(node);
             break;
         case ARRAY:
             typeCheckArray(node);
             break;
-//        case ARRAY_Empty:
-//            typeCheckArray_EMPTY(node);
-//            break;
         case STATEMENTS:
             typeCheckStatements(node);
             break;
-//        case STATEMENTS_EMPTY:
-//            typeCheckStatements_EMPTY(node);
-//            break;
         case STATEMENT:
         	typeCheckStatement(node);
         	break;
@@ -69,18 +60,12 @@ void TypeChecker::analyze(Node* node) {
         case INDEX:
             typeCheckIndex(node);
             break;
-//        case INDEX_EMPTY:
-//            typeCheckIndex_EMPTY(node);
-//            break;
         case OP_EXP:
             typeCheckOp_Exp(node);
             break;
         case OP:
 			typeCheckOp(node);
 			break;
-//        case OP_EXP_EMPTY:
-//            typeCheckOp_Exp_EMPTY(node);
-//            break;
         default:
             cerr << "node is empty" << endl;
     }
@@ -123,32 +108,34 @@ void TypeChecker::typeCheckDecl(Node *node) {
 
 	analyze(array);
 
-	if(identifier->getNodeType() != NO_TYPE) {
-		node->setNodeType(NODE_ERROR);
+	if(identifier && array) {
+		if(identifier->getNodeType() != NO_TYPE) {
+			node->setNodeType(NODE_ERROR);
+		} else if(array->getNodeType() == NODE_ERROR) {
+			node->setNodeType(NODE_ERROR);
 
-	} else if(array->getNodeType() == NODE_ERROR) {
-		node->setNodeType(NODE_ERROR);
-
-	} else {
-		node->setNodeType(NO_TYPE);
-
-		if (array->getNodeType() == INT_ARRAY) {
-			identifier->setNodeType(INT_ARRAY);
 		} else {
-			identifier->setNodeType(INT);
+			node->setNodeType(NO_TYPE);
+
+			if (array->getNodeType() == INT_ARRAY) {
+				identifier->setNodeType(INT_ARRAY);
+			} else {
+				identifier->setNodeType(INT);
+			}
 		}
 	}
-
 }
 
 //ARRAY::=[integer]
 void TypeChecker::typeCheckArray(Node* node) {
     Node* integer = node->getChildren(0);
 
-    if(integer->getTType() == INTEGER) {
-        node->setNodeType(INT_ARRAY);
-    } else {
-        node->setNodeType(NODE_ERROR);
+    if(integer) {
+    	if(integer->getTType() == INTEGER) {
+			node->setNodeType(INT_ARRAY);
+		} else {
+			node->setNodeType(NODE_ERROR);
+		}
     }
 }
 
@@ -164,6 +151,10 @@ void TypeChecker::typeCheckStatements(Node *node) {
 }
 
 void TypeChecker::typeCheckStatement(Node *node) {
+	if(node == 0L) {
+		cout << "node is null" << endl;
+		return;
+	}
 	switch(node->getTType()) {
 			case IDENTIFIER:
 				typeCheckStatement_IDENTIFIER(node);
@@ -196,17 +187,20 @@ void TypeChecker::typeCheckStatement_IDENTIFIER(Node *node) {
     analyze(exp);
     analyze(index);
 
-    if (identifier->getNodeType() == NO_TYPE) {
-        node->setNodeType(NODE_ERROR);
+    if(identifier && exp && index) {
+    	if (identifier->getNodeType() == NO_TYPE) {
+			node->setNodeType(NODE_ERROR);
 
-    } else if (exp->getNodeType() == INT && (
-            (identifier->getNodeType() == INT && index->getNodeType() == NO_TYPE)
-            ||(identifier->getNodeType() == INT_ARRAY && index->getNodeType() == INT_ARRAY))) {
-        node->setNodeType(NO_TYPE);
+		} else if (exp->getNodeType() == INT && (
+				(identifier->getNodeType() == INT && index->getNodeType() == NO_TYPE)
+				||(identifier->getNodeType() == INT_ARRAY && index->getNodeType() == INT_ARRAY))) {
+			node->setNodeType(NO_TYPE);
 
-    } else {
-        node->setNodeType(NODE_ERROR);
+		} else {
+			node->setNodeType(NODE_ERROR);
+		}
     }
+
 }
 
 //STATEMENT_IDENTIFIER ::= write( EXP )
@@ -223,16 +217,19 @@ void TypeChecker::typeCheckStatement_READ(Node *node) {
 
     analyze(index);
 
-    if (identifier->getNodeType() == NO_TYPE) {
-        node->setNodeType(NODE_ERROR);
+    if(identifier && index) {
+    	if (identifier->getNodeType() == NO_TYPE) {
+			node->setNodeType(NODE_ERROR);
 
-    } else if (((identifier->getNodeType() == INT) && (index->getNodeType() == NO_TYPE))
-               || ((identifier->getNodeType() == INT_ARRAY) && (index->getNodeType() == INT_ARRAY)) ) {
-        node->setNodeType(NO_TYPE);
+		} else if (((identifier->getNodeType() == INT) && (index->getNodeType() == NO_TYPE))
+				   || ((identifier->getNodeType() == INT_ARRAY) && (index->getNodeType() == INT_ARRAY)) ) {
+			node->setNodeType(NO_TYPE);
 
-    } else {
-        node->setNodeType(NODE_ERROR);
+		} else {
+			node->setNodeType(NODE_ERROR);
+		}
     }
+
 }
 
 //STATEMENT_IDENTIFIER ::= { STATEMENTS }
@@ -252,11 +249,14 @@ void TypeChecker::typeCheckStatement_IF(Node *node) {
     analyze(statement1);
     analyze(statement2);
 
-    if(exp->getNodeType() == NODE_ERROR) {
-        node->setNodeType(NODE_ERROR);
-    } else {
-        node->setNodeType(NO_TYPE);
+    if(exp) {
+    	if(exp->getNodeType() == NODE_ERROR) {
+			node->setNodeType(NODE_ERROR);
+		} else {
+			node->setNodeType(NO_TYPE);
+		}
     }
+
 }
 
 //STATEMENT_IDENTIFIER ::= while ( EXP ) STATEMENT_IDENTIFIER)
@@ -267,10 +267,12 @@ void TypeChecker::typeCheckStatement_WHILE(Node *node) {
     analyze(exp);
     analyze(statement);
 
-    if(exp->getNodeType() == NODE_ERROR) {
-        node->setNodeType(NODE_ERROR);
-    } else {
-        node->setNodeType(NO_TYPE);
+    if(exp) {
+    	if(exp->getNodeType() == NODE_ERROR) {
+			node->setNodeType(NODE_ERROR);
+		} else {
+			node->setNodeType(NO_TYPE);
+		}
     }
 }
 
@@ -282,18 +284,24 @@ void TypeChecker::typeCheckExp(Node* node) {
     analyze(exp2);
     analyze(op_exp);
 
-    if (op_exp->getNodeType() == NO_TYPE) {
-        node->setNodeType(exp2->getNodeType());
+    if(exp2 && op_exp) {
+    	if (op_exp->getNodeType() == NO_TYPE) {
+			node->setNodeType(exp2->getNodeType());
 
-    } else if (exp2->getNodeType() != op_exp->getNodeType()) {
-        node->setNodeType(NODE_ERROR);
+		} else if (exp2->getNodeType() != op_exp->getNodeType()) {
+			node->setNodeType(NODE_ERROR);
 
-    } else {
-        node->setNodeType(exp2->getNodeType());
+		} else {
+			node->setNodeType(exp2->getNodeType());
+		}
     }
 }
 
 void TypeChecker::typeCheckExp2(Node* node) {
+	if(node == 0L) {
+		cout << "node is null" << endl;
+		return;
+	}
 	switch(node->getTType()) {
 		case SIGN_BRACKET_ON:
 			typeCheckOp_SIGN_BRACKET_ON(node);
@@ -325,17 +333,20 @@ void TypeChecker::typeCheckExp2_IDENTIFIER(Node *node) {
 
     analyze(index);
 
-    if (identifier->getNodeType() == NO_TYPE) {
-        node->setNodeType(NODE_ERROR);
-    } else if (identifier->getNodeType() == INT
-               && index->getNodeType() == NO_TYPE) {
-        node->setNodeType(identifier->getNodeType());
-    } else if (identifier->getNodeType() == INT_ARRAY
-               && index->getNodeType() == INT_ARRAY) {
-        node->setNodeType(INT);
-    } else {
-        node->setNodeType(NODE_ERROR);
+    if(identifier && index) {
+    	 if (identifier->getNodeType() == NO_TYPE) {
+			node->setNodeType(NODE_ERROR);
+		} else if (identifier->getNodeType() == INT
+				   && index->getNodeType() == NO_TYPE) {
+			node->setNodeType(identifier->getNodeType());
+		} else if (identifier->getNodeType() == INT_ARRAY
+				   && index->getNodeType() == INT_ARRAY) {
+			node->setNodeType(INT);
+		} else {
+			node->setNodeType(NODE_ERROR);
+		}
     }
+
 }
 //EXP2_PARENS ::= integer
 void TypeChecker::typeCheckExp2_INTEGER(Node *node) {
@@ -354,10 +365,12 @@ void TypeChecker::typeCheckExp2_EXCLEMATION(Node *node) {
 
     analyze(exp2);
 
-    if (exp2->getNodeType() != INT) {
-        node->setNodeType(NODE_ERROR);
-    } else {
-        node->setNodeType(INT);
+    if(exp2) {
+    	if (exp2->getNodeType() != INT) {
+			node->setNodeType(NODE_ERROR);
+		} else {
+			node->setNodeType(INT);
+		}
     }
 }
 
@@ -372,6 +385,10 @@ void TypeChecker::typeCheckOp_Exp(Node* node) {
     node->setNodeType(exp->getNodeType());
 }
 void TypeChecker::typeCheckOp(Node* node) {
+	if(node == 0L) {
+		cout << "node is null" << endl;
+		return;
+	}
 	switch(node->getTType()) {
 		case SIGN_PLUS:
 			typeCheckOp_PLUS(node);
@@ -446,9 +463,11 @@ void TypeChecker::typeCheckIndex(Node* node) {
 
     analyze(exp);
 
-    if(exp->getNodeType() == NODE_ERROR) {
-        node->setNodeType(NODE_ERROR);
-    } else {
-        node->setNodeType(INT_ARRAY);
+    if(exp) {
+    	if(exp->getNodeType() == NODE_ERROR) {
+			node->setNodeType(NODE_ERROR);
+		} else {
+			node->setNodeType(INT_ARRAY);
+		}
     }
 }
