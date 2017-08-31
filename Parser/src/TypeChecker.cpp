@@ -180,9 +180,9 @@ void TypeChecker::typeCheckStatement(Node *node) {
 //STATEMENT_IDENTIFIER ::= identifier INDEX := EXP
 void TypeChecker::typeCheckStatement_IDENTIFIER(Node *node) {
 
-    Node* exp = node->getChildren(2);
-    Node* index = node->getChildren(1);
-    Node* identifier = node->getChildren(0);
+    Node* identifier = node->getChildren(2);
+    Node* exp = node->getChildren(1);
+    Node* index = node->getChildren(0);
 
     analyze(exp);
     analyze(index);
@@ -328,13 +328,13 @@ void TypeChecker::typeCheckOp_SIGN_BRACKET_ON(Node *node) {
 }
 //EXP2_PARENS ::= identifier INDEX
 void TypeChecker::typeCheckExp2_IDENTIFIER(Node *node) {
-    Node* identifier = node->getChildren(0);
-    Node* index = node->getChildren(1);
+    Node* index = node->getChildren(0);
+    Node* identifier = node->getChildren(1);
 
     analyze(index);
 
     if(identifier && index) {
-    	 if (identifier->getNodeType() == NO_TYPE) {
+    	if (identifier->getNodeType() == NO_TYPE) {
 			node->setNodeType(NODE_ERROR);
 		} else if (identifier->getNodeType() == INT
 				   && index->getNodeType() == NO_TYPE) {
