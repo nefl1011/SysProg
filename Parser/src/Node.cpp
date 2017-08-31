@@ -135,3 +135,51 @@ char* Node::ruleTypeToString() {
 	}
 	return "";
 }
+
+char* Node::nodeTypeToString() {
+	switch(this->nodeType) {
+		case NO_TYPE:
+			return "NO_TYPE";
+			break;
+		case INT:
+			return "INT";
+			break;
+		case INT_ARRAY:
+			return "INT_ARRAY";
+			break;
+		case WRITE:
+			return "WRITE";
+			break;
+		case NODE_ERROR:
+			return "NODE_ERROR";
+			break;
+		case OP_PLUS_TYPE:
+			return "OP_PLUS_TYPE";
+			break;
+		case OP_MINUS_TYPE:
+			return "OP_MINUS_TYPE";
+			break;
+		case OP_MULT_TYPE:
+			return "OP_MULT_TYPE";
+			break;
+		case OP_COL_TYPE:
+			return "OP_COL_TYPE";
+			break;
+		case OP_SMALLER_TYPE:
+			return "OP_SMALLER_TYPE";
+			break;
+		case OP_GREATER_TYPE:
+			return "OP_GREATER_TYPE";
+			break;
+		case OP_EQUAL_TYPE:
+			return "OP_EQUAL_TYPE";
+			break;
+		case OP_SPECIAL_TYPE:
+			return "OP_SPECIAL_TYPE";
+			break;
+		case OP_AND_TYPE:
+			return "OP_AND_TYPE";
+			break;
+	}
+	return "";
+}

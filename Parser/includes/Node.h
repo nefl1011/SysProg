@@ -36,6 +36,7 @@ public:
 
 	char* tTypeToString();
 	char* ruleTypeToString();
+	char* nodeTypeToString();
 };
 
 #endif /* NODE_H_ */
