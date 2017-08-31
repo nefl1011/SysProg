@@ -5,16 +5,11 @@
 
 using namespace std;
 
-ParseTree::ParseTree(char* inFile, char* outFile) {
+ParseTree::ParseTree(char* inFile, char* outFile, char* errorOutFile) {
 	scanner = new Scanner(inFile);
-	parser = new Parser(scanner);
-	typeChecker = new TypeChecker();
+	parser = new Parser(scanner, errorOutFile);
+	typeChecker = new TypeChecker(errorOutFile);
 	codeGenerator = new CodeGenerator(outFile);
-
-	char* errorOutFile = (char*) "Parser-error.txt";
-	clearErrorOutFile(errorOutFile);
-	ofstream errStream(errorOutFile, std::ios_base::app);
-	errStream << "parsing ..." << endl;
 }
 
 ParseTree::~ParseTree() {
@@ -39,14 +34,4 @@ void ParseTree::makeCode() {
 
 Node* ParseTree::getRootNode() {
 	return this->rootNode;
-}
-
-void ParseTree::clearErrorOutFile(const char *errorOutFile) {
-    ofstream ofs;
-    ofs.open(errorOutFile, std::ofstream::out | std::ofstream::trunc);
-    if (!ofs.is_open()) {
-        cerr << "Error! Cannot write to output file <" << errorOutFile << ">" << endl;
-        exit(EXIT_FAILURE);
-    }
-    ofs.close();
 }

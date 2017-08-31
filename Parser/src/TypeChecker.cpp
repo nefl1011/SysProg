@@ -1,12 +1,16 @@
 #include <iostream>
+#include <fstream>
 
 #include "../includes/Node.h"
 #include "../includes/TypeChecker.h"
 
 using namespace std;
 
-TypeChecker::TypeChecker() {
+TypeChecker::TypeChecker(char* errorOutFile) {
+	this->errorOutFile = errorOutFile;
 
+	ofstream errStream(errorOutFile, std::ios_base::app);
+	errStream << "type checking ...\n" << endl;
 }
 
 TypeChecker::~TypeChecker() {

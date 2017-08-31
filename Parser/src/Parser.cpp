@@ -1,11 +1,16 @@
 #include <iostream>
+#include <fstream>
 
 #include "../includes/Parser.h"
 
 using namespace std;
 
-Parser::Parser(Scanner* scanner) {
+Parser::Parser(Scanner* scanner, char* errorOutFile) {
 	this->scanner = scanner;
+	this->errorOutFile = errorOutFile;
+
+	ofstream errStream(errorOutFile, std::ios_base::app);
+	errStream << "parsing ...\n" << endl;
 }
 
 Parser::~Parser() {
@@ -360,11 +365,17 @@ bool Parser::checkTType(TType tType) {
 }
 
 void Parser::error() {
-
+	ofstream errStream(errorOutFile, std::ios_base::app);
+	errStream << "unexpected Token " << "\t Line: " << currToken->getLine() << " \t Column: "
+				<< currToken->getColumn() << " \t " << tTypeToString(currToken->getType())
+				<< " \t -> expected Token: " << tTypeToString(expectedTType) << "\n" << endl;
+	errStream << "stop" << endl;
+	/*
 	cout << "unexpected Token " << "\t Line: " << currToken->getLine() << " \t Column: "
 			<< currToken->getColumn() << " \t " << tTypeToString(currToken->getType())
 			<< " \t -> expected Token: " << tTypeToString(expectedTType) << "\n" << endl;
 	cout << "stop" << endl;
+	*/
 	exit(0);
 }
 

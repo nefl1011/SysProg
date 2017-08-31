@@ -38,9 +38,12 @@ void printParseTree(Node* node) {
 int main(int argc, char **argv) {
 	char* inFile = (char*) "ParserTestFile.txt";
 	char* outFile = (char*) "out.txt";
+	char* errorOutFile = (char*) "Parser-error.txt";
+	clearOutputFile(outFile);
+	clearOutputFile(errorOutFile);
 
 	try {
-		ParseTree* parseTree = new ParseTree(inFile, outFile);
+		ParseTree* parseTree = new ParseTree(inFile, outFile, errorOutFile);
 
         cout << "Processing...\n" << endl;
 

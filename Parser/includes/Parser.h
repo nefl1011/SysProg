@@ -7,6 +7,7 @@
 class Parser {
 private:
 	Scanner* scanner;
+	char* errorOutFile;
 
 	Token* currToken;
 	void nextToken();
@@ -32,7 +33,7 @@ private:
 	char* tTypeToString(TType tType);
 
 public:
-	Parser(Scanner* scanner);
+	Parser(Scanner* scanner, char* errorOutFile);
 	~Parser();
 
 	Node* parse();

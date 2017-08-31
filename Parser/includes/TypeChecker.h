@@ -5,9 +5,9 @@
 
 class TypeChecker {
 private:
-
+	char* errorOutFile;
 public:
-	TypeChecker();
+	TypeChecker(char* errorOutFile);
 	~TypeChecker();
 
 	Node* typeCheck(Node* rootNode);

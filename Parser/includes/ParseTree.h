@@ -17,10 +17,8 @@ private:
 	CodeGenerator* codeGenerator;
 	Node* rootNode;
 
-	void clearErrorOutFile(const char *errorOutFile);
-
 public:
-	ParseTree(char* inFile, char* outFile);
+	ParseTree(char* inFile, char* outFile, char* errorOutFile);
 	~ParseTree();
 
 	void parse();
