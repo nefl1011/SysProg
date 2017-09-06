@@ -2,6 +2,7 @@
 
 #include "../includes/CodeGenerator.h"
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include <iomanip>
 
@@ -9,23 +10,22 @@
 using namespace std;
 
 CodeGenerator::CodeGenerator(char* outFile) {
-//	codeFile = new ofstream(outFile);
+	codeFile = new ofstream(outFile);
 	outText = new stringstream();
 	labelCounter = 0;
 }
 
 CodeGenerator::~CodeGenerator() {
-//	codeFile->close();
-//	delete codeFile;
+	codeFile->close();
+	delete codeFile;
 	delete outText;
 }
 
 void CodeGenerator::makeCode(Node* rootNode) {
 	generateCodeProg(rootNode);
-//	*codeFile << outText->rdbuf();
-//	codeFile->flush();
+	*codeFile << outText->rdbuf();
+	codeFile->flush();
 	outText->str(string());
-	cout << outText << endl;
 }
 void CodeGenerator::generateCode(Node* node) {
 	if(node == 0L) {
@@ -250,26 +250,29 @@ void CodeGenerator::generateCodeExp(Node* node) {
 	Node* exp2 = node->getChildren(0);
 	Node* op_exp = node->getChildren(1);
 
-	if(op_exp && op_exp->getChildren(0)) {
+	if(op_exp) {
 		if(op_exp->getNodeType() == NO_TYPE) {
 				generateCode(exp2);
+			if(op_exp->getChildren(0)) {
+				if (op_exp->getChildren(0)->getNodeType() == OP_GREATER_TYPE) {
+					generateCode(op_exp);
+					generateCode(exp2);
+					*outText << " LES ";
 
-			} else if (op_exp->getChildren(0)->getNodeType() == OP_GREATER_TYPE) {
-				generateCode(op_exp);
-				generateCode(exp2);
-				*outText << " LES ";
+				} else if (op_exp->getChildren(0)->getNodeType() == OP_SPECIAL_TYPE) {
+					generateCode(exp2);
+					generateCode(op_exp);
+					*outText << " NOT ";
 
-			} else if (op_exp->getChildren(0)->getNodeType() == OP_SPECIAL_TYPE) {
-				generateCode(exp2);
-				generateCode(op_exp);
-				*outText << " NOT ";
-
-			} else {
-				generateCode(exp2);
-				generateCode(op_exp);
+				} else {
+					generateCode(exp2);
+					generateCode(op_exp);
+				}
 			}
-	}
 
+		}
+
+	}
 }
 
 void CodeGenerator::generateCodeExp2(Node* node) {
