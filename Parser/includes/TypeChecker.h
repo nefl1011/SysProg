@@ -19,9 +19,7 @@ public:
 	void typeCheckDecl(Node* root);
 	void typeCheckEmpty(Node* root);
 	void typeCheckArray(Node* root);
-	void typeCheckArray_EMPTY(Node *root);
 	void typeCheckStatements(Node* root);
-	void typeCheckStatements_EMPTY(Node *root);
 	void typeCheckStatement(Node *root);
 	void typeCheckStatement_IDENTIFIER(Node *root);
 	void typeCheckStatement_WRITE(Node *root);
@@ -31,15 +29,13 @@ public:
 	void typeCheckStatement_WHILE(Node *root);
 	void typeCheckExp(Node* root);
 	void typeCheckExp2(Node* root);
-	void typeCheckOp_SIGN_BRACKET_ON(Node *root);
+	void typeCheckExp2_SIGN_BRACKET_ON(Node *root);
 	void typeCheckExp2_IDENTIFIER(Node *root);
 	void typeCheckExp2_INTEGER(Node *root);
 	void typeCheckExp2_MINUS(Node *root);
 	void typeCheckExp2_EXCLEMATION(Node *root);
 	void typeCheckIndex(Node* root);
-	void typeCheckIndex_EMPTY(Node *root);
 	void typeCheckOp_Exp(Node* root);
-	void typeCheckOp_Exp_EMPTY(Node *root);
 	void typeCheckOp(Node* root);
 	void typeCheckOp_PLUS(Node *root);
 	void typeCheckOp_MINUS(Node *root);

@@ -4,8 +4,9 @@
 
 using namespace std;
 
-Node::Node(TType tType, RuleType ruleType) {
-	this->tType = tType;
+Node::Node(Token* token, RuleType ruleType) {
+	this->token = token;
+	this->tType = token->getType();
 	this->ruleType = ruleType;
 }
 
@@ -34,6 +35,9 @@ Node** Node::getChildren() {
 }
 Node* Node::getChildren(int position) {
 	return this->children[position];
+}
+Token* Node::getToken() {
+	return this->token;
 }
 
 void Node::setRuleType(RuleType ruleType) {

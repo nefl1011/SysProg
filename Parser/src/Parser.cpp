@@ -26,7 +26,7 @@ Node* Parser::parse() {
 }
 
 Node* Parser::prog() {
-	Node* node = new Node(currToken->getType(), PROG);
+	Node* node = new Node(currToken, PROG);
 	if(first(DECLS)) {
 		node->addChild(decls());
 	} else {
@@ -44,7 +44,7 @@ Node* Parser::prog() {
 	error();
 }
 Node* Parser::decls() {
-	Node* node = new Node(currToken->getType(), DECLS);
+	Node* node = new Node(currToken, DECLS);
 	if(first(DECL)) {
 		node->addChild(decl());
 		if(checkTType(SIGN_SEMICOLON)) {
@@ -60,7 +60,7 @@ Node* Parser::decls() {
 	error();
 }
 Node* Parser::decl() {
-	Node* node = new Node(currToken->getType(), DECL);
+	Node* node = new Node(currToken, DECL);
 	if(checkTType(TOKEN_INT)) {
 		nextToken();
 		if(first(ARRAY)) {
@@ -76,7 +76,7 @@ Node* Parser::decl() {
 	error();
 }
 Node* Parser::array() {
-	Node* node = new Node(currToken->getType(), ARRAY);
+	Node* node = new Node(currToken, ARRAY);
 	if(checkTType(SIGN_SQUARE_BRACKET_ON)) {
 		nextToken();
 		if(checkTType(INTEGER)) {
@@ -91,7 +91,7 @@ Node* Parser::array() {
 	error();
 }
 Node* Parser::statements() {
-	Node* node = new Node(currToken->getType(), STATEMENTS);
+	Node* node = new Node(currToken, STATEMENTS);
 	if(first(STATEMENT)) {
 		node->addChild(statement());
 		if(checkTType(SIGN_SEMICOLON)) {
@@ -107,7 +107,7 @@ Node* Parser::statements() {
 	error();
 }
 Node* Parser::statement() {
-	Node* node = new Node(currToken->getType(), STATEMENT);
+	Node* node = new Node(currToken, STATEMENT);
 	if(checkTType(IDENTIFIER)) {
 		nextToken();
 		if(first(INDEX)) {
@@ -203,7 +203,7 @@ Node* Parser::statement() {
 	error();
 }
 Node* Parser::exp() {
-	Node* node = new Node(currToken->getType(), EXP);
+	Node* node = new Node(currToken, EXP);
 	if(first(EXP2)) {
 		node->addChild(exp2());
 		if(first(OP_EXP)) {
@@ -216,7 +216,7 @@ Node* Parser::exp() {
 	error();
 }
 Node* Parser::exp2() {
-	Node* node = new Node(currToken->getType(), EXP2);
+	Node* node = new Node(currToken, EXP2);
 	if(checkTType(SIGN_BRACKET_ON)) {
 		nextToken();
 		if(first(EXP)) {
@@ -254,7 +254,7 @@ Node* Parser::exp2() {
 	error();
 }
 Node* Parser::index() {
-	Node* node = new Node(currToken->getType(), INDEX);
+	Node* node = new Node(currToken, INDEX);
 	if(checkTType(SIGN_SQUARE_BRACKET_ON)) {
 		nextToken();
 		if(first(EXP)) {
@@ -268,7 +268,7 @@ Node* Parser::index() {
 	error();
 }
 Node* Parser::op_exp() {
-	Node* node = new Node(currToken->getType(), OP_EXP);
+	Node* node = new Node(currToken, OP_EXP);
 	if(first(OP)) {
 		node->addChild(op());
 		if(first(EXP)) {
@@ -279,7 +279,7 @@ Node* Parser::op_exp() {
 	error();
 }
 Node* Parser::op() {
-	Node* node = new Node(currToken->getType(), OP);
+	Node* node = new Node(currToken, OP);
 	if(checkTType(SIGN_PLUS) || checkTType(SIGN_MINUS) || checkTType(SIGN_MULTIPLIER) ||
 			checkTType(SIGN_COLON) || checkTType(SIGN_SMALLER) || checkTType(SIGN_GREATER) ||
 			checkTType(SIGN_EQUAL) || checkTType(SIGN_AND) || checkTType(SIGN_SPECIAL)) {
@@ -290,7 +290,7 @@ Node* Parser::op() {
 	error();
 }
 Node* Parser::epsilon() {
-	Node* node = new Node(null, EPSILON);
+	Node* node = new Node(currToken, EPSILON);
 	node->setLeaf(true);
 	return node;
 }

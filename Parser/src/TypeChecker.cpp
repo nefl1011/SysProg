@@ -304,7 +304,7 @@ void TypeChecker::typeCheckExp2(Node* node) {
 	}
 	switch(node->getTType()) {
 		case SIGN_BRACKET_ON:
-			typeCheckOp_SIGN_BRACKET_ON(node);
+			typeCheckExp2_SIGN_BRACKET_ON(node);
 			break;
 		case IDENTIFIER:
 			typeCheckExp2_IDENTIFIER(node);
@@ -321,7 +321,7 @@ void TypeChecker::typeCheckExp2(Node* node) {
 	}
 }
 //INDEX ::= [ EXP ]
-void TypeChecker::typeCheckOp_SIGN_BRACKET_ON(Node *node) {
+void TypeChecker::typeCheckExp2_SIGN_BRACKET_ON(Node *node) {
     Node* exp = node->getChildren(0);
     analyze(exp);
     node->setNodeType(exp->getNodeType());

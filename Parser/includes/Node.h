@@ -7,6 +7,7 @@
 
 class Node {
 private:
+	Token* token;
 	TType tType;
 	RuleType ruleType;
 	NodeType nodeType;
@@ -17,11 +18,12 @@ private:
 	int childrenCounter = 0;
 
 public:
-	Node(TType tType, RuleType ruleType);
+	Node(Token* token, RuleType ruleType);
 	~Node();
 
 	void addChild(Node* child);
 
+	Token* getToken();
 	RuleType getRuleType();
 	NodeType getNodeType();
 	bool getLeaf();
