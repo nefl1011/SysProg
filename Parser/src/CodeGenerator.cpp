@@ -332,7 +332,7 @@ void CodeGenerator::generateCodeExp2_INTEGER(Node *node) {
 }
 
 //EXP2_PARENS ::= - EXP2_PARENS
-void CodeGenerator::generateCodeExp2_EXCLEMATION(Node *node) {
+void CodeGenerator::generateCodeExp2_MINUS(Node *node) {
 	Node *exp2 = node->getChildren(0);
 
 	*outText << "LC " << 0;
@@ -341,7 +341,7 @@ void CodeGenerator::generateCodeExp2_EXCLEMATION(Node *node) {
 }
 
 //EXP2_PARENS ::= ! EXP2_PARENS
-void CodeGenerator::generateCodeExp2_MINUS(Node *node) {
+void CodeGenerator::generateCodeExp2_EXCLEMATION(Node *node) {
 	Node* exp2 = node->getChildren(0);
 
 	generateCode(exp2);

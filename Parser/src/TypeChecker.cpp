@@ -112,6 +112,7 @@ void TypeChecker::typeCheckDecl(Node *node) {
 
 	if(identifier && array) {
 		if(identifier->getNodeType() != NO_TYPE) {
+			//todo error(„identifier already defined“);
 			node->setNodeType(NODE_ERROR);
 		} else if(array->getNodeType() == NODE_ERROR) {
 			node->setNodeType(NODE_ERROR);
@@ -136,6 +137,7 @@ void TypeChecker::typeCheckArray(Node* node) {
     	if(integer->getTType() == INTEGER) {
 			node->setNodeType(INT_ARRAY);
 		} else {
+			// todo error(„no valid dimension“);
 			node->setNodeType(NODE_ERROR);
 		}
     }
@@ -192,14 +194,14 @@ void TypeChecker::typeCheckStatement_IDENTIFIER(Node *node) {
     if(identifier && exp && index) {
     	if (identifier->getNodeType() == NO_TYPE) {
 			node->setNodeType(NODE_ERROR);
-			//todo error fehlt
+			//todo error(„identifier not defined“);
 		} else if (exp->getNodeType() == INT && (
 				(identifier->getNodeType() == INT && index->getNodeType() == NO_TYPE)
 				||(identifier->getNodeType() == INT_ARRAY && index->getNodeType() == INT_ARRAY))) {
 			node->setNodeType(NO_TYPE);
 
 		} else {
-			//todo error message
+			//todo error(„incompatible types“);
 			node->setNodeType(NODE_ERROR);
 		}
     }
@@ -222,13 +224,14 @@ void TypeChecker::typeCheckStatement_READ(Node *node) {
 
     if(identifier && index) {
     	if (identifier->getNodeType() == NO_TYPE) {
+    		// todo error(„identifier not defined“);
 			node->setNodeType(NODE_ERROR);
-
 		} else if (((identifier->getNodeType() == INT) && (index->getNodeType() == NO_TYPE))
 				   || ((identifier->getNodeType() == INT_ARRAY) && (index->getNodeType() == INT_ARRAY)) ) {
 			node->setNodeType(NO_TYPE);
 
 		} else {
+			// todo error(„incompatible types“);
 			node->setNodeType(NODE_ERROR);
 		}
     }
@@ -338,6 +341,7 @@ void TypeChecker::typeCheckExp2_IDENTIFIER(Node *node) {
 
     if(identifier && index) {
     	if (identifier->getNodeType() == NO_TYPE) {
+    		// todo error(„identifier not defined“);
 			node->setNodeType(NODE_ERROR);
 		} else if (identifier->getNodeType() == INT
 				   && index->getNodeType() == NO_TYPE) {
@@ -346,6 +350,7 @@ void TypeChecker::typeCheckExp2_IDENTIFIER(Node *node) {
 				   && index->getNodeType() == INT_ARRAY) {
 			node->setNodeType(INT);
 		} else {
+			// todo error(„no primitive Type“);
 			node->setNodeType(NODE_ERROR);
 		}
     }
