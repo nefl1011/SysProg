@@ -66,6 +66,8 @@ void TypeChecker::analyze(Node* node) {
         case OP:
 			typeCheckOp(node);
 			break;
+        case LEAF:
+        	break;
         default:
             cerr << "node is empty" << endl;
     }
@@ -180,9 +182,9 @@ void TypeChecker::typeCheckStatement(Node *node) {
 //STATEMENT_IDENTIFIER ::= identifier INDEX := EXP
 void TypeChecker::typeCheckStatement_IDENTIFIER(Node *node) {
 
-    Node* identifier = node->getChildren(2);
-    Node* exp = node->getChildren(1);
-    Node* index = node->getChildren(0);
+    Node* identifier = node->getChildren(0);
+    Node* exp = node->getChildren(2);
+    Node* index = node->getChildren(1);
 
     analyze(exp);
     analyze(index);
@@ -190,13 +192,14 @@ void TypeChecker::typeCheckStatement_IDENTIFIER(Node *node) {
     if(identifier && exp && index) {
     	if (identifier->getNodeType() == NO_TYPE) {
 			node->setNodeType(NODE_ERROR);
-
+			//todo error fehlt
 		} else if (exp->getNodeType() == INT && (
 				(identifier->getNodeType() == INT && index->getNodeType() == NO_TYPE)
 				||(identifier->getNodeType() == INT_ARRAY && index->getNodeType() == INT_ARRAY))) {
 			node->setNodeType(NO_TYPE);
 
 		} else {
+			//todo error message
 			node->setNodeType(NODE_ERROR);
 		}
     }

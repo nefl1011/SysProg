@@ -69,6 +69,7 @@ Node* Parser::decl() {
 			node->addChild(epsilon());
 		}
 		if(checkTType(IDENTIFIER)) {
+			node->addChild(createLeaf());
 			nextToken();
 			return node;
 		}
@@ -80,9 +81,9 @@ Node* Parser::array() {
 	if(checkTType(SIGN_SQUARE_BRACKET_ON)) {
 		nextToken();
 		if(checkTType(INTEGER)) {
+			node->addChild(createLeaf());
 			nextToken();
 			if(checkTType(SIGN_SQUARE_BRACKET_CLOSE)) {
-				node->setLeaf(true);
 				nextToken();
 				return node;
 			}
@@ -109,6 +110,7 @@ Node* Parser::statements() {
 Node* Parser::statement() {
 	Node* node = new Node(currToken, STATEMENT);
 	if(checkTType(IDENTIFIER)) {
+		node->addChild(createLeaf());
 		nextToken();
 		if(first(INDEX)) {
 			node->addChild(index());
@@ -139,6 +141,7 @@ Node* Parser::statement() {
 		if(checkTType(SIGN_BRACKET_ON)) {
 			nextToken();
 			if(checkTType(IDENTIFIER)) {
+				node->addChild(createLeaf());
 				nextToken();
 				if(first(INDEX)) {
 					node->addChild(index());
@@ -227,6 +230,7 @@ Node* Parser::exp2() {
 			}
 		}
 	} else if(checkTType(IDENTIFIER)) {
+		node->addChild(createLeaf());
 		nextToken();
 		if(first(INDEX)) {
 			node->addChild(index());
@@ -235,7 +239,7 @@ Node* Parser::exp2() {
 		}
 		return node;
 	} else if(checkTType(INTEGER)) {
-		node->setLeaf(true);
+		node->addChild(createLeaf());
 		nextToken();
 		return node;
 	} else if(checkTType(SIGN_MINUS)) {
@@ -293,6 +297,11 @@ Node* Parser::epsilon() {
 	Node* node = new Node(currToken, EPSILON);
 	node->setLeaf(true);
 	return node;
+}
+Node* Parser::createLeaf() {
+    Node* leaf = new Node(currToken, LEAF);
+    leaf->setLeaf(true);
+    return leaf;
 }
 
 

@@ -26,6 +26,8 @@ private:
 	Node* op();
 	Node* epsilon();
 
+	Node* createLeaf();
+
 	bool first(RuleType ruleType);
 	bool checkTType(TType tType);
 

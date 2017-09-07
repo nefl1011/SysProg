@@ -1,3 +1,10 @@
+int n;
+int[3] m;
+n := 3 + 4;
+n := 3*n--5;
+write(n);
+
+:*
 int testVar;
 int[5] testArray;
 
@@ -5,3 +12,4 @@ testVar := 10;
 testArray[4] := 8;
 
 if(testVar =:= testArray[4]) write(testVar) else read(testVar);
+*:

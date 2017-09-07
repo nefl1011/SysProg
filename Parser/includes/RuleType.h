@@ -15,7 +15,8 @@ enum RuleType {
 	OP_EXP,
 	OP,
 	EPSILON,
-	ERROR_RULE
+	ERROR_RULE,
+	LEAF
 };
 
 

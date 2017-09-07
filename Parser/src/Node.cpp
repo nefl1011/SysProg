@@ -136,6 +136,9 @@ char* Node::ruleTypeToString() {
 		case ERROR_RULE:
 			return "ERROR_RULE";
 			break;
+		case LEAF:
+			return "LEAF";
+			break;
 	}
 	return "";
 }
