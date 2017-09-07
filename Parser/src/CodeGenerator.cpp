@@ -88,7 +88,7 @@ void CodeGenerator::generateCodeProg(Node *root) {
 	generateCode(decls);
 	generateCode(statements);
 
-	*outText << "STP";
+	*outText << "STP" << "\n";
 }
 
 //DECLS ::= DECL ; DECLS
@@ -105,7 +105,7 @@ void CodeGenerator::generateCodeDecl(Node *node) {
 	Node* array = node->getChildren(0);
 	Node* identifier = node->getChildren(1);
 	if (identifier != 0L) {
-		*outText << " DS " << "$" << identifier->getToken()->getLexem();
+		*outText << "DS " << "$" << identifier->getToken()->getLexem();
 	}
 
 	generateCodeArray(array);
@@ -120,12 +120,12 @@ void CodeGenerator::generateCodeArray(Node* node) {
 	cout << "generate: " << node->ruleTypeToString() << endl;
 
 	if (node->getRuleType() == EPSILON) {
-		*outText << " " << 1;
+		*outText << " " << 1 << "\n";
 	}
 	else {
 		Node* array = node->getChildren(0);
 		if (array != 0L) {
-			*outText << " " << array->getToken()->getValue();
+			*outText << " " << array->getToken()->getValue() << "\n";
 		}
 	}
 }
@@ -177,11 +177,11 @@ void CodeGenerator::generateCodeStatement_IDENTIFIER(Node *node) {
 
 	generateCode(exp);
 	if (identifier) {
-		*outText << " LA " << "$" << identifier->getToken()->getLexem();
+		*outText << "LA " << "$" << identifier->getToken()->getLexem() << "\n";
 	}
 
 	generateCode(index);
-	*outText << " STR ";
+	*outText << "STR" << "\n";
 }
 
 //STATEMENT_IDENTIFIER ::= write( EXP )
@@ -189,7 +189,7 @@ void CodeGenerator::generateCodeStatement_WRITE(Node *node) {
 	Node* exp = node->getChildren(0);
 	generateCode(exp);
 
-	*outText << " PRI ";
+	*outText << "PRI" << "\n";
 }
 
 //STATEMENT_IDENTIFIER ::= read( identifier INDEX)
@@ -197,14 +197,14 @@ void CodeGenerator::generateCodeStatement_READ(Node *node) {
 	Node* identifier = node->getChildren(0);
 	Node* index = node->getChildren(1);
 
-	*outText << " REA ";
+	*outText << "REA ";
 	if (identifier) {
-		*outText << " LA " << "$" << identifier->getToken()->getLexem();
+		*outText << "LA " << "$" << identifier->getToken()->getLexem() << "\n";
 	}
 
 	generateCode(index);
 
-	*outText << " STR ";
+	*outText << "STR" << "\n";
 }
 
 //STATEMENT_IDENTIFIER ::= { STATEMENTS }
@@ -223,16 +223,16 @@ void CodeGenerator::generateCodeStatement_IF(Node *node) {
 
 	generateCode(exp);
 
-	*outText << " JIN " << "#label" << label1 << " ";
+	*outText << "JIN " << "#label" << label1  << "\n";
 
 	generateCode(statement1);
 
-	*outText << " JMP " << "#label" << label2 << " ";
-	*outText << "#label" << label1 << " NOP ";
+	*outText << "JMP " << "#label" << label2  << "\n";
+	*outText << "#label" << label1 << " NOP" << "\n";
 
 	generateCode(statement2);
 
-	*outText << "#label" << label2 << " NOP ";
+	*outText << "#label" << label2 << " NOP"  << "\n";
 }
 
 //STATEMENT_IDENTIFIER ::= while ( EXP ) STATEMENT_IDENTIFIER)
@@ -243,16 +243,16 @@ void CodeGenerator::generateCodeStatement_WHILE(Node *node) {
 	int label1 = ++labelCounter;
 	int label2 = ++labelCounter;
 
-	*outText << "#label" << label1 << " NOP ";
+	*outText << "#label" << label1 << " NOP"  << "\n";
 
 	generateCode(exp);
 
-	*outText << " JIN " << "#label" << label2 << " ";
+	*outText << "JIN " << "#label" << label2 << "\n";
 
 	generateCode(statement);
 
-	*outText << " JMP " << "#label" << label1 << " ";
-	*outText << "#label" << label2 << " NOP ";
+	*outText << "JMP " << "#label" << label1 << "\n";
+	*outText << "#label" << label2 << " NOP"  << "\n";
 }
 
 //EXP ::= EXP2_PARENS OP_EXP
@@ -267,11 +267,11 @@ void CodeGenerator::generateCodeExp(Node* node) {
 		else if (op_exp->getChildren(0)->getNodeType() == OP_GREATER_TYPE) {
 			generateCode(op_exp);
 			generateCode(exp2);
-			*outText << " LES ";
+			*outText << "LES" << "\n";
 		} else if (op_exp->getChildren(0)->getNodeType() == OP_SPECIAL_TYPE) {
 			generateCode(exp2);
 			generateCode(op_exp);
-			*outText << " NOT ";
+			*outText << "NOT" << "\n";
 		} else {
 			generateCode(exp2);
 			generateCode(op_exp);
@@ -316,18 +316,18 @@ void CodeGenerator::generateCodeExp2_IDENTIFIER(Node *node) {
 	Node* identifier = node->getChildren(0);
 
 	if (identifier) {
-		*outText << " LA " << "$" << identifier->getToken()->getLexem();
+		*outText << "LA " << "$" << identifier->getToken()->getLexem() << "\n";
 	}
 
 	generateCode(index);
 
-	*outText << " LV ";
+	*outText << "LV" << "\n";
 }
 
 //EXP2_PARENS ::= integer
 void CodeGenerator::generateCodeExp2_INTEGER(Node *node) {
 	if (node->getChildren(0)) {
-		*outText << " LC " << node->getChildren(0)->getToken()->getValue();
+		*outText << "LC " << node->getChildren(0)->getToken()->getValue() << "\n";
 	}
 }
 
@@ -335,9 +335,9 @@ void CodeGenerator::generateCodeExp2_INTEGER(Node *node) {
 void CodeGenerator::generateCodeExp2_MINUS(Node *node) {
 	Node *exp2 = node->getChildren(0);
 
-	*outText << "LC " << 0;
+	*outText << "LC " << 0 << "\n";
 	generateCode(exp2);
-	*outText << " SUB ";
+	*outText << "SUB" << "\n";
 }
 
 //EXP2_PARENS ::= ! EXP2_PARENS
@@ -345,7 +345,7 @@ void CodeGenerator::generateCodeExp2_EXCLEMATION(Node *node) {
 	Node* exp2 = node->getChildren(0);
 
 	generateCode(exp2);
-	*outText << " NOT ";
+	*outText << "NOT" << "\n";
 }
 
 //INDEX ::= [ EXP ]
@@ -353,7 +353,7 @@ void CodeGenerator::generateCodeIndex(Node* node) {
 	Node* exp = node->getChildren(0);
 
 	generateCode(exp);
-	*outText << " ADD ";
+	*outText << "ADD" << "\n";
 }
 
 //INDEX ::= e
@@ -405,39 +405,39 @@ void CodeGenerator::generateCodeOp(Node* node) {
 }
 
 void CodeGenerator::generateCodeOp_PLUS() {
-	*outText << " ADD ";
+	*outText << "ADD" << "\n";
 }
 
 void CodeGenerator::generateCodeOp_MINUS() {
-	*outText << " SUB ";
+	*outText << "SUB" << "\n";
 }
 
 void CodeGenerator::generateCodeOp_MULTIPLIER() {
-	*outText << " MUL ";
+	*outText << "MUL" << "\n";
 }
 
 void CodeGenerator::generateCodeOp_COLON() {
-	*outText << " DIV ";
+	*outText << "DIV" << "\n";
 }
 
 void CodeGenerator::generateCodeOp_SMALLER() {
-	*outText << " LES ";
+	*outText << "LES" << "\n";
 }
 
 void CodeGenerator::generateCodeOp_GREATER() {
-	*outText << "  ";
+	*outText << "  "; //todo ist das so richtig?
 }
 
 void CodeGenerator::generateCodeOp_EQUAL() {
-	*outText << " EQU ";
+	*outText << "EQU" << "\n";
 
 }
 
 void CodeGenerator::generateCodeOp_SPECIAL() {
-	*outText << " EQU ";
+	*outText << "EQU" << "\n";
 }
 
 void CodeGenerator::generateCodeOp_AND() {
-	*outText << " AND ";
+	*outText << "AND" << "\n";
 }
 
