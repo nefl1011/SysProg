@@ -312,8 +312,8 @@ void CodeGenerator::generateCodeExp2_SIGN_BRACKET_ON(Node *node) {
 
 //EXP2_PARENS ::= identifier INDEX
 void CodeGenerator::generateCodeExp2_IDENTIFIER(Node *node) {
-	Node* index = node->getChildren(0);
-	Node* identifier = node->getChildren(1);
+	Node* index = node->getChildren(1);
+	Node* identifier = node->getChildren(0);
 
 	if (identifier) {
 		*outText << " LA " << "$" << identifier->getToken()->getLexem();
