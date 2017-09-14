@@ -24,7 +24,7 @@ private:
 	Node* exp2();
 	Node* op_exp();
 	Node* op();
-	Node* epsilon();
+	Node* epsilon(RuleType epsilonRuleType);
 
 	Node* createLeaf();
 

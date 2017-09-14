@@ -30,13 +30,13 @@ Node* Parser::prog() {
 	if(first(DECLS)) {
 		node->addChild(decls());
 	} else {
-		node->addChild(epsilon());
+		node->addChild(epsilon(EPSILON_DECLS));
 	}
 	if(first(STATEMENTS)) {
 		node->addChild(statements());
 		return node;
 	} else {
-		node->addChild(epsilon());
+		node->addChild(epsilon(EPSILON_STATEMENTS));
 	}
 	if(currToken == NULL) {
 		return node;
@@ -52,7 +52,7 @@ Node* Parser::decls() {
 			if(first(DECLS)) {
 				node->addChild(decls());
 			} else {
-				node->addChild(epsilon());
+				node->addChild(epsilon(EPSILON_DECLS));
 			}
 			return node;
 		}
@@ -66,7 +66,7 @@ Node* Parser::decl() {
 		if(first(ARRAY)) {
 			node->addChild(array());
 		} else {
-			node->addChild(epsilon());
+			node->addChild(epsilon(EPSILON_ARRAY));
 		}
 		if(checkTType(IDENTIFIER)) {
 			node->addChild(createLeaf());
@@ -100,7 +100,7 @@ Node* Parser::statements() {
 			if(first(STATEMENTS)) {
 				node->addChild(statements());
 			} else {
-				node->addChild(epsilon());
+				node->addChild(epsilon(EPSILON_STATEMENTS));
 			}
 			return node;
 		}
@@ -115,7 +115,7 @@ Node* Parser::statement() {
 		if(first(INDEX)) {
 			node->addChild(index());
 		} else {
-			node->addChild(epsilon());
+			node->addChild(epsilon(EPSILON_INDEX));
 		}
 		if(checkTType(SIGN_COLON_EQUAL)) {
 			nextToken();
@@ -146,7 +146,7 @@ Node* Parser::statement() {
 				if(first(INDEX)) {
 					node->addChild(index());
 				} else {
-					node->addChild(epsilon());
+					node->addChild(epsilon(EPSILON_INDEX));
 				}
 				if(checkTType(SIGN_BRACKET_CLOSE)) {
 					nextToken();
@@ -159,7 +159,7 @@ Node* Parser::statement() {
 		if(first(STATEMENTS)) {
 			node->addChild(statements());
 		} else {
-			node->addChild(epsilon());
+			node->addChild(epsilon(EPSILON_STATEMENTS));
 		}
 		if(checkTType(SIGN_CURLY_BRACKET_CLOSE)) {
 			return node;
@@ -212,7 +212,7 @@ Node* Parser::exp() {
 		if(first(OP_EXP)) {
 			node->addChild(op_exp());
 		} else {
-			node->addChild(epsilon());
+			node->addChild(epsilon(EPSILON_OP_EXP));
 		}
 		return node;
 	}
@@ -235,7 +235,7 @@ Node* Parser::exp2() {
 		if(first(INDEX)) {
 			node->addChild(index());
 		} else {
-			node->addChild(epsilon());
+			node->addChild(epsilon(EPSILON_INDEX));
 		}
 		return node;
 	} else if(checkTType(INTEGER)) {
@@ -293,8 +293,8 @@ Node* Parser::op() {
 	}
 	error();
 }
-Node* Parser::epsilon() {
-	Node* node = new Node(currToken, EPSILON);
+Node* Parser::epsilon(RuleType epsilonRuleType) {
+	Node* node = new Node(currToken, epsilonRuleType);
 	node->setLeaf(true);
 	return node;
 }
@@ -363,9 +363,6 @@ bool Parser::first(RuleType ruleType) {
 					currToken->getType() == SIGN_AND ||
 					currToken->getType() == SIGN_SPECIAL;
 			break;
-		case EPSILON:
-
-			break;
 	}
 }
 bool Parser::checkTType(TType tType) {
@@ -379,12 +376,13 @@ void Parser::error() {
 				<< currToken->getColumn() << " \t " << tTypeToString(currToken->getType())
 				<< " \t -> expected Token: " << tTypeToString(expectedTType) << "\n" << endl;
 	errStream << "stop" << endl;
-	/*
+
+	//Console Output
 	cout << "unexpected Token " << "\t Line: " << currToken->getLine() << " \t Column: "
 			<< currToken->getColumn() << " \t " << tTypeToString(currToken->getType())
 			<< " \t -> expected Token: " << tTypeToString(expectedTType) << "\n" << endl;
 	cout << "stop" << endl;
-	*/
+
 	exit(0);
 }
 

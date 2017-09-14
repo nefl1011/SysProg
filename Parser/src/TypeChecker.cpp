@@ -36,7 +36,11 @@ void TypeChecker::analyze(Node* node) {
         case DECLS:
             typeCheckDecls(node);
             break;
-        case EPSILON:
+        case EPSILON_ARRAY:
+		case EPSILON_DECLS:
+		case EPSILON_INDEX:
+		case EPSILON_OP_EXP:
+		case EPSILON_STATEMENTS:
         	typeCheckEmpty(node);
         	break;
         case DECL:

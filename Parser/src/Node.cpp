@@ -130,8 +130,20 @@ char* Node::ruleTypeToString() {
 		case OP:
 			return "OP";
 			break;
-		case EPSILON:
-			return "EPSILON";
+		case EPSILON_DECLS:
+			return "EPSILON_DECLS";
+			break;
+		case EPSILON_ARRAY:
+			return "EPSILON_ARRAY";
+			break;
+		case EPSILON_STATEMENTS:
+			return "EPSILON_STATEMENTS";
+			break;
+		case EPSILON_INDEX:
+			return "EPSILON_INDEX";
+			break;
+		case EPSILON_OP_EXP:
+			return "EPSILON_OP_EXP";
 			break;
 		case ERROR_RULE:
 			return "ERROR_RULE";

@@ -39,7 +39,11 @@ void CodeGenerator::generateCode(Node* node) {
 	case DECLS:
 		generateCodeDecls(node);
 		break;
-	case EPSILON:
+	case EPSILON_ARRAY:
+	case EPSILON_DECLS:
+	case EPSILON_INDEX:
+	case EPSILON_OP_EXP:
+	case EPSILON_STATEMENTS:
 		generateCodeEmpty();
 		break;
 	case DECL:
@@ -119,7 +123,11 @@ void CodeGenerator::generateCodeArray(Node* node) {
 
 	cout << "generate: " << node->ruleTypeToString() << endl;
 
-	if (node->getRuleType() == EPSILON) {
+	if (node->getRuleType() == EPSILON_ARRAY ||
+			node->getRuleType() == EPSILON_DECLS ||
+			node->getRuleType() == EPSILON_INDEX ||
+			node->getRuleType() == EPSILON_OP_EXP ||
+			node->getRuleType() == EPSILON_STATEMENTS) {
 		*outText << " " << 1 << "\n";
 	}
 	else {

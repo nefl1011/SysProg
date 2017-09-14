@@ -55,7 +55,10 @@ int main(int argc, char **argv) {
 
 		cout << "Checking type information...\n" << endl;
 		parseTree->typeCheck();
+		cout << "\n------------------------------------------------- ParseTree ---" << endl;
 		printParseTree(parseTree->getRootNode());
+		cout << "---------------------------------------------------------------\n" << endl;
+
 		cout << "Generating code...\n" << endl;
 		parseTree->makeCode();
 
