@@ -39,12 +39,16 @@ void CodeGenerator::generateCode(Node* node) {
 	case DECLS:
 		generateCodeDecls(node);
 		break;
-	case EPSILON_ARRAY:
 	case EPSILON_DECLS:
 	case EPSILON_INDEX:
 	case EPSILON_OP_EXP:
-	case EPSILON_STATEMENTS:
 		generateCodeEmpty();
+		break;
+	case EPSILON_STATEMENTS:
+		generateCodeEmptyStatements();
+		break;
+	case EPSILON_ARRAY:
+		generateCodeEmptyArray();
 		break;
 	case DECL:
 		generateCodeDecl(node);
@@ -82,6 +86,16 @@ void CodeGenerator::generateCode(Node* node) {
 //PROG ::= DECLS STATEMENTS
 void CodeGenerator::generateCodeEmpty() {
 
+}
+
+//STATEMENTS ::= e
+void CodeGenerator::generateCodeEmptyStatements() {
+	*outText << "NOP " << "\n";;
+}
+
+//ARRAY ::= e
+void CodeGenerator::generateCodeEmptyArray() {
+	*outText << " " << 1;
 }
 
 //PROG ::= DECLS STATEMENTS

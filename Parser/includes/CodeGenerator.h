@@ -23,6 +23,8 @@ private:
 	void generateCodeProg(Node* root);
 	void generateCodeDecls(Node* root);
 	void generateCodeEmpty();
+	void generateCodeEmptyStatements();
+	void generateCodeEmptyArray();
 	void generateCodeDecl(Node* root);
 	void generateCodeArray(Node* root);
 	void generateCodeStatements(Node* root);
