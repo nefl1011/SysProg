@@ -15,7 +15,7 @@ void clearOutputFile(const char *outFilename) {
 
 int main(int argc, char **argv) {
 
-	char* inFile = (char*) "test.txt";
+	char* inFile = (char*) "Tests/Bible.min.txt";
     char* outFilename = (char*) "out.txt";
 
     try {

@@ -36,7 +36,7 @@ void printParseTree(Node* node) {
 }
 
 int main(int argc, char **argv) {
-	char* inFile = (char*) "ParserTestFile.txt";
+	char* inFile = (char*) "Tests/Programm.txt";
 	char* outFile = (char*) "out.txt";
 	char* errorOutFile = (char*) "Parser-error.txt";
 	clearOutputFile(outFile);

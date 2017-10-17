@@ -1,0 +1,12 @@
+int a;
+a := 35;
+int b := 150;
+int c := a * b;
+
+
+int true := 1;
+while(true) {
+if(a = 35 && b < 200 && c > 200) {
+a := a + 1;
+}
+}
