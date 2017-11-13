@@ -7,5 +7,7 @@ TokenNode::TokenNode(Token* data, TokenNode* next, TokenNode* previous) {
 }
 
 TokenNode::~TokenNode() {
-	// TODO Auto-generated destructor stub
+	delete data;
+	delete next;
+	delete previous;
 }

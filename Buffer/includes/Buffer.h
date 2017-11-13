@@ -20,8 +20,6 @@ class Buffer {
 	unsigned int bufferSize;
 	char* buffer1;
 	char* buffer2;
-	char* pointerBuffer1;
-	char* pointerBuffer2;
 	char* current;
 	char* next;
 

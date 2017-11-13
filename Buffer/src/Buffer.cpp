@@ -19,8 +19,6 @@ Buffer::Buffer(char* path) {
 	posix_memalign( (void**) &buffer2, bufferSize, bufferSize );
 
 	//Zeiger setzen
-	pointerBuffer1 = &buffer1[0];
-	pointerBuffer2 = &buffer2[0];
 	current = &buffer1[0];
 	next = &buffer1[0];
 
@@ -30,7 +28,7 @@ Buffer::Buffer(char* path) {
 		cerr << "Fehler beim Öffnen der Datei!" << endl;
 	} else {
 		//Buffer1 füllen
-		read(file, pointerBuffer1, bufferSize);
+		read(file, buffer1, bufferSize);
 
 		if (*next == '\0') {
 			cerr << "Document is empty!" << endl;
@@ -46,6 +44,9 @@ Buffer::Buffer(char* path) {
 Buffer::~Buffer() {
 	delete buffer1;
 	delete buffer2;
+	delete current;
+	delete filePath;
+	delete next;
 }
 
 char Buffer::getChar() {
@@ -53,33 +54,33 @@ char Buffer::getChar() {
 	current = next;
 
 	//Wenn das letzte Zeichen von Buffer1 erreicht ist:
-	if(current == pointerBuffer1 + bufferSize - 1) {
+	if(current == buffer1 + bufferSize - 1) {
 
 		if(ungetJump == 1) {
-			next = pointerBuffer2;
+			next = buffer2;
 			ungetJump = 0;
 			return *current;
 		}
 
 		//Buffer2 füllen
-		read(file, pointerBuffer2, bufferSize);
+		read(file, buffer2, bufferSize);
 
-		next = pointerBuffer2;
+		next = buffer2;
 		return *current;
 	}
 	//Wenn das letzte Zeichen von Buffer2 erreicht ist:
-	if(current == pointerBuffer2 + bufferSize - 1) {
+	if(current == buffer2 + bufferSize - 1) {
 
 		if(ungetJump == 1) {
-			next = pointerBuffer1;
+			next = buffer1;
 			ungetJump = 0;
 			return *current;
 		}
 
 		//Buffer1 füllen
-		read(file, pointerBuffer1, bufferSize);
+		read(file, buffer1, bufferSize);
 
-		next = pointerBuffer1;
+		next = buffer1;
 		return *(current);
 	}
 	//Wenn sich der Zeiger im Buffer1 oder Buffer2 befindet
@@ -91,13 +92,7 @@ char Buffer::getChar() {
 	   *current == '\a') {
 		return ' ';
 	}
-//	char c = *current;
-//	if(!(c == '\n' || ((int)c >= 47 && (int)c <= 62) ||
-//		((int)c >= 40 && (int)c <= 43) || ((int)c >= 65 && (int)c <= 91) ||
-//		((int)c >= 97 && (int)c <= 123) || (int)c == 93 || (int)c == 125 ||
-//		(int)c == 33 || (int)c == 38  || c == '-' || c == ' ')) {
-//		return ' ';
-//	}
+
 	//Setzt fileEnd auf TRUE, wenn es kein Zeichen mehr gibt
 	if(*next == '\0') {
 		fileEnd = 1;
@@ -107,12 +102,12 @@ char Buffer::getChar() {
 }
 void Buffer::ungetChar() {
 
-	if(current == pointerBuffer1 + bufferSize - 1) {
-		next = pointerBuffer1 + bufferSize - 1;
+	if(current == buffer1 + bufferSize - 1) {
+		next = buffer1 + bufferSize - 1;
 		ungetJump = 1;
 	}
-	else if(current == pointerBuffer2 + bufferSize - 1) {
-		next = pointerBuffer2 + bufferSize - 1;
+	else if(current == buffer2 + bufferSize - 1) {
+		next = buffer2 + bufferSize - 1;
 		ungetJump = 1;
 	}
 	else {

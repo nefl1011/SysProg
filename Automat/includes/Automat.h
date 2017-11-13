@@ -53,19 +53,19 @@ public:
 
 	TType proofCommentEndBeginState(char input);
 
-	TType proofCommentEndState(char input);
+	TType proofCommentEndState();
 
 	TType proofEqualColonState(char input);
 
-	TType proofSpecialState(char input);
+	TType proofSpecialState();
 
-	TType proofColonEqualState(char input);
+	TType proofColonEqualState();
 
 	TType proofSpaceState(char input);
 
 	TType proofAndState(char input);
 
-	TType proofAndAndState(char input);
+	TType proofAndAndState();
 
 	TType getSign(char input);
 

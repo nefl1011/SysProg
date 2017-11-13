@@ -24,13 +24,13 @@ using namespace std;
 			case COLON_STATE			: return proofColonState(input);
 			case COMMENT_STATE			: return proofCommentState(input);
 			case COMMENT_END_BEGIN_STATE: return proofCommentEndBeginState(input);
-			case COMMENT_END_STATE		: return proofCommentEndState(input);
+			case COMMENT_END_STATE		: return proofCommentEndState();
 			case EQUAL_COLON_STATE		: return proofEqualColonState(input);
-			case SPECIAL_STATE			: return proofSpecialState(input);
-			case COLON_EQUAL_STATE	 	: return proofColonEqualState(input);
+			case SPECIAL_STATE			: return proofSpecialState();
+			case COLON_EQUAL_STATE	 	: return proofColonEqualState();
 			case SPACE_STATE 			: return proofSpaceState(input);
 			case AND_STATE			 	: return proofAndState(input);
-			case AND_AND_STATE 			: return proofAndAndState(input);
+			case AND_AND_STATE 			: return proofAndAndState();
 			default: return ERROR;
 		}
 	}
@@ -190,7 +190,7 @@ using namespace std;
 		}
 	}
 
-	TType Automat::proofCommentEndState(char input) {
+	TType Automat::proofCommentEndState() {
 		this->state = START_STATE;
 		return COMMENT;
 	}
@@ -206,12 +206,12 @@ using namespace std;
 		}
 	}
 
-	TType Automat::proofSpecialState(char input) {
+	TType Automat::proofSpecialState() {
 		this->state = START_STATE;
 		return SIGN_SPECIAL;
 	}
 
-	TType Automat::proofColonEqualState(char input) {
+	TType Automat::proofColonEqualState() {
 		this->state = START_STATE;
 		return SIGN_COLON_EQUAL;
 	}
@@ -237,7 +237,7 @@ using namespace std;
 		}
 	}
 
-	TType Automat::proofAndAndState(char input) {
+	TType Automat::proofAndAndState() {
 		this->state = START_STATE;
 		return SIGN_AND;
 	}
