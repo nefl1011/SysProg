@@ -13,7 +13,7 @@ HashMap::HashMap(int size) {
 }
 
 HashMap::~HashMap() {
-	delete table;
+	table->~TokenLinkedList();
 }
 
 

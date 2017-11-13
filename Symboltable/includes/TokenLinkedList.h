@@ -11,6 +11,8 @@ private:
 	int size;
 	TokenNode* first;
 	TokenNode* last;
+	TokenNode* getTokenNode(int index);
+
 public:
 	TokenLinkedList();
 	virtual ~TokenLinkedList();

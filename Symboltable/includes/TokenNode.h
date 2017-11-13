@@ -8,6 +8,7 @@ public:
 	Token* data;
 	TokenNode* next;
 	TokenNode* previous;
+	int index;
 
 	TokenNode(Token* data, TokenNode* next, TokenNode* previous);
 	virtual ~TokenNode();

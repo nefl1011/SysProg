@@ -11,21 +11,23 @@ TokenLinkedList::TokenLinkedList() {
 }
 
 TokenLinkedList::~TokenLinkedList() {
-	delete first;
-	delete last;
+	for (int i = 0; i < getSize(); i++) {
+		getTokenNode(i)->~TokenNode();
+	}
 }
 
 bool TokenLinkedList::addLast(Token* l) {
 
 	TokenNode* oldlast = last;
-	last = new TokenNode(l, (TokenNode*) 0, oldlast);	//neues Last-Element wird erstellt
+	last = new TokenNode(l, (TokenNode*) 0, oldlast);//neues Last-Element wird erstellt
 
 	//wenn Liste vor Aufruf der Methode größer als 0 war, war ein altes "last"-Element vorhanden.
 	//Oldlast ist somit != Nullpointer und Oldlast's next Attribut muss somit umgebogen werden auf
 	//unser neues "last"-Element
 	if (oldlast != 0) {
 		oldlast->next = last;
-	} else {	//die TokenLinkedList war leer vor Aufrud der Methode
+		last->index += 1;
+	} else {	//die TokenLinkedList war leer vor Aufruf der Methode
 		first = last;
 	}
 	size++;
@@ -33,12 +35,12 @@ bool TokenLinkedList::addLast(Token* l) {
 }
 Token* TokenLinkedList::getToken(int index) {
 
-	if(first == 0)
+	if (first == 0)
 		return 0;
 
 	TokenNode* runner = first;
 
-	while (index>0) {
+	while (index > 0) {
 		runner = runner->next;
 		index--;
 	}
@@ -48,4 +50,17 @@ Token* TokenLinkedList::getToken(int index) {
 
 int TokenLinkedList::getSize() {
 	return size;
+}
+TokenNode* TokenLinkedList::getTokenNode(int index) {
+	TokenNode* result = first;
+	if (!(index > getSize() || index < 0)) {
+		for (int i = 0; i < getSize(); i++) {
+			if (i != index) {
+				result = result->next;
+			} else {
+				break;
+			}
+		}
+	}
+	return result;
 }
