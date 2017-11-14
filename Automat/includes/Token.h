@@ -53,7 +53,7 @@ private:
 	int line;
 	int column;
 	char* lexem;
-	int value;
+	long value;
 
 public:
 	Token(TType type, char* lexem, int line, int column);
