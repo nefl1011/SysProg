@@ -26,7 +26,8 @@ Node* Parser::parse() {
 }
 
 Node* Parser::prog() {
-	Node* node = new Node(currToken, PROG);
+	Node* node;
+	node = new Node(currToken, PROG);
 	if(first(DECLS)) {
 		node->addChild(decls());
 	} else {
@@ -162,6 +163,7 @@ Node* Parser::statement() {
 			node->addChild(epsilon(EPSILON_STATEMENTS));
 		}
 		if(checkTType(SIGN_CURLY_BRACKET_CLOSE)) {
+			nextToken();
 			return node;
 		}
 
@@ -372,14 +374,14 @@ bool Parser::checkTType(TType tType) {
 
 void Parser::error() {
 	ofstream errStream(errorOutFile, std::ios_base::app);
-	errStream << "unexpected Token " << "\t Line: " << currToken->getLine() << " \t Column: "
-				<< currToken->getColumn() << " \t " << tTypeToString(currToken->getType())
+	errStream << "unexpected Token " << "\t Line: " << currToken->getLine() + 1 << " \t Column: "
+				<< currToken->getColumn() + 1 << " \t " << tTypeToString(currToken->getType())
 				<< " \t -> expected Token: " << tTypeToString(expectedTType) << "\n" << endl;
 	errStream << "stop" << endl;
 
 	//Console Output
-	cout << "unexpected Token " << "\t Line: " << currToken->getLine() << " \t Column: "
-			<< currToken->getColumn() << " \t " << tTypeToString(currToken->getType())
+	cout << "unexpected Token " << "\t Line: " << currToken->getLine() + 1 << " \t Column: "
+			<< currToken->getColumn() + 1 << " \t " << tTypeToString(currToken->getType())
 			<< " \t -> expected Token: " << tTypeToString(expectedTType) << "\n" << endl;
 	cout << "stop" << endl;
 

@@ -1,3 +1,11 @@
-Token Integer
-Line: 1	 Column: 1	 Value: 123456789
-
+DS $n 1
+LC 3
+LC 4
+ADD
+LA $n
+STR
+LA $n
+LV
+PRI
+NOP 
+STP

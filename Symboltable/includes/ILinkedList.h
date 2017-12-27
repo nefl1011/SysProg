@@ -12,7 +12,7 @@ public:
 	// nach Tutorial unter: http://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm
 	// pure virtual functions providing interface framework.
 
-	   virtual bool addLast (Token* l) = 0;
+	   virtual Token* addLast (Token* l) = 0;
 	   virtual Token* getToken (int index) = 0;
 	   virtual int getSize () = 0;
 };

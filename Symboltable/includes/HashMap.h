@@ -14,10 +14,12 @@ public:
 	HashMap(int size);
 	~HashMap();
 
-	bool insertToken(Token* t);
+	Token* insertToken(Token* t);
 	int hashcode(char *lexem, int length);
 
 	TType getTokenType(char* lexem);
+
+	Token* getToken(char* lexem);
 
 	 /* Gibt die Länge eines Wortes zurück
 	 */

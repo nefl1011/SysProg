@@ -3,6 +3,9 @@
 
 #include <cstring>
 #include <iostream>
+
+#include "../../Parser/includes/NodeType.h"
+
 using namespace std;
 
 enum TType {
@@ -54,6 +57,7 @@ private:
 	int column;
 	char* lexem;
 	long value;
+	NodeType nodeType;
 
 public:
 	Token(TType type, char* lexem, int line, int column);
@@ -64,7 +68,8 @@ public:
 	int getLine();
 	int getColumn();
 	int getValue();
-
+	NodeType getNodeType();
+	void setNodeType(NodeType aNodeType);
 };
 
 

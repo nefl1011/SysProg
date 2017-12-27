@@ -17,7 +17,7 @@ public:
 	TokenLinkedList();
 	virtual ~TokenLinkedList();
 
-	bool addLast(Token* l);
+	Token* addLast(Token* l);
 	Token* getToken(int index);
 	int getSize();
 };

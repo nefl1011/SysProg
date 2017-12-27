@@ -27,6 +27,7 @@ public:
 
 	Token* nextToken();
 	bool hasNextToken();
+	Symboltable* getSymboltable();
 };
 
 #endif /* SCANNER_H_ */

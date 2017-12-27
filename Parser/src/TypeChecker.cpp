@@ -3,11 +3,13 @@
 
 #include "../includes/Node.h"
 #include "../includes/TypeChecker.h"
+#include <cstdlib>
 
 using namespace std;
 
-TypeChecker::TypeChecker(char* errorOutFile) {
+TypeChecker::TypeChecker(char* errorOutFile, Symboltable* aSymboltable) {
 	this->errorOutFile = errorOutFile;
+	this->symboltable = aSymboltable;
 
 	ofstream errStream(errorOutFile, std::ios_base::app);
 	errStream << "type checking ...\n" << endl;
@@ -115,9 +117,13 @@ void TypeChecker::typeCheckDecl(Node *node) {
 	analyze(array);
 
 	if(identifier && array) {
-		if(identifier->getNodeType() != NO_TYPE) {
+		if (getNodeTypeSymTable(identifier) != NO_TYPE) {
+//		if(identifier->getNodeType() != NO_TYPE) {
+
 			//todo error(„identifier already defined“);
+
 			node->setNodeType(NODE_ERROR);
+			error("identifier already defined", identifier);
 		} else if(array->getNodeType() == NODE_ERROR) {
 			node->setNodeType(NODE_ERROR);
 
@@ -126,9 +132,13 @@ void TypeChecker::typeCheckDecl(Node *node) {
 
 			if (array->getNodeType() == INT_ARRAY) {
 				identifier->setNodeType(INT_ARRAY);
+				store(identifier, INT_ARRAY);
 			} else {
 				identifier->setNodeType(INT);
+				store(identifier, INT);
 			}
+			cout << "Blabla: " << endl;
+			getNodeTypeSymTable(identifier);
 		}
 	}
 }
@@ -143,6 +153,8 @@ void TypeChecker::typeCheckArray(Node* node) {
 		} else {
 			// todo error(„no valid dimension“);
 			node->setNodeType(NODE_ERROR);
+			error("no valid dimension", integer);
+			exit(1);
 		}
     }
 }
@@ -192,21 +204,31 @@ void TypeChecker::typeCheckStatement_IDENTIFIER(Node *node) {
     Node* exp = node->getChildren(2);
     Node* index = node->getChildren(1);
 
+    Token* test = this->symboltable->getToken(identifier->getToken()->getLexem());
+    cout <<test<<endl;
+    identifier->setToken(test);
+
     analyze(exp);
     analyze(index);
 
     if(identifier && exp && index) {
-    	if (identifier->getNodeType() == NO_TYPE) {
+    	if (getNodeTypeSymTable(identifier) == NO_TYPE) {
+//    	if (identifier->getNodeType() == NO_TYPE) {
 			node->setNodeType(NODE_ERROR);
 			//todo error(„identifier not defined“);
+			error("identifier not defined", identifier);
+//		} else if (exp->getNodeType() == INT && (
+//				(identifier->getNodeType() == INT && index->getNodeType() == NO_TYPE)
+//				||(identifier->getNodeType() == INT_ARRAY && index->getNodeType() == INT_ARRAY))) {
 		} else if (exp->getNodeType() == INT && (
-				(identifier->getNodeType() == INT && index->getNodeType() == NO_TYPE)
-				||(identifier->getNodeType() == INT_ARRAY && index->getNodeType() == INT_ARRAY))) {
+				(getNodeTypeSymTable(identifier) == INT && index->getNodeType() == NO_TYPE)
+				||(getNodeTypeSymTable(identifier) == INT_ARRAY && index->getNodeType() == INT_ARRAY))) {
 			node->setNodeType(NO_TYPE);
 
 		} else {
 			//todo error(„incompatible types“);
 			node->setNodeType(NODE_ERROR);
+			error("incompatible types", node);
 		}
     }
 
@@ -227,16 +249,23 @@ void TypeChecker::typeCheckStatement_READ(Node *node) {
     analyze(index);
 
     if(identifier && index) {
-    	if (identifier->getNodeType() == NO_TYPE) {
+    	if (getNodeTypeSymTable(identifier) == NO_TYPE) {
+//    	if (identifier->getNodeType() == NO_TYPE) {
     		// todo error(„identifier not defined“);
 			node->setNodeType(NODE_ERROR);
-		} else if (((identifier->getNodeType() == INT) && (index->getNodeType() == NO_TYPE))
-				   || ((identifier->getNodeType() == INT_ARRAY) && (index->getNodeType() == INT_ARRAY)) ) {
+
+			error("identifier not defined", identifier);
+//		} else if (((identifier->getNodeType() == INT) && (index->getNodeType() == NO_TYPE))
+//				   || ((identifier->getNodeType() == INT_ARRAY) && (index->getNodeType() == INT_ARRAY)) ) {
+		} else if (((getNodeTypeSymTable(identifier) == INT) && (index->getNodeType() == NO_TYPE))
+				   || ((getNodeTypeSymTable(identifier) == INT_ARRAY) && (index->getNodeType() == INT_ARRAY)) ) {
 			node->setNodeType(NO_TYPE);
 
 		} else {
 			// todo error(„incompatible types“);
 			node->setNodeType(NODE_ERROR);
+
+			error("incompatible types", node);
 		}
     }
 
@@ -344,18 +373,25 @@ void TypeChecker::typeCheckExp2_IDENTIFIER(Node *node) {
     analyze(index);
 
     if(identifier && index) {
-    	if (identifier->getNodeType() == NO_TYPE) {
+    	if (getNodeTypeSymTable(identifier) == NO_TYPE) {
+//    	if (identifier->getNodeType() == NO_TYPE) {
     		// todo error(„identifier not defined“);
 			node->setNodeType(NODE_ERROR);
-		} else if (identifier->getNodeType() == INT
+			error("identifier not defined", identifier);
+//		} else if (identifier->getNodeType() == INT
+//				   && index->getNodeType() == NO_TYPE) {
+		} else if (getNodeTypeSymTable(identifier) == INT
 				   && index->getNodeType() == NO_TYPE) {
-			node->setNodeType(identifier->getNodeType());
-		} else if (identifier->getNodeType() == INT_ARRAY
+			node->setNodeType(getNodeTypeSymTable(identifier));
+//		} else if (identifier->getNodeType() == INT_ARRAY
+//				   && index->getNodeType() == INT_ARRAY) {
+		} else if (getNodeTypeSymTable(identifier) == INT_ARRAY
 				   && index->getNodeType() == INT_ARRAY) {
 			node->setNodeType(INT);
 		} else {
 			// todo error(„no primitive Type“);
 			node->setNodeType(NODE_ERROR);
+			error("no primitive Type", node);
 		}
     }
 
@@ -482,4 +518,35 @@ void TypeChecker::typeCheckIndex(Node* node) {
 			node->setNodeType(INT_ARRAY);
 		}
     }
+}
+
+void TypeChecker::error(const char* errorString, Node* node) {
+//	Token* token = node->getToken();
+//	ofstream errStream(errorOutFile, std::ios_base::app);
+//	errStream << errorString << "\t Line: " << token->getLine() + 1 << " \t Column: "
+//			<< token->getColumn() + 1 << endl;
+//	errStream << "stop" << endl;
+//
+//	//Console Output
+//	cout << errorString << "\t Line: " << token->getLine() + 1 << " \t Column: "
+//			<< token->getColumn() + 1 << endl;
+//	cout << "stop" << endl;
+
+	//exit(1);
+}
+
+void TypeChecker::store(Node* aNode, NodeType aNodeType) {
+	if (this->symboltable->getToken(aNode->getToken()->getLexem()) != 0L) {
+		this->symboltable->getToken(aNode->getToken()->getLexem())->setNodeType(aNodeType);
+		cout << "Store" << endl;
+		cout << "Lexem: " << this->symboltable->getToken(aNode->getToken()->getLexem())->getLexem() << endl;
+		cout << "NodeType: " << this->symboltable->getToken(aNode->getToken()->getLexem())->getNodeType() << endl;
+		cout << "Token: " << aNode->getToken() << endl;
+	}
+}
+
+NodeType TypeChecker::getNodeTypeSymTable(Node* aNode) {
+	cout << "Lexem: " << this->symboltable->getToken(aNode->getToken()->getLexem())->getLexem() << endl;
+	cout << "NodeType: " << this->symboltable->getToken(aNode->getToken()->getLexem())->getNodeType() << endl;
+	return this->symboltable->getToken(aNode->getToken()->getLexem())->getNodeType();
 }

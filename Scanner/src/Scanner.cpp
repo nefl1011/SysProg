@@ -151,7 +151,7 @@ Token* Scanner::nextToken() {
 		//bilde Token
 		token = new Token(currTType, string, line, lexemStartCol);
 		if(currTType == IDENTIFIER) {
-			symboltable->insertToken(token);
+			token = symboltable->insertToken(token);
 		}
 
 		//resete lexem
@@ -169,4 +169,8 @@ Token* Scanner::nextToken() {
 
 bool Scanner::hasNextToken() {
 	return buffer->hasNext();
+}
+
+Symboltable* Scanner::getSymboltable() {
+	return this->symboltable;
 }

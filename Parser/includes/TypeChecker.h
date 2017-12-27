@@ -2,12 +2,14 @@
 #define TYPECHECKER_H_
 
 #include "../includes/Node.h"
+#include "../../Symboltable/includes/Symboltable.h"
 
 class TypeChecker {
 private:
 	char* errorOutFile;
+	Symboltable* symboltable;
 public:
-	TypeChecker(char* errorOutFile);
+	TypeChecker(char* errorOutFile, Symboltable* aSymboltable);
 	~TypeChecker();
 
 	Node* typeCheck(Node* rootNode);
@@ -46,6 +48,9 @@ public:
 	void typeCheckOp_EQUAL(Node *root);
 	void typeCheckOp_SPECIAL(Node *root);
 	void typeCheckOp_AND(Node *root);
+	void error(const char* errorString, Node* node);
+	void store(Node* aNode, NodeType aNodeType);
+	NodeType getNodeTypeSymTable(Node* aNode);
 };
 
 #endif /* TYPECHECKER_H_ */

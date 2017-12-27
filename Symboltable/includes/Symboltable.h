@@ -19,9 +19,11 @@ public:
 
 	void initSymbols();
 
-	bool insertToken(Token* t);
+	Token* insertToken(Token* t);
 
 	TType getTokenType(char* lexem);
+
+	Token* getToken(char* lexem);
 
 };
 

@@ -39,6 +39,8 @@ public:
 	char* tTypeToString();
 	char* ruleTypeToString();
 	char* nodeTypeToString();
+
+	void setToken(Token* aToken);
 };
 
 #endif /* NODE_H_ */

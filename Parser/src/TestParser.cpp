@@ -36,7 +36,13 @@ void printParseTree(Node* node) {
 }
 
 int main(int argc, char **argv) {
-	char* inFile = (char*) "Tests/Programm.txt";
+//	if (argc != 3) {
+//		cerr << "usage:" << endl << "parser <inputfile> <outputfile>" << endl;
+//	}
+//
+//	char* inFile = argv[1];
+//	char* outFile = argv[2];
+	char* inFile = (char*) "ParserTestFile.txt";
 	char* outFile = (char*) "out.txt";
 	char* errorOutFile = (char*) "Parser-error.txt";
 	clearOutputFile(outFile);
@@ -49,15 +55,15 @@ int main(int argc, char **argv) {
 
 		cout << "Parsing...\n" << endl;
 		parseTree->parse();
-		cout << "------------------------------------------------- ParseTree ---" << endl;
-		printParseTree(parseTree->getRootNode());
-		cout << "---------------------------------------------------------------\n" << endl;
+//		cout << "------------------------------------------------- ParseTree ---" << endl;
+//		printParseTree(parseTree->getRootNode());
+//		cout << "---------------------------------------------------------------\n" << endl;
 
 		cout << "Checking type information...\n" << endl;
 		parseTree->typeCheck();
-		cout << "\n------------------------------------------------- ParseTree ---" << endl;
-		printParseTree(parseTree->getRootNode());
-		cout << "---------------------------------------------------------------\n" << endl;
+//		cout << "\n------------------------------------------------- ParseTree ---" << endl;
+//		printParseTree(parseTree->getRootNode());
+//		cout << "---------------------------------------------------------------\n" << endl;
 
 		cout << "Generating code...\n" << endl;
 		parseTree->makeCode();

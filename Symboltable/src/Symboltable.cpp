@@ -18,23 +18,36 @@ Symboltable::~Symboltable() {
 }
 
 void Symboltable::initSymbols() {
-	hashmapPtr->insertToken(new Token(TOKEN_IF, "if", 0, 0));
-	hashmapPtr->insertToken(new Token(TOKEN_IF, "IF", 0, 0));
+	Token* tokenIf = new Token(TOKEN_IF, "if", 0, 0);
+	Token* tokenIF = new Token(TOKEN_IF, "IF", 0, 0);
+	Token* tokenWhile = new Token(TOKEN_WHILE, "while", 0, 0);
+	Token* tokenWHILE = new Token(TOKEN_WHILE, "WHILE", 0, 0);
+	Token* tokenInt = new Token(TOKEN_INT, "int", 0, 0);
+	Token* tokenWrite = new Token(TOKEN_WRITE, "write", 0, 0);
+	Token* tokenRead = new Token(TOKEN_READ, "read", 0, 0);
+	Token* tokenElse = new Token(TOKEN_ELSE, "else", 0, 0);
 
-	hashmapPtr->insertToken(new Token(TOKEN_WHILE, "while", 0, 0));
-	hashmapPtr->insertToken(new Token(TOKEN_WHILE, "WHILE", 0, 0));
+	hashmapPtr->insertToken(tokenIf);
+	hashmapPtr->insertToken(tokenIF);
 
-	hashmapPtr->insertToken(new Token(TOKEN_INT, "int", 0, 0));
-	hashmapPtr->insertToken(new Token(TOKEN_WRITE, "write", 0, 0));
-	hashmapPtr->insertToken(new Token(TOKEN_READ, "read", 0, 0));
-	hashmapPtr->insertToken(new Token(TOKEN_ELSE, "else", 0, 0));
+	hashmapPtr->insertToken(tokenWhile);
+	hashmapPtr->insertToken(tokenWHILE);
+
+	hashmapPtr->insertToken(tokenInt);
+	hashmapPtr->insertToken(tokenRead);
+	hashmapPtr->insertToken(tokenWrite);
+	hashmapPtr->insertToken(tokenElse);
 }
 
 TType Symboltable::getTokenType(char* lexem) {
 	return this->hashmapPtr->getTokenType(lexem);
 }
 
-bool Symboltable::insertToken(Token* t) {
+Token* Symboltable::getToken(char* lexem) {
+	return this->hashmapPtr->getToken(lexem);
+}
+
+Token* Symboltable::insertToken(Token* t) {
 	return this->hashmapPtr->insertToken(t);
 }
 

@@ -8,7 +8,7 @@ using namespace std;
 ParseTree::ParseTree(char* inFile, char* outFile, char* errorOutFile) {
 	scanner = new Scanner(inFile);
 	parser = new Parser(scanner, errorOutFile);
-	typeChecker = new TypeChecker(errorOutFile);
+	typeChecker = new TypeChecker(errorOutFile, this->scanner->getSymboltable());
 	codeGenerator = new CodeGenerator(outFile);
 }
 

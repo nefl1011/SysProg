@@ -8,6 +8,9 @@ Node::Node(Token* token, RuleType ruleType) {
 	this->token = token;
 	this->tType = token->getType();
 	this->ruleType = ruleType;
+	this->nodeType = NO_TYPE;
+	this->token->setNodeType(this->nodeType);
+	this->leaf = false;
 }
 
 Node::~Node() {
@@ -22,6 +25,9 @@ RuleType Node::getRuleType() {
 	return ruleType;
 }
 NodeType Node::getNodeType() {
+//	if (leaf) {
+//		return this->token->getNodeType();
+//	}
 	return nodeType;
 }
 bool Node::getLeaf() {
@@ -44,6 +50,9 @@ void Node::setRuleType(RuleType ruleType) {
 	this->ruleType = ruleType;
 }
 void Node::setNodeType(NodeType nodeType) {
+	if (leaf) {
+		this->token->setNodeType(nodeType);
+	}
 	this->nodeType = nodeType;
 }
 void Node::setLeaf(bool leaf) {
@@ -201,4 +210,8 @@ char* Node::nodeTypeToString() {
 			break;
 	}
 	return "";
+}
+
+void Node::setToken(Token* aToken) {
+	this->token = aToken;
 }

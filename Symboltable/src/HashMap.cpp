@@ -20,13 +20,19 @@ HashMap::~HashMap() {
 /*
  * insertToken setzt ein Token in die HashMap
  */
-bool HashMap::insertToken(Token* t){
+Token* HashMap::insertToken(Token* t){
 	int leng = length(t->getLexem());
 	//hashCode des Strings von Token bestimmt die Zeile in der HashMap
 	int index = hashcode(t->getLexem(), leng) % this->size;
 
-	this->table[index].addLast(t);
-	return true;
+	for (int i = 0; i < table[index].getSize(); i++) {
+
+	    Token* current = table[index].getToken(i);
+	    if (compare(current->getLexem(), t->getLexem())) {
+	    	return current;
+	    }
+	}
+	return this->table[index].addLast(t);
 
 }
 
@@ -56,6 +62,29 @@ TType HashMap::getTokenType(char* lexem) {
     }
 
     return null;
+}
+
+Token* HashMap::getToken(char* lexem) {
+	//Zeile in der HashMap durch hashCode des Strings berechnen
+	    int index = hashcode(lexem, length(lexem)) % this->size;
+
+	    //falls Zeile leer: null
+	    if (this->table[index].getSize() == 0) {
+	        return 0L;
+	    } else {
+	        //falls Zeile nicht leer, sequenziell TokenLinkedList nach gesuchtem String durchsuchen
+	        //und TType des zugehörigen Tokens zurückgeben
+	        for (int i = 0; i < table[index].getSize(); i++) {
+
+	            Token* current = table[index].getToken(i);
+	            if (compare(current->getLexem(), lexem)) {
+	            	cout << current->getNodeType() << endl;
+	                return current;
+	            }
+	        }
+	    }
+
+	    return 0L;
 }
 
 int HashMap::hashcode(char *lexem, int length) {

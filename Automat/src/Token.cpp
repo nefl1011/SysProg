@@ -92,4 +92,9 @@ int Token::getValue() {
 	return this->value;
 }
 
-
+void Token::setNodeType(NodeType aNodeType) {
+	this->nodeType = aNodeType;
+}
+NodeType Token::getNodeType() {
+	return this->nodeType;
+}

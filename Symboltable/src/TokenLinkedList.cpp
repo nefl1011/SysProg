@@ -16,7 +16,7 @@ TokenLinkedList::~TokenLinkedList() {
 	}
 }
 
-bool TokenLinkedList::addLast(Token* l) {
+Token* TokenLinkedList::addLast(Token* l) {
 
 	TokenNode* oldlast = last;
 	last = new TokenNode(l, (TokenNode*) 0, oldlast);//neues Last-Element wird erstellt
@@ -31,7 +31,7 @@ bool TokenLinkedList::addLast(Token* l) {
 		first = last;
 	}
 	size++;
-	return true;
+	return l;
 }
 Token* TokenLinkedList::getToken(int index) {
 
