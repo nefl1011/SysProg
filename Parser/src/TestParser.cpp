@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
 //	char* inFile = argv[1];
 //	char* outFile = argv[2];
 	char* inFile = (char*) "ParserTestFile.txt";
-	char* outFile = (char*) "out.txt";
+	char* outFile = (char*) "testCode.code";
 	char* errorOutFile = (char*) "Parser-error.txt";
 	clearOutputFile(outFile);
 	clearOutputFile(errorOutFile);

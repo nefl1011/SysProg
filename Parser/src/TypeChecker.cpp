@@ -204,9 +204,10 @@ void TypeChecker::typeCheckStatement_IDENTIFIER(Node *node) {
     Node* exp = node->getChildren(2);
     Node* index = node->getChildren(1);
 
-    Token* test = this->symboltable->getToken(identifier->getToken()->getLexem());
-    cout <<test<<endl;
-    identifier->setToken(test);
+//    Token* test = this->symboltable->getToken(identifier->getToken()->getLexem());
+//    cout << "Test_________________________"<<endl;
+//    cout <<test<<endl;
+//    identifier->setToken(test);
 
     analyze(exp);
     analyze(index);
@@ -247,7 +248,7 @@ void TypeChecker::typeCheckStatement_READ(Node *node) {
     Node* index = node->getChildren(1);
 
     analyze(index);
-
+cout << "in read" << endl;
     if(identifier && index) {
     	if (getNodeTypeSymTable(identifier) == NO_TYPE) {
 //    	if (identifier->getNodeType() == NO_TYPE) {
@@ -521,18 +522,18 @@ void TypeChecker::typeCheckIndex(Node* node) {
 }
 
 void TypeChecker::error(const char* errorString, Node* node) {
-//	Token* token = node->getToken();
-//	ofstream errStream(errorOutFile, std::ios_base::app);
-//	errStream << errorString << "\t Line: " << token->getLine() + 1 << " \t Column: "
-//			<< token->getColumn() + 1 << endl;
-//	errStream << "stop" << endl;
-//
-//	//Console Output
-//	cout << errorString << "\t Line: " << token->getLine() + 1 << " \t Column: "
-//			<< token->getColumn() + 1 << endl;
-//	cout << "stop" << endl;
+	Token* token = node->getToken();
+	ofstream errStream(errorOutFile, std::ios_base::app);
+	errStream << errorString << "\t Line: " << token->getLine() + 1 << " \t Column: "
+			<< token->getColumn() + 1 << endl;
+	errStream << "stop" << endl;
 
-	//exit(1);
+	//Console Output
+	cout << errorString << "\t Line: " << token->getLine() + 1 << " \t Column: "
+			<< token->getColumn() + 1 << endl;
+	cout << "stop" << endl;
+
+	exit(1);
 }
 
 void TypeChecker::store(Node* aNode, NodeType aNodeType) {
@@ -546,7 +547,9 @@ void TypeChecker::store(Node* aNode, NodeType aNodeType) {
 }
 
 NodeType TypeChecker::getNodeTypeSymTable(Node* aNode) {
+	cout << "getNodeTypeFromSymTable" << endl;
 	cout << "Lexem: " << this->symboltable->getToken(aNode->getToken()->getLexem())->getLexem() << endl;
 	cout << "NodeType: " << this->symboltable->getToken(aNode->getToken()->getLexem())->getNodeType() << endl;
+	cout << "getNodeTypeFromSymTable" << endl;
 	return this->symboltable->getToken(aNode->getToken()->getLexem())->getNodeType();
 }

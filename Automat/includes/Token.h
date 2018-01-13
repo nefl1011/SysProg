@@ -49,6 +49,13 @@ enum TType {
 	TOKEN_ELSE					= 35
 };
 
+enum IdentType {
+	NO_IDENTTYPE = 0,
+	INT_IDENT = 1,
+	INT_ARRAY_IDENT = 2,
+	NO_IDENT = 3
+};
+
 class Token {
 private:
 	TType type;
@@ -58,6 +65,7 @@ private:
 	char* lexem;
 	long value;
 	NodeType nodeType;
+	IdentType identType;
 
 public:
 	Token(TType type, char* lexem, int line, int column);
@@ -70,6 +78,10 @@ public:
 	int getValue();
 	NodeType getNodeType();
 	void setNodeType(NodeType aNodeType);
+
+
+	IdentType getIdentType();
+	void setIdentType(IdentType aIdentType);
 };
 
 

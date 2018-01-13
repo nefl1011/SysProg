@@ -15,7 +15,7 @@ void clearOutputFile(const char *outFilename) {
 
 int main(int argc, char **argv) {
 
-	char* inFile = (char*) "test.txt";
+	char* inFile = (char*) "Scannertest.txt";
     char* outFilename = (char*) "out.txt";
 
     try {
@@ -29,6 +29,7 @@ int main(int argc, char **argv) {
 
         while(scanner->hasNextToken()) {
         	token = scanner->nextToken();
+        	cout << token->getNodeType() << endl;
 
         	if (token->getType() == ERROR) {
         		cerr << "unknown Token Line: " << token->getLine() + 1 <<  "\t Column: " << token->getColumn() + 1 << "\t " ;

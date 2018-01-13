@@ -11,6 +11,8 @@ Token::Token(TType type, char* lexem, int line, int column) {
 	this->lexem = lexem;
 	this->line = line;
 	this->column = column;
+	this->identType = NO_IDENTTYPE;
+	//this->nodeType = NO_TYPE;
 
 	if (this->type != INTEGER) {
 		this->value = -1;
@@ -97,4 +99,11 @@ void Token::setNodeType(NodeType aNodeType) {
 }
 NodeType Token::getNodeType() {
 	return this->nodeType;
+}
+
+void Token::setIdentType(IdentType aIdentType) {
+	this->identType = aIdentType;
+}
+IdentType Token::getIdentType() {
+	return this->identType;
 }

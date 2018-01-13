@@ -50,9 +50,9 @@ void Node::setRuleType(RuleType ruleType) {
 	this->ruleType = ruleType;
 }
 void Node::setNodeType(NodeType nodeType) {
-	if (leaf) {
-		this->token->setNodeType(nodeType);
-	}
+//	if (leaf) {
+//		this->token->setNodeType(nodeType);
+//	}
 	this->nodeType = nodeType;
 }
 void Node::setLeaf(bool leaf) {
